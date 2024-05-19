@@ -2,6 +2,7 @@ plugins {
     alias(libs.plugins.multiplatform).apply(false)
     alias(libs.plugins.compose.compiler).apply(false)
     alias(libs.plugins.compose).apply(false)
+    alias(libs.plugins.kotlin.serialization).apply(false)
     // klibs - core
     alias(libs.plugins.klibs.gradle.detekt) apply false
     alias(libs.plugins.klibs.gradle.detekt.compose) apply false

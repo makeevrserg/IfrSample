@@ -1,5 +1,8 @@
 package org.company.panel.model
 
+import kotlinx.serialization.Serializable
+
+@Serializable
 enum class ButtonType {
     UNKNOWN,
     POWER_TOGGLE,

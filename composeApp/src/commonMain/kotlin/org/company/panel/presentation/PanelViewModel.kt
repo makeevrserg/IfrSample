@@ -5,6 +5,8 @@ import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.asStateFlow
 import kotlinx.coroutines.flow.update
+import kotlinx.serialization.encodeToString
+import kotlinx.serialization.json.Json
 import org.company.core.IoCoroutineScope
 import org.company.panel.presentation.samsungkitchen.SamsungKitchenLayoutBuilder
 
@@ -15,7 +17,13 @@ class PanelViewModel : PanelComponent, CoroutineScope by IoCoroutineScope() {
     init {
         _model.update {
             PanelComponent.Model.Loaded(
-                layout = SamsungKitchenLayoutBuilder.build(),
+                layout = SamsungKitchenLayoutBuilder.build().also {
+                    println(
+                        Json {
+                            prettyPrint = true
+                        }.encodeToString(it)
+                    )
+                },
             )
         }
     }

@@ -1,50 +1,162 @@
 {
-  "layout": {
-    "container_info": {
-      "box": {
-        "alignment": "TOP_LEFT"
-      }
-    },
-    "items": [
-      {
-        "container_info": {
-          "column": {
-            "vertical_arrangement": "SPACE_BETWEEN",
-            "horizontal_alignment": "CENTER",
-            "spaced_by": "0"
-          }
+  "containerInfo": {
+    "box": {
+      "alignment": "TOP_CENTER",
+      "width": "FILL_WIDTH",
+      "height": "FILL_HEIGHT"
+    }
+  },
+  "items": [
+    {
+      "containerInfo": {
+        "column": {
+          "verticalArrangement": "SPACE_BETWEEN",
+          "horizontalAlignment": "CENTER",
+          "verticalSpacedBy": 0,
+          "width": "FILL_WIDTH",
+          "height": "FILL_HEIGHT"
+        }
+      },
+      "items": [
+        {
+          "containerInfo": {
+            "column": {
+              "verticalArrangement": "CENTER",
+              "horizontalAlignment": "CENTER",
+              "verticalSpacedBy": 24,
+              "width": "FILL_WIDTH",
+              "height": "WRAP_HEIGHT"
+            }
+          },
+          "items": [
+            {
+              "containerInfo": {
+                "row": {
+                  "verticalAlignment": "CENTER",
+                  "horizontalArrangement": "SPACE_BETWEEN",
+                  "horizontalSpacedBy": 8,
+                  "width": "FILL_WIDTH",
+                  "height": "WRAP_HEIGHT"
+                }
+              },
+              "items": [
+                {
+                  "itemData": {
+                    "buttonType": "POWER_TOGGLE"
+                  }
+                },
+                {
+                  "itemData": {
+                    "buttonType": "MENU_BUTTON"
+                  }
+                },
+                {
+                  "itemData": {
+                    "buttonType": "TV_AV_BUTTON"
+                  }
+                }
+              ]
+            },
+            {
+              "containerInfo": {
+                "row": {
+                  "verticalAlignment": "CENTER",
+                  "horizontalArrangement": "SPACE_BETWEEN",
+                  "horizontalSpacedBy": 0,
+                  "width": "FILL_WIDTH",
+                  "height": "WRAP_HEIGHT"
+                }
+              },
+              "items": [
+                {
+                  "itemData": {
+                    "buttonType": "INFO"
+                  }
+                },
+                {
+                  "itemData": {
+                    "buttonType": "HOME_BUTTON"
+                  }
+                },
+                {
+                  "itemData": {
+                    "buttonType": "BACK"
+                  }
+                },
+                {
+                  "itemData": {
+                    "buttonType": "MORE"
+                  }
+                }
+              ]
+            }
+          ]
         },
-        "items": [
-          {
-            "item_type": "UP_BUTTON",
-            "clip_radius": "8",
-            "background_color": "0xFF202020",
-            "icon_tint": "0xFFFFFFFF",
-            "size": 20
+        {
+          "containerInfo": {
+            "row": {
+              "verticalAlignment": "CENTER",
+              "horizontalArrangement": "CENTER",
+              "horizontalSpacedBy": 0,
+              "width": "FILL_WIDTH",
+              "height": "WRAP_HEIGHT"
+            }
           },
-          {
-            "item_type": "TEXT_BUTTON",
-            "clip_radius": "8",
-            "background_color": "0xFF202020",
-            "icon_tint": "0xFFFFFFFF",
-            "text_color": "0xFFFFFFFF",
-            "size": 20,
-            "text": [
-              {
-                "country": "US",
-                "value": "CH"
+          "items": [
+            {
+              "itemData": {
+                "buttonType": "NAV"
               }
-            ]
+            }
+          ]
+        },
+        {
+          "containerInfo": {
+            "row": {
+              "verticalAlignment": "CENTER",
+              "horizontalArrangement": "SPACE_BETWEEN",
+              "horizontalSpacedBy": 8,
+              "width": "FILL_WIDTH",
+              "height": "WRAP_HEIGHT"
+            }
           },
-          {
-            "item_type": "DOWN_BUTTON",
-            "clip_radius": "8",
-            "background_color": "0xFF202020",
-            "icon_tint": "0xFFFFFFFF",
-            "size": 20
-          }
-        ]
-      }
-    ]
-  }
+          "items": [
+            {
+              "itemData": {
+                "buttonType": "BUTTON_CH"
+              }
+            },
+            {
+              "itemData": {
+                "buttonType": "BUTTON_VOL"
+              }
+            }
+          ]
+        },
+        {
+          "containerInfo": {
+            "row": {
+              "verticalAlignment": "CENTER",
+              "horizontalArrangement": "SPACE_BETWEEN",
+              "horizontalSpacedBy": 8,
+              "width": "FILL_WIDTH",
+              "height": "WRAP_HEIGHT"
+            }
+          },
+          "items": [
+            {
+              "itemData": {
+                "buttonType": "BUTTON_123"
+              }
+            },
+            {
+              "itemData": {
+                "buttonType": "MUTE"
+              }
+            }
+          ]
+        }
+      ]
+    }
+  ]
 }
