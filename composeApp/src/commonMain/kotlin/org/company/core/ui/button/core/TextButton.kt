@@ -1,4 +1,4 @@
-package org.company.panel.ui.components
+package org.company.core.ui.button.core
 
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text

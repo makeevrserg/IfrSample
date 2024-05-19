@@ -1,4 +1,4 @@
-package org.company.panel.ui.components
+package org.company.core.ui.button
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
@@ -11,6 +11,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import org.company.core.ui.button.core.TextButton
 
 @Composable
 internal fun VolumeButton(onClick: () -> Unit) {

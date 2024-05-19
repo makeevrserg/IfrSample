@@ -1,4 +1,4 @@
-package org.company.panel.ui.components.layout
+package org.company.core.ui.layout
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column

@@ -1,7 +1,8 @@
-package org.company.panel.ui.components
+package org.company.core.ui.button
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
+import org.company.core.ui.button.core.TextButton
 
 @Composable
 internal fun TvAvButton(onClick: () -> Unit) {

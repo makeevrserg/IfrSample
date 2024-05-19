@@ -1,21 +1,21 @@
-package org.company.panel.ui.components.layout
+package org.company.core.ui.layout
 
 import androidx.compose.runtime.Composable
+import org.company.core.ui.button.BackButton
+import org.company.core.ui.button.ChannelButton
+import org.company.core.ui.button.HomeButton
+import org.company.core.ui.button.InfoButton
+import org.company.core.ui.button.MenuButton
+import org.company.core.ui.button.MoreButton
+import org.company.core.ui.button.MuteButton
+import org.company.core.ui.button.NavigationButton
+import org.company.core.ui.button.NumbersButton
+import org.company.core.ui.button.PowerButton
+import org.company.core.ui.button.TvAvButton
+import org.company.core.ui.button.UnknownButton
+import org.company.core.ui.button.VolumeButton
 import org.company.panel.model.ButtonType
 import org.company.panel.model.Item
-import org.company.panel.ui.components.BackButton
-import org.company.panel.ui.components.ChannelButton
-import org.company.panel.ui.components.HomeButton
-import org.company.panel.ui.components.InfoButton
-import org.company.panel.ui.components.MenuButton
-import org.company.panel.ui.components.MoreButton
-import org.company.panel.ui.components.MuteButton
-import org.company.panel.ui.components.NavigationButton
-import org.company.panel.ui.components.NumbersButton
-import org.company.panel.ui.components.PowerButton
-import org.company.panel.ui.components.TvAvButton
-import org.company.panel.ui.components.UnknownButton
-import org.company.panel.ui.components.VolumeButton
 
 @Composable
 internal fun ButtonItemComposable(item: Item) {

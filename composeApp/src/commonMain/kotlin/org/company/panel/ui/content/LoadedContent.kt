@@ -7,9 +7,9 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import org.company.app.theme.AppTheme
+import org.company.core.ui.layout.ItemComposable
+import org.company.core.ui.layout.LayoutComposable
 import org.company.panel.presentation.PanelComponent
-import org.company.panel.ui.components.layout.ItemComposable
-import org.company.panel.ui.components.layout.LayoutComposable
 
 @Composable
 internal fun LoadedContent(model: PanelComponent.Model.Loaded) {
