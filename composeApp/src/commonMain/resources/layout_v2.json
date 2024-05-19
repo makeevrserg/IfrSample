@@ -13,27 +13,18 @@
     "items": [
       {
         "container_info": {
-          "column": {
-            "vertical_arrangement": "SPACE_BETWEEN",
+          "row": {
+            "horizontal_arrangement": "SPACE_BETWEEN",
             "horizontal_alignment": "CENTER",
             "spaced_by": "0"
           }
         },
         "items": [
           {
-            "item_type": "UP_BUTTON",
-            "clip_radius": "8",
-            "background_color": "0xFF202020",
-            "icon_tint": "0xFFFFFFFF",
-            "size": 20
+            "item_type": "UP_BUTTON"
           },
           {
             "item_type": "TEXT_BUTTON",
-            "clip_radius": "8",
-            "background_color": "0xFF202020",
-            "icon_tint": "0xFFFFFFFF",
-            "text_color": "0xFFFFFFFF",
-            "size": 20,
             "text": [
               {
                 "country": "US",

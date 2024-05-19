@@ -2,12 +2,27 @@ package org.company.panel.ui.util
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.ui.Alignment
+import androidx.compose.ui.unit.dp
 import org.company.panel.model.ContainerInfo
 
 object ArrangementUtil {
-    fun ContainerInfo.Arrangement.toComposeArrangement(): Arrangement.HorizontalOrVertical {
+    fun ContainerInfo.Arrangement.toVerticalArrangement(spacedBy: Int): Arrangement.Vertical {
         return when (this) {
             ContainerInfo.Arrangement.SPACE_BETWEEN -> Arrangement.SpaceBetween
+            ContainerInfo.Arrangement.CENTER -> Arrangement.spacedBy(spacedBy.dp, Alignment.CenterVertically)
+        }
+    }
+
+    fun ContainerInfo.Arrangement.toHorizontalArrangement(spacedBy: Int): Arrangement.Horizontal {
+        return when (this) {
+            ContainerInfo.Arrangement.SPACE_BETWEEN -> Arrangement.SpaceBetween
+            ContainerInfo.Arrangement.CENTER -> Arrangement.spacedBy(spacedBy.dp, Alignment.CenterHorizontally)
+        }
+    }
+
+    fun ContainerInfo.VerticalAlignment.toVerticalArrangement(): Alignment.Vertical {
+        return when (this) {
+            ContainerInfo.VerticalAlignment.CENTER -> Alignment.CenterVertically
         }
     }
 
@@ -15,6 +30,7 @@ object ArrangementUtil {
         return when (this) {
             ContainerInfo.Alignment.TOP_LEFT -> Alignment.TopStart
             ContainerInfo.Alignment.CENTER -> Alignment.Center
+            ContainerInfo.Alignment.TOP_CENTER -> Alignment.TopCenter
         }
     }
 
@@ -24,5 +40,4 @@ object ArrangementUtil {
             ContainerInfo.HorizontalAlignment.CENTER -> Alignment.CenterHorizontally
         }
     }
-
 }

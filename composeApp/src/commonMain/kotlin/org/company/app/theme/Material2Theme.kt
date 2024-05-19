@@ -1,6 +1,5 @@
 package org.company.app.theme
 
-
 import androidx.compose.material.Colors
 import androidx.compose.material.Shapes
 import androidx.compose.material.Typography

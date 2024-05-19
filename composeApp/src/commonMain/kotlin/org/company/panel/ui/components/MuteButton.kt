@@ -2,17 +2,17 @@ package org.company.panel.ui.components
 
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.Error
+import androidx.compose.material.icons.automirrored.filled.VolumeOff
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.rememberVectorPainter
 
 @Composable
-internal fun UnknownButton(onClick: () -> Unit) {
+internal fun MuteButton(onClick: () -> Unit) {
     SquareIconButton(
         onClick = onClick,
-        background = Color.Gray,
-        painter = rememberVectorPainter(Icons.Default.Error),
-        iconTint = MaterialTheme.colors.error
+        background = Color(0xFF303030),
+        painter = rememberVectorPainter(Icons.AutoMirrored.Filled.VolumeOff),
+        iconTint = MaterialTheme.colors.onPrimary
     )
 }

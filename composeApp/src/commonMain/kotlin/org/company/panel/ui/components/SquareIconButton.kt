@@ -10,7 +10,7 @@ import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.unit.dp
 
 @Composable
-internal fun IconButton(
+internal fun SquareIconButton(
     onClick: () -> Unit,
     painter: Painter,
     background: Color,
@@ -18,7 +18,7 @@ internal fun IconButton(
     contentDescription: String? = null,
     modifier: Modifier = Modifier,
 ) {
-    BaseButton(
+    SquareButton(
         modifier = modifier,
         onClick = onClick,
         background = background
@@ -27,7 +27,7 @@ internal fun IconButton(
             painter = painter,
             contentDescription = contentDescription,
             tint = iconTint,
-            modifier = Modifier.fillMaxSize().padding(16.dp)
+            modifier = Modifier.fillMaxSize().padding(12.dp)
         )
     }
 }
