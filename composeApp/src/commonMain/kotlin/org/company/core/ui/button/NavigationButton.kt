@@ -1,6 +1,7 @@
 package org.company.core.ui.button
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
@@ -30,7 +31,12 @@ import androidx.compose.ui.unit.dp
 fun NavigationButton(
     background: Color = Color(0xFF303030),
     iconTint: Color = MaterialTheme.colors.onPrimary,
-    textColor: Color = MaterialTheme.colors.onPrimary
+    textColor: Color = MaterialTheme.colors.onPrimary,
+    onUpClicked: () -> Unit,
+    onRightClicked: () -> Unit,
+    onDownClicked: () -> Unit,
+    onLeftClicked: () -> Unit,
+    onOkClicked: () -> Unit
 ) {
     Box(
         modifier = Modifier.size(186.dp)
@@ -47,7 +53,7 @@ fun NavigationButton(
                 painter = rememberVectorPainter(Icons.Filled.KeyboardArrowUp),
                 tint = iconTint,
                 contentDescription = null,
-                modifier = Modifier.size(32.dp)
+                modifier = Modifier.size(32.dp).clip(CircleShape).clickable(onClick = onUpClicked)
             )
             Row(
                 horizontalArrangement = Arrangement.SpaceBetween,
@@ -58,7 +64,7 @@ fun NavigationButton(
                     painter = rememberVectorPainter(Icons.AutoMirrored.Filled.KeyboardArrowLeft),
                     tint = iconTint,
                     contentDescription = null,
-                    modifier = Modifier.size(32.dp)
+                    modifier = Modifier.size(32.dp).clip(CircleShape).clickable(onClick = onLeftClicked)
                 )
                 Box(
                     modifier = Modifier
@@ -67,7 +73,9 @@ fun NavigationButton(
                         .background(MaterialTheme.colors.primaryVariant)
                         .padding(4.dp)
                         .clip(CircleShape)
-                        .background(Color(0xFF616161)),
+                        .background(Color(0xFF616161))
+                        .clip(CircleShape)
+                        .clickable(onClick = onOkClicked),
                     contentAlignment = Alignment.Center,
                     content = {
                         Text(
@@ -82,7 +90,7 @@ fun NavigationButton(
                     painter = rememberVectorPainter(Icons.AutoMirrored.Filled.KeyboardArrowRight),
                     tint = iconTint,
                     contentDescription = null,
-                    modifier = Modifier.size(32.dp)
+                    modifier = Modifier.size(32.dp).clip(CircleShape).clickable(onClick = onRightClicked)
                 )
             }
 
@@ -90,7 +98,7 @@ fun NavigationButton(
                 painter = rememberVectorPainter(Icons.Filled.KeyboardArrowDown),
                 tint = iconTint,
                 contentDescription = null,
-                modifier = Modifier.size(32.dp)
+                modifier = Modifier.size(32.dp).clip(CircleShape).clickable(onClick = onDownClicked)
             )
         }
     }

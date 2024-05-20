@@ -14,7 +14,7 @@ internal fun TextButton(
     fontSize: TextUnit = MaterialTheme.typography.caption.fontSize,
     modifier: Modifier = Modifier,
     text: String,
-    onClick: () -> Unit
+    onClick: (() -> Unit)?
 ) {
     SquareButton(
         onClick = onClick,

@@ -3,7 +3,9 @@
     {
       "data": {
         "type": "SINGLE_KEY",
-        "key": "KEY",
+        "key": {
+          "id": "power"
+        },
         "buttonType": "POWER_TOGGLE"
       },
       "position": {
@@ -14,7 +16,9 @@
     {
       "data": {
         "type": "SINGLE_KEY",
-        "key": "KEY",
+        "key": {
+          "id": "menu"
+        },
         "buttonType": "MENU_BUTTON"
       },
       "position": {
@@ -25,7 +29,9 @@
     {
       "data": {
         "type": "SINGLE_KEY",
-        "key": "KEY",
+        "key": {
+          "id": "tv_av"
+        },
         "buttonType": "TV_AV_BUTTON"
       },
       "position": {
@@ -36,7 +42,9 @@
     {
       "data": {
         "type": "SINGLE_KEY",
-        "key": "KEY",
+        "key": {
+          "id": "info"
+        },
         "buttonType": "INFO"
       },
       "position": {
@@ -47,7 +55,9 @@
     {
       "data": {
         "type": "SINGLE_KEY",
-        "key": "KEY",
+        "key": {
+          "id": "home"
+        },
         "buttonType": "HOME_BUTTON"
       },
       "position": {
@@ -58,7 +68,9 @@
     {
       "data": {
         "type": "SINGLE_KEY",
-        "key": "KEY",
+        "key": {
+          "id": "back"
+        },
         "buttonType": "BACK"
       },
       "position": {
@@ -69,7 +81,9 @@
     {
       "data": {
         "type": "SINGLE_KEY",
-        "key": "KEY",
+        "key": {
+          "id": "more"
+        },
         "buttonType": "MORE"
       },
       "position": {
@@ -80,11 +94,21 @@
     {
       "data": {
         "type": "NAV",
-        "up": "up",
-        "left": "left",
-        "down": "down",
-        "right": "right",
-        "ok": "ok"
+        "up": {
+          "id": "up"
+        },
+        "left": {
+          "id": "left"
+        },
+        "down": {
+          "id": "down"
+        },
+        "right": {
+          "id": "right"
+        },
+        "ok": {
+          "id": "ok"
+        }
       },
       "position": {
         "row": 3.0,
@@ -93,9 +117,13 @@
     },
     {
       "data": {
-        "type": "SINGLE_KEY",
-        "key": "KEY",
-        "buttonType": "BUTTON_CH"
+        "type": "CHANNEL",
+        "add": {
+          "id": "ch+"
+        },
+        "reduce": {
+          "id": "ch-"
+        }
       },
       "position": {
         "row": 7.0,
@@ -104,9 +132,13 @@
     },
     {
       "data": {
-        "type": "SINGLE_KEY",
-        "key": "KEY",
-        "buttonType": "BUTTON_VOL"
+        "type": "VOL",
+        "add": {
+          "id": "vol+"
+        },
+        "reduce": {
+          "id": "vol-"
+        }
       },
       "position": {
         "row": 7.0,
@@ -116,7 +148,9 @@
     {
       "data": {
         "type": "SINGLE_KEY",
-        "key": "KEY",
+        "key": {
+          "id": "123"
+        },
         "buttonType": "BUTTON_123"
       },
       "position": {
@@ -127,7 +161,9 @@
     {
       "data": {
         "type": "SINGLE_KEY",
-        "key": "KEY",
+        "key": {
+          "id": "mute"
+        },
         "buttonType": "MUTE"
       },
       "position": {

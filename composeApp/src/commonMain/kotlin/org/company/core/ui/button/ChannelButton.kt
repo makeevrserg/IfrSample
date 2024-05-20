@@ -14,25 +14,28 @@ import androidx.compose.ui.unit.sp
 import org.company.core.ui.button.core.TextButton
 
 @Composable
-internal fun ChannelButton(onClick: () -> Unit) {
+internal fun ChannelButton(
+    onNextClicked: () -> Unit,
+    onPrevClicked: () -> Unit
+) {
     Column(
         modifier = Modifier.clip(RoundedCornerShape(8.dp)).background(Color(0xFF303030)),
         verticalArrangement = Arrangement.SpaceBetween,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         TextButton(
-            onClick = onClick,
+            onClick = onNextClicked,
             text = "+",
             background = Color(0xFF303030),
             fontSize = 24.sp
         )
         TextButton(
-            onClick = onClick,
+            onClick = null,
             text = "CH",
             background = Color(0xFF303030)
         )
         TextButton(
-            onClick = onClick,
+            onClick = onPrevClicked,
             text = "-",
             background = Color(0xFF303030),
             fontSize = 24.sp

@@ -7,11 +7,11 @@ import org.company.core.model.ButtonType
 @SerialName("NAV")
 @Serializable
 class NavigationButtonData(
-    val up: String,
-    val left: String,
-    val down: String,
-    val right: String,
-    val ok: String,
+    val up: KeyData,
+    val left: KeyData,
+    val down: KeyData,
+    val right: KeyData,
+    val ok: KeyData,
 ) : ButtonData {
     override val buttonType: ButtonType = ButtonType.NAV
 }

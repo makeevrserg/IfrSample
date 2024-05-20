@@ -8,9 +8,12 @@ import kotlinx.serialization.json.Json
 import org.company.core.IoCoroutineScope
 import org.company.core.model.ButtonType
 import org.company.grid.model.Button
+import org.company.grid.model.ChannelButtonData
 import org.company.grid.model.GridLayout
+import org.company.grid.model.KeyData
 import org.company.grid.model.NavigationButtonData
 import org.company.grid.model.SingleKeyButtonType
+import org.company.grid.model.VolumeButtonData
 
 class GridViewModel : CoroutineScope by IoCoroutineScope() {
     val layout = MutableStateFlow<GridLayout>(GridLayout(buttons = emptyList()))
@@ -21,61 +24,61 @@ class GridViewModel : CoroutineScope by IoCoroutineScope() {
                 buttons = buildList {
                     // First
                     Button(
-                        data = SingleKeyButtonType("KEY", ButtonType.POWER_TOGGLE),
+                        data = SingleKeyButtonType(KeyData("power"), ButtonType.POWER_TOGGLE),
                         position = Button.Position(0f, 0f)
                     ).run(::add)
                     Button(
-                        data = SingleKeyButtonType("KEY", ButtonType.MENU_BUTTON),
+                        data = SingleKeyButtonType(KeyData("menu"), ButtonType.MENU_BUTTON),
                         position = Button.Position(0f, 2f)
                     ).run(::add)
                     Button(
-                        data = SingleKeyButtonType("KEY", ButtonType.TV_AV_BUTTON),
+                        data = SingleKeyButtonType(KeyData("tv_av"), ButtonType.TV_AV_BUTTON),
                         position = Button.Position(0f, 4f)
                     ).run(::add)
                     // Second
                     Button(
-                        data = SingleKeyButtonType("KEY", ButtonType.INFO),
+                        data = SingleKeyButtonType(KeyData("info"), ButtonType.INFO),
                         position = Button.Position(1f, 0f)
                     ).run(::add)
                     Button(
-                        data = SingleKeyButtonType("KEY", ButtonType.HOME_BUTTON),
+                        data = SingleKeyButtonType(KeyData("home"), ButtonType.HOME_BUTTON),
                         position = Button.Position(1f, 1f)
                     ).run(::add)
                     Button(
-                        data = SingleKeyButtonType("KEY", ButtonType.BACK),
+                        data = SingleKeyButtonType(KeyData("back"), ButtonType.BACK),
                         position = Button.Position(1f, 3f)
                     ).run(::add)
                     Button(
-                        data = SingleKeyButtonType("KEY", ButtonType.MORE),
+                        data = SingleKeyButtonType(KeyData("more"), ButtonType.MORE),
                         position = Button.Position(1f, 4f)
                     ).run(::add)
                     // Nav
                     Button(
                         data = NavigationButtonData(
-                            up = "up",
-                            left = "left",
-                            down = "down",
-                            right = "right",
-                            ok = "ok"
+                            up = KeyData("up"),
+                            left = KeyData("left"),
+                            down = KeyData("down"),
+                            right = KeyData("right"),
+                            ok = KeyData("ok")
                         ),
                         position = Button.Position(3f, 1f)
                     ).run(::add)
                     // Channel Volume
                     Button(
-                        data = SingleKeyButtonType("KEY", ButtonType.BUTTON_CH),
+                        data = ChannelButtonData(KeyData("ch+"), KeyData("ch-")),
                         position = Button.Position(7f, 0f)
                     ).run(::add)
                     Button(
-                        data = SingleKeyButtonType("KEY", ButtonType.BUTTON_VOL),
+                        data = VolumeButtonData(KeyData("vol+"), KeyData("vol-")),
                         position = Button.Position(7f, 4f)
                     ).run(::add)
                     // Bottom Button
                     Button(
-                        data = SingleKeyButtonType("KEY", ButtonType.BUTTON_123),
+                        data = SingleKeyButtonType(KeyData("123"), ButtonType.BUTTON_123),
                         position = Button.Position(10f, 0f)
                     ).run(::add)
                     Button(
-                        data = SingleKeyButtonType("KEY", ButtonType.MUTE),
+                        data = SingleKeyButtonType(KeyData("mute"), ButtonType.MUTE),
                         position = Button.Position(10f, 4f)
                     ).run(::add)
                 }

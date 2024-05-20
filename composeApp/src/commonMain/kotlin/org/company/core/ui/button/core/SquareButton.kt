@@ -15,7 +15,7 @@ import androidx.compose.ui.unit.dp
 
 @Composable
 internal fun SquareButton(
-    onClick: () -> Unit,
+    onClick: (() -> Unit)?,
     background: Color,
     modifier: Modifier = Modifier,
     content: @Composable BoxScope.() -> Unit,
@@ -25,7 +25,7 @@ internal fun SquareButton(
             .size(48.dp)
             .clip(RoundedCornerShape(8.dp))
             .background(background)
-            .clickable(onClick = onClick),
+            .then(if (onClick != null) Modifier.clickable(onClick = onClick) else Modifier),
         contentAlignment = Alignment.Center,
         content = content
     )

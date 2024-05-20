@@ -14,25 +14,28 @@ import androidx.compose.ui.unit.sp
 import org.company.core.ui.button.core.TextButton
 
 @Composable
-internal fun VolumeButton(onClick: () -> Unit) {
+internal fun VolumeButton(
+    onAddClicked: () -> Unit,
+    onReduceClicked: () -> Unit
+) {
     Column(
         modifier = Modifier.clip(RoundedCornerShape(8.dp)).background(Color(0xFF303030)),
         verticalArrangement = Arrangement.SpaceBetween,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         TextButton(
-            onClick = onClick,
+            onClick = onAddClicked,
             text = "+",
             background = Color(0xFF303030),
             fontSize = 24.sp
         )
         TextButton(
-            onClick = onClick,
+            onClick = null,
             text = "VOL",
             background = Color(0xFF303030)
         )
         TextButton(
-            onClick = onClick,
+            onClick = onReduceClicked,
             text = "-",
             background = Color(0xFF303030),
             fontSize = 24.sp
