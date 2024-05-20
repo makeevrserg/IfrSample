@@ -9,10 +9,10 @@ import java.awt.Dimension
 fun main() = application {
     Window(
         title = "Multiplatform App",
-        state = rememberWindowState(width = 400.dp, height = 720.dp),
+        state = rememberWindowState(width = 375.dp, height = 812.dp),
         onCloseRequest = ::exitApplication,
     ) {
-        window.minimumSize = Dimension(400, 720)
+        window.minimumSize = Dimension(20, 20)
         AdaptThemeFade {
             ComposeApplication()
         }

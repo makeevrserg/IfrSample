@@ -33,7 +33,7 @@ fun NavigationButton(
     textColor: Color = MaterialTheme.colors.onPrimary
 ) {
     Box(
-        modifier = Modifier.size(164.dp)
+        modifier = Modifier.size(186.dp)
             .clip(CircleShape)
             .background(background),
         contentAlignment = Alignment.Center

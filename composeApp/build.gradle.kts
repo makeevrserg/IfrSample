@@ -24,6 +24,7 @@ kotlin {
             implementation(compose.materialIconsExtended)
             implementation(compose.components.resources)
             implementation(compose.components.uiToolingPreview)
+            implementation(compose.uiTooling)
             implementation(libs.decompose)
             implementation(libs.decompose.compose)
             implementation(libs.composeImageLoader)
