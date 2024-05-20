@@ -1,0 +1,139 @@
+{
+  "buttons": [
+    {
+      "data": {
+        "type": "SINGLE_KEY",
+        "key": "KEY",
+        "buttonType": "POWER_TOGGLE"
+      },
+      "position": {
+        "row": 0.0,
+        "column": 0.0
+      }
+    },
+    {
+      "data": {
+        "type": "SINGLE_KEY",
+        "key": "KEY",
+        "buttonType": "MENU_BUTTON"
+      },
+      "position": {
+        "row": 0.0,
+        "column": 2.0
+      }
+    },
+    {
+      "data": {
+        "type": "SINGLE_KEY",
+        "key": "KEY",
+        "buttonType": "TV_AV_BUTTON"
+      },
+      "position": {
+        "row": 0.0,
+        "column": 4.0
+      }
+    },
+    {
+      "data": {
+        "type": "SINGLE_KEY",
+        "key": "KEY",
+        "buttonType": "INFO"
+      },
+      "position": {
+        "row": 1.0,
+        "column": 0.0
+      }
+    },
+    {
+      "data": {
+        "type": "SINGLE_KEY",
+        "key": "KEY",
+        "buttonType": "HOME_BUTTON"
+      },
+      "position": {
+        "row": 1.0,
+        "column": 1.0
+      }
+    },
+    {
+      "data": {
+        "type": "SINGLE_KEY",
+        "key": "KEY",
+        "buttonType": "BACK"
+      },
+      "position": {
+        "row": 1.0,
+        "column": 3.0
+      }
+    },
+    {
+      "data": {
+        "type": "SINGLE_KEY",
+        "key": "KEY",
+        "buttonType": "MORE"
+      },
+      "position": {
+        "row": 1.0,
+        "column": 4.0
+      }
+    },
+    {
+      "data": {
+        "type": "NAV",
+        "up": "up",
+        "left": "left",
+        "down": "down",
+        "right": "right",
+        "ok": "ok"
+      },
+      "position": {
+        "row": 3.0,
+        "column": 1.0
+      }
+    },
+    {
+      "data": {
+        "type": "SINGLE_KEY",
+        "key": "KEY",
+        "buttonType": "BUTTON_CH"
+      },
+      "position": {
+        "row": 7.0,
+        "column": 0.0
+      }
+    },
+    {
+      "data": {
+        "type": "SINGLE_KEY",
+        "key": "KEY",
+        "buttonType": "BUTTON_VOL"
+      },
+      "position": {
+        "row": 7.0,
+        "column": 4.0
+      }
+    },
+    {
+      "data": {
+        "type": "SINGLE_KEY",
+        "key": "KEY",
+        "buttonType": "BUTTON_123"
+      },
+      "position": {
+        "row": 10.0,
+        "column": 0.0
+      }
+    },
+    {
+      "data": {
+        "type": "SINGLE_KEY",
+        "key": "KEY",
+        "buttonType": "MUTE"
+      },
+      "position": {
+        "row": 10.0,
+        "column": 4.0
+      }
+    }
+  ]
+}
