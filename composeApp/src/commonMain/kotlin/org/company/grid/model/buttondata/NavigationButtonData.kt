@@ -1,8 +1,8 @@
-package org.company.grid.model
+package org.company.grid.model.buttondata
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
-import org.company.core.model.ButtonType
+import org.company.grid.model.KeyData
 
 @SerialName("NAV")
 @Serializable
@@ -12,6 +12,4 @@ class NavigationButtonData(
     val down: KeyData,
     val right: KeyData,
     val ok: KeyData,
-) : ButtonData {
-    override val buttonType: ButtonType = ButtonType.NAV
-}
+) : ButtonData

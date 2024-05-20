@@ -1,99 +1,102 @@
 package org.company.core.ui.button
 
 import androidx.compose.runtime.Composable
-import org.company.core.model.ButtonType
-import org.company.grid.model.ButtonData
-import org.company.grid.model.ChannelButtonData
+import androidx.compose.ui.graphics.Color
+import org.company.core.ui.button.core.TextButton
 import org.company.grid.model.KeyData
-import org.company.grid.model.NavigationButtonData
-import org.company.grid.model.SingleKeyButtonType
-import org.company.grid.model.VolumeButtonData
+import org.company.grid.model.buttondata.BackButtonData
+import org.company.grid.model.buttondata.ButtonData
+import org.company.grid.model.buttondata.ChannelButtonData
+import org.company.grid.model.buttondata.HomeButtonData
+import org.company.grid.model.buttondata.InfoButtonData
+import org.company.grid.model.buttondata.MenuButtonData
+import org.company.grid.model.buttondata.MoreButtonData
+import org.company.grid.model.buttondata.MuteButtonData
+import org.company.grid.model.buttondata.NavigationButtonData
+import org.company.grid.model.buttondata.NumbersButtonData
+import org.company.grid.model.buttondata.PowerButtonData
+import org.company.grid.model.buttondata.SingleKeyButtonData
+import org.company.grid.model.buttondata.TextButtonData
+import org.company.grid.model.buttondata.TvAvButtonData
+import org.company.grid.model.buttondata.UnknownButtonData
+import org.company.grid.model.buttondata.VolumeButtonData
 
 @Composable
 internal fun ButtonItemComposable(
     buttonData: ButtonData,
     onKeyClicked: (KeyData) -> Unit
 ) {
-    when (buttonData.buttonType) {
-        ButtonType.UNKNOWN -> {
-            buttonData as SingleKeyButtonType
+    when (buttonData) {
+        UnknownButtonData -> {
+            buttonData as SingleKeyButtonData
             UnknownButton { onKeyClicked.invoke(buttonData.key) }
         }
 
-        ButtonType.POWER_TOGGLE -> {
-            buttonData as SingleKeyButtonType
+        is PowerButtonData -> {
             PowerButton { onKeyClicked.invoke(buttonData.key) }
         }
 
-        ButtonType.HOME_BUTTON -> {
-            buttonData as SingleKeyButtonType
+        is HomeButtonData -> {
             HomeButton { onKeyClicked.invoke(buttonData.key) }
         }
 
-        ButtonType.MENU_BUTTON -> {
-            buttonData as SingleKeyButtonType
+        is MenuButtonData -> {
             MenuButton { onKeyClicked.invoke(buttonData.key) }
         }
 
-        ButtonType.TV_AV_BUTTON -> {
-            buttonData as SingleKeyButtonType
+        is TvAvButtonData -> {
             TvAvButton { onKeyClicked.invoke(buttonData.key) }
         }
 
-        ButtonType.INFO -> {
-            buttonData as SingleKeyButtonType
+        is InfoButtonData -> {
             InfoButton { onKeyClicked.invoke(buttonData.key) }
         }
 
-        ButtonType.HOME -> {
-            buttonData as SingleKeyButtonType
-            HomeButton { onKeyClicked.invoke(buttonData.key) }
-        }
-
-        ButtonType.BACK -> {
-            buttonData as SingleKeyButtonType
+        is BackButtonData -> {
             BackButton { onKeyClicked.invoke(buttonData.key) }
         }
 
-        ButtonType.MORE -> {
-            buttonData as SingleKeyButtonType
+        is MoreButtonData -> {
             MoreButton { onKeyClicked.invoke(buttonData.key) }
         }
 
-        ButtonType.BUTTON_123 -> {
-            buttonData as SingleKeyButtonType
+        is NumbersButtonData -> {
             NumbersButton { onKeyClicked.invoke(buttonData.key) }
         }
 
-        ButtonType.MUTE -> {
-            buttonData as SingleKeyButtonType
+        is MuteButtonData -> {
             MuteButton { onKeyClicked.invoke(buttonData.key) }
         }
 
-        ButtonType.BUTTON_CH -> {
-            buttonData as ChannelButtonData
+        is ChannelButtonData -> {
             ChannelButton(
                 onNextClicked = { onKeyClicked.invoke(buttonData.add) },
                 onPrevClicked = { onKeyClicked.invoke(buttonData.reduce) }
             )
         }
 
-        ButtonType.BUTTON_VOL -> {
-            buttonData as VolumeButtonData
+        is VolumeButtonData -> {
             VolumeButton(
                 onAddClicked = { onKeyClicked.invoke(buttonData.add) },
                 onReduceClicked = { onKeyClicked.invoke(buttonData.reduce) },
             )
         }
 
-        ButtonType.NAV -> {
-            buttonData as NavigationButtonData
+        is NavigationButtonData -> {
             NavigationButton(
                 onLeftClicked = { onKeyClicked.invoke(buttonData.left) },
                 onRightClicked = { onKeyClicked.invoke(buttonData.right) },
                 onDownClicked = { onKeyClicked.invoke(buttonData.down) },
                 onUpClicked = { onKeyClicked.invoke(buttonData.up) },
                 onOkClicked = { onKeyClicked.invoke(buttonData.ok) }
+            )
+        }
+
+        is TextButtonData -> {
+            TextButton(
+                onClick = { onKeyClicked.invoke(buttonData.key) },
+                text = buttonData.text,
+                background = Color(0xFF303030)
             )
         }
     }

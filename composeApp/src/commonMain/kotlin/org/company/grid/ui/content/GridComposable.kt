@@ -30,7 +30,7 @@ fun GridComposable(gridViewModel: GridViewModel) {
                     modifier = Modifier.fillMaxSize(),
                     contentAlignment = Alignment.TopStart
                 ) {
-                    layout.buttons.forEach { button ->
+                    layout.gridLayout.buttons.forEach { button ->
                         GridItemComposable(
                             modifier = Modifier.padding(16.dp),
                             row = button.position.row,
