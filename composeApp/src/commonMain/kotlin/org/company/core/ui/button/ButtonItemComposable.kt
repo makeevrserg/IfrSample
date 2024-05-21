@@ -5,6 +5,7 @@ import androidx.compose.ui.graphics.Color
 import org.company.core.ui.button.core.TextButton
 import org.company.grid.model.KeyData
 import org.company.grid.model.buttondata.BackButtonData
+import org.company.grid.model.buttondata.Base64ImageButtonData
 import org.company.grid.model.buttondata.ButtonData
 import org.company.grid.model.buttondata.ChannelButtonData
 import org.company.grid.model.buttondata.HomeButtonData
@@ -97,6 +98,13 @@ internal fun ButtonItemComposable(
                 onClick = { onKeyClicked.invoke(buttonData.key) },
                 text = buttonData.text,
                 background = Color(0xFF303030)
+            )
+        }
+
+        is Base64ImageButtonData -> {
+            Base64ImageButton(
+                base64Icon = buttonData.base64Image,
+                onClick = { onKeyClicked.invoke(buttonData.key) }
             )
         }
     }

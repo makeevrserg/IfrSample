@@ -6,6 +6,7 @@ import androidx.compose.material.Icon
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.ImageBitmap
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.unit.dp
 
@@ -25,6 +26,29 @@ internal fun SquareIconButton(
     ) {
         Icon(
             painter = painter,
+            contentDescription = contentDescription,
+            tint = iconTint,
+            modifier = Modifier.fillMaxSize().padding(12.dp)
+        )
+    }
+}
+
+@Composable
+internal fun SquareImageButton(
+    onClick: () -> Unit,
+    bitmap: ImageBitmap,
+    background: Color,
+    iconTint: Color,
+    contentDescription: String? = null,
+    modifier: Modifier = Modifier,
+) {
+    SquareButton(
+        modifier = modifier,
+        onClick = onClick,
+        background = background
+    ) {
+        Icon(
+            bitmap = bitmap,
             contentDescription = contentDescription,
             tint = iconTint,
             modifier = Modifier.fillMaxSize().padding(12.dp)
