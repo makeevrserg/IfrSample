@@ -6,6 +6,6 @@ import org.company.grid.model.KeyData
 
 @SerialName("BACK")
 @Serializable
-class BackButtonData(
+data class BackButtonData(
     override val key: KeyData
 ) : SingleKeyButtonData

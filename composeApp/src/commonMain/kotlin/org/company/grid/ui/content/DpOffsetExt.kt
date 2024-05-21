@@ -18,7 +18,7 @@ internal fun BoxWithConstraintsScope.rememberDpOffset(
     check(column >= 0f && column < MAX_COLUMNS)
     val calculatedWidth = maxWidth.coerceAtMost(MAX_WIDTH)
     val calculatedHeight = maxHeight.coerceAtMost(MAX_HEIGHT)
-    return remember(calculatedWidth, calculatedHeight) {
+    return remember(calculatedWidth, calculatedHeight, column, row) {
         DpOffset(
             calculatedWidth * (column / MAX_COLUMNS),
             calculatedHeight * (row / MAX_ROWS)

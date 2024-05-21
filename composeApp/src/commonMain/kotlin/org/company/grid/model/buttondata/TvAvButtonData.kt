@@ -6,6 +6,6 @@ import org.company.grid.model.KeyData
 
 @SerialName("TV_AV")
 @Serializable
-class TvAvButtonData(
+data class TvAvButtonData(
     override val key: KeyData
 ) : SingleKeyButtonData

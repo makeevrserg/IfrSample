@@ -6,7 +6,7 @@ import org.company.grid.model.KeyData
 
 @SerialName("NAV")
 @Serializable
-class NavigationButtonData(
+data class NavigationButtonData(
     val up: KeyData,
     val left: KeyData,
     val down: KeyData,

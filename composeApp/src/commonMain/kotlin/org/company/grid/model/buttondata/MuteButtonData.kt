@@ -6,6 +6,6 @@ import org.company.grid.model.KeyData
 
 @SerialName("MUTE")
 @Serializable
-class MuteButtonData(
+data class MuteButtonData(
     override val key: KeyData
 ) : SingleKeyButtonData

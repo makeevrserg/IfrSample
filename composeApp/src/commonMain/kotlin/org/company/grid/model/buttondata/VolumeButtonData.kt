@@ -6,7 +6,7 @@ import org.company.grid.model.KeyData
 
 @SerialName("VOL")
 @Serializable
-class VolumeButtonData(
+data class VolumeButtonData(
     val add: KeyData,
     val reduce: KeyData,
 ) : ButtonData

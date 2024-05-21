@@ -6,6 +6,6 @@ import org.company.grid.model.KeyData
 
 @SerialName("MENU")
 @Serializable
-class MenuButtonData(
+data class MenuButtonData(
     override val key: KeyData
 ) : SingleKeyButtonData

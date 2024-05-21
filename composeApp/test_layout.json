@@ -2,6 +2,19 @@
   "buttons": [
     {
       "data": {
+        "type": "TEXT_BUTTON",
+        "key": {
+          "id": "power"
+        },
+        "text": "PWR"
+      },
+      "position": {
+        "row": 0.0,
+        "column": 1.0
+      }
+    },
+    {
+      "data": {
         "type": "POWER",
         "key": {
           "id": "power"
