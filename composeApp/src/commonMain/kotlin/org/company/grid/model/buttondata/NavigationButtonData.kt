@@ -2,14 +2,14 @@ package org.company.grid.model.buttondata
 
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
-import org.company.grid.model.KeyData
+import org.company.grid.model.IfrKeyData
 
 @SerialName("NAV")
 @Serializable
 data class NavigationButtonData(
-    val up: KeyData,
-    val left: KeyData,
-    val down: KeyData,
-    val right: KeyData,
-    val ok: KeyData,
+    val up: IfrKeyData,
+    val left: IfrKeyData,
+    val down: IfrKeyData,
+    val right: IfrKeyData,
+    val ok: IfrKeyData,
 ) : ButtonData

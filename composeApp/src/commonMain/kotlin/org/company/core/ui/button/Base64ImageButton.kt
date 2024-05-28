@@ -1,15 +1,14 @@
 package org.company.core.ui.button
 
-import androidx.compose.material.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.remember
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ImageBitmap
 import androidx.compose.ui.graphics.toComposeImageBitmap
-import kotlin.io.encoding.Base64
-import kotlin.io.encoding.ExperimentalEncodingApi
 import org.company.core.ui.button.core.SquareImageButton
 import org.jetbrains.skia.Image
+import kotlin.io.encoding.Base64
+import kotlin.io.encoding.ExperimentalEncodingApi
 
 const val PNG_BASE64_HEADER = "data:image/png;base64,"
 

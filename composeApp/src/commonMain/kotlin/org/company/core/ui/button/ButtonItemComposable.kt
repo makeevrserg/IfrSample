@@ -3,7 +3,7 @@ package org.company.core.ui.button
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
 import org.company.core.ui.button.core.TextButton
-import org.company.grid.model.KeyData
+import org.company.grid.model.IfrKeyData
 import org.company.grid.model.buttondata.BackButtonData
 import org.company.grid.model.buttondata.Base64ImageButtonData
 import org.company.grid.model.buttondata.ButtonData
@@ -25,7 +25,7 @@ import org.company.grid.model.buttondata.VolumeButtonData
 @Composable
 internal fun ButtonItemComposable(
     buttonData: ButtonData,
-    onKeyClicked: (KeyData) -> Unit
+    onKeyClicked: (IfrKeyData) -> Unit
 ) {
     when (buttonData) {
         UnknownButtonData -> {
