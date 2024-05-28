@@ -13,7 +13,7 @@ data class IfrButton(
     data class Position(
         val y: Float,
         val x: Float,
-        val alignment: Orientation = Orientation.CENTER,
+        val alignment: Alignment = Alignment.CENTER,
         val zIndex: Float = 1f
     )
 
@@ -24,7 +24,7 @@ data class IfrButton(
     )
 
     @Serializable
-    enum class Orientation {
+    enum class Alignment {
         CENTER, TOP_LEFT, TOP_RIGHT, BOTTOM_LEFT, BOTTOM_RIGHT, CENTER_LEFT, CENTER_RIGHT
     }
 }

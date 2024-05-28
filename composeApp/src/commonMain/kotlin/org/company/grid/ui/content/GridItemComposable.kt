@@ -29,13 +29,13 @@ internal fun BoxWithConstraintsScope.GridItemComposable(
             .background(Color(position.hashCode()).copy(alpha = .5f))
             .zIndex(position.zIndex),
         contentAlignment = when (position.alignment) {
-            IfrButton.Orientation.CENTER -> Alignment.Center
-            IfrButton.Orientation.TOP_LEFT -> Alignment.TopStart
-            IfrButton.Orientation.TOP_RIGHT -> Alignment.TopEnd
-            IfrButton.Orientation.BOTTOM_LEFT -> Alignment.BottomStart
-            IfrButton.Orientation.BOTTOM_RIGHT -> Alignment.BottomEnd
-            IfrButton.Orientation.CENTER_LEFT -> Alignment.CenterStart
-            IfrButton.Orientation.CENTER_RIGHT -> Alignment.CenterEnd
+            IfrButton.Alignment.CENTER -> Alignment.Center
+            IfrButton.Alignment.TOP_LEFT -> Alignment.TopStart
+            IfrButton.Alignment.TOP_RIGHT -> Alignment.TopEnd
+            IfrButton.Alignment.BOTTOM_LEFT -> Alignment.BottomStart
+            IfrButton.Alignment.BOTTOM_RIGHT -> Alignment.BottomEnd
+            IfrButton.Alignment.CENTER_LEFT -> Alignment.CenterStart
+            IfrButton.Alignment.CENTER_RIGHT -> Alignment.CenterEnd
         },
         content = content
     )

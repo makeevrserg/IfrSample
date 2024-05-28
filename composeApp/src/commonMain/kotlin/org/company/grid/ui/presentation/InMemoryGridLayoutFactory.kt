@@ -33,7 +33,7 @@ object InMemoryGridLayoutFactory {
                                 x = 1f,
                                 y = 0f,
                                 zIndex = 10f,
-                                alignment = IfrButton.Orientation.CENTER,
+                                alignment = IfrButton.Alignment.CENTER,
                             ),
                             size = IfrButton.Size(2f)
                         ).run(::add)
