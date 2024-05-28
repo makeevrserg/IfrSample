@@ -27,7 +27,11 @@ object InMemoryGridLayoutFactory {
                         // Sample Text Button
                         IfrButton(
                             data = TextButtonData(IfrKeyData.RawDataHash("power"), "PWR"),
-                            position = IfrButton.Position(0f, 1f)
+                            position = IfrButton.Position(
+                                x = 1f,
+                                y = 0f,
+                                alignment = IfrButton.Orientation.CENTER,
+                            )
                         ).run(::add)
                         // First
                         IfrButton(
@@ -68,16 +72,28 @@ object InMemoryGridLayoutFactory {
                                 right = IfrKeyData.RawDataHash("right"),
                                 ok = IfrKeyData.RawDataHash("ok")
                             ),
-                            position = IfrButton.Position(3f, 1f)
+                            position = IfrButton.Position(3f, 1f),
+                            size = IfrButton.Size(
+                                width = 3f,
+                                height = 3f
+                            )
                         ).run(::add)
                         // Channel Volume
                         IfrButton(
                             data = ChannelButtonData(IfrKeyData.RawDataHash("ch+"), IfrKeyData.RawDataHash("ch-")),
-                            position = IfrButton.Position(7f, 0f)
+                            position = IfrButton.Position(7f, 0f),
+                            size = IfrButton.Size(
+                                width = 1f,
+                                height = 3f
+                            )
                         ).run(::add)
                         IfrButton(
                             data = VolumeButtonData(IfrKeyData.RawDataHash("vol+"), IfrKeyData.RawDataHash("vol-")),
-                            position = IfrButton.Position(7f, 4f)
+                            position = IfrButton.Position(7f, 4f),
+                            size = IfrButton.Size(
+                                width = 1f,
+                                height = 3f
+                            )
                         ).run(::add)
                         // Bottom Button
                         IfrButton(

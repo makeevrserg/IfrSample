@@ -39,7 +39,7 @@ fun NavigationButton(
     onOkClicked: () -> Unit
 ) {
     Box(
-        modifier = Modifier.size(186.dp)
+        modifier = Modifier.fillMaxSize()
             .clip(CircleShape)
             .background(background),
         contentAlignment = Alignment.Center

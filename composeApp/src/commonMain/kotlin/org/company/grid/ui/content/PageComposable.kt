@@ -25,9 +25,9 @@ fun PageComposable(
         content = {
             pageLayout.buttons.forEach { button ->
                 GridItemComposable(
-                    modifier = Modifier.padding(16.dp),
-                    row = button.position.x,
-                    column = button.position.y,
+                    modifier = Modifier,
+                    position = button.position,
+                    size = button.size,
                     content = {
                         ButtonItemComposable(
                             buttonData = button.data,
