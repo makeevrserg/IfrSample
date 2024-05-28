@@ -10,8 +10,8 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.zIndex
 import org.company.grid.model.IfrButton
-import org.company.grid.ui.util.GridConstants.DEFAULT_BUTTON_SIZE
 
 @Composable
 internal fun BoxWithConstraintsScope.GridItemComposable(
@@ -20,14 +20,14 @@ internal fun BoxWithConstraintsScope.GridItemComposable(
     modifier: Modifier = Modifier,
     content: @Composable BoxScope.() -> Unit
 ) {
-
     val offset = rememberDpOffset(position)
     val gridSize = rememberGridSize()
     Box(
         modifier = modifier
             .size(gridSize.width * size.width, gridSize.height * size.height)
             .offset(x = offset.x, y = offset.y)
-            .background(Color(position.hashCode()).copy(alpha = 1f)),
+            .background(Color(position.hashCode()).copy(alpha = .5f))
+            .zIndex(position.zIndex),
         contentAlignment = when (position.alignment) {
             IfrButton.Orientation.CENTER -> Alignment.Center
             IfrButton.Orientation.TOP_LEFT -> Alignment.TopStart

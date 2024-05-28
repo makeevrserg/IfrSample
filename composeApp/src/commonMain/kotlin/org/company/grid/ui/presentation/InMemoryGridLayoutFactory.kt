@@ -5,6 +5,7 @@ import org.company.grid.model.IfrKeyData
 import org.company.grid.model.PageLayout
 import org.company.grid.model.PagesLayout
 import org.company.grid.model.buttondata.BackButtonData
+import org.company.grid.model.buttondata.Base64ImageButtonData
 import org.company.grid.model.buttondata.ChannelButtonData
 import org.company.grid.model.buttondata.HomeButtonData
 import org.company.grid.model.buttondata.InfoButtonData
@@ -17,6 +18,7 @@ import org.company.grid.model.buttondata.PowerButtonData
 import org.company.grid.model.buttondata.TextButtonData
 import org.company.grid.model.buttondata.TvAvButtonData
 import org.company.grid.model.buttondata.VolumeButtonData
+import org.company.grid.ui.util.GridConstants
 
 object InMemoryGridLayoutFactory {
     fun create(): PagesLayout {
@@ -30,8 +32,10 @@ object InMemoryGridLayoutFactory {
                             position = IfrButton.Position(
                                 x = 1f,
                                 y = 0f,
+                                zIndex = 10f,
                                 alignment = IfrButton.Orientation.CENTER,
-                            )
+                            ),
+                            size = IfrButton.Size(2f)
                         ).run(::add)
                         // First
                         IfrButton(
@@ -41,6 +45,13 @@ object InMemoryGridLayoutFactory {
                         IfrButton(
                             data = MenuButtonData(IfrKeyData.RawDataHash("menu")),
                             position = IfrButton.Position(0f, 2f)
+                        ).run(::add)
+                        IfrButton(
+                            data = Base64ImageButtonData(
+                                key = IfrKeyData.RawDataHash("sample"),
+                                base64Image = GridConstants.TEMP_BASE64_IMAGE
+                            ),
+                            position = IfrButton.Position(2f, 0f, zIndex = 10f)
                         ).run(::add)
                         IfrButton(
                             data = TvAvButtonData(IfrKeyData.RawDataHash("tv_av")),

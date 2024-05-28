@@ -2,12 +2,7 @@ package org.company.core.ui.button
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
-import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
-import androidx.compose.foundation.layout.Row
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
@@ -26,6 +21,7 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.compose.ui.unit.dp
+import org.company.grid.ui.util.GridConstants.DEFAULT_BUTTON_SIZE
 
 @Composable
 fun NavigationButton(
@@ -39,67 +35,69 @@ fun NavigationButton(
     onOkClicked: () -> Unit
 ) {
     Box(
-        modifier = Modifier.fillMaxSize()
+        modifier = Modifier
+            .size(DEFAULT_BUTTON_SIZE * 4)
             .clip(CircleShape)
             .background(background),
         contentAlignment = Alignment.Center
     ) {
-        Column(
-            verticalArrangement = Arrangement.SpaceBetween,
-            horizontalAlignment = Alignment.CenterHorizontally,
-            modifier = Modifier.padding(12.dp).fillMaxSize()
-        ) {
-            Icon(
-                painter = rememberVectorPainter(Icons.Filled.KeyboardArrowUp),
-                tint = iconTint,
-                contentDescription = null,
-                modifier = Modifier.size(32.dp).clip(CircleShape).clickable(onClick = onUpClicked)
-            )
-            Row(
-                horizontalArrangement = Arrangement.SpaceBetween,
-                verticalAlignment = Alignment.CenterVertically,
-                modifier = Modifier.fillMaxWidth()
-            ) {
-                Icon(
-                    painter = rememberVectorPainter(Icons.AutoMirrored.Filled.KeyboardArrowLeft),
-                    tint = iconTint,
-                    contentDescription = null,
-                    modifier = Modifier.size(32.dp).clip(CircleShape).clickable(onClick = onLeftClicked)
-                )
-                Box(
-                    modifier = Modifier
-                        .size(54.dp)
-                        .clip(CircleShape)
-                        .background(MaterialTheme.colors.primaryVariant)
-                        .padding(4.dp)
-                        .clip(CircleShape)
-                        .background(Color(0xFF616161))
-                        .clip(CircleShape)
-                        .clickable(onClick = onOkClicked),
-                    contentAlignment = Alignment.Center,
-                    content = {
-                        Text(
-                            text = "OK",
-                            style = MaterialTheme.typography.caption,
-                            color = textColor,
-                        )
-                    }
-                )
-
-                Icon(
-                    painter = rememberVectorPainter(Icons.AutoMirrored.Filled.KeyboardArrowRight),
-                    tint = iconTint,
-                    contentDescription = null,
-                    modifier = Modifier.size(32.dp).clip(CircleShape).clickable(onClick = onRightClicked)
+        Icon(
+            painter = rememberVectorPainter(Icons.Filled.KeyboardArrowUp),
+            tint = iconTint,
+            contentDescription = null,
+            modifier = Modifier.size(32.dp)
+                .clip(CircleShape)
+                .clickable(onClick = onUpClicked)
+                .align(Alignment.TopCenter)
+        )
+        Icon(
+            painter = rememberVectorPainter(Icons.AutoMirrored.Filled.KeyboardArrowLeft),
+            tint = iconTint,
+            contentDescription = null,
+            modifier = Modifier.size(32.dp)
+                .clip(CircleShape)
+                .clickable(onClick = onLeftClicked)
+                .align(Alignment.CenterStart)
+        )
+        Box(
+            modifier = Modifier
+                .size(DEFAULT_BUTTON_SIZE)
+                .clip(CircleShape)
+                .background(MaterialTheme.colors.primaryVariant)
+                .padding(4.dp)
+                .clip(CircleShape)
+                .background(Color(0xFF616161))
+                .clip(CircleShape)
+                .clickable(onClick = onOkClicked)
+                .align(Alignment.Center),
+            contentAlignment = Alignment.Center,
+            content = {
+                Text(
+                    text = "OK",
+                    style = MaterialTheme.typography.caption,
+                    color = textColor,
                 )
             }
+        )
 
-            Icon(
-                painter = rememberVectorPainter(Icons.Filled.KeyboardArrowDown),
-                tint = iconTint,
-                contentDescription = null,
-                modifier = Modifier.size(32.dp).clip(CircleShape).clickable(onClick = onDownClicked)
-            )
-        }
+        Icon(
+            painter = rememberVectorPainter(Icons.AutoMirrored.Filled.KeyboardArrowRight),
+            tint = iconTint,
+            contentDescription = null,
+            modifier = Modifier.size(32.dp)
+                .clip(CircleShape)
+                .clickable(onClick = onRightClicked)
+                .align(Alignment.CenterEnd)
+        )
+
+        Icon(
+            painter = rememberVectorPainter(Icons.Filled.KeyboardArrowDown),
+            tint = iconTint,
+            contentDescription = null,
+            modifier = Modifier.size(32.dp)
+                .clip(CircleShape)
+                .clickable(onClick = onDownClicked)
+                .align(Alignment.BottomCenter)
+        )
     }
 }
