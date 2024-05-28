@@ -1,11 +1,12 @@
 package org.company.grid.ui.presentation
 
 import kotlinx.serialization.json.Json
-import org.company.grid.model.GridLayout
+import org.company.grid.model.PageLayout
 import java.io.File
+import org.company.grid.model.PagesLayout
 
 class JsonGridLayoutFactory(private val file: File) {
-    fun create(): GridLayout {
+    fun create(): PagesLayout {
         return json.decodeFromString(file.readText())
     }
 

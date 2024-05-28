@@ -30,24 +30,28 @@ fun GridComposable(gridViewModel: GridViewModel) {
                     modifier = Modifier.fillMaxSize(),
                     contentAlignment = Alignment.TopStart
                 ) {
-                    layout.gridLayout.buttons.forEach { button ->
-                        GridItemComposable(
-                            modifier = Modifier.padding(16.dp),
-                            row = button.position.row,
-                            column = button.position.column,
-                            content = {
-                                ButtonItemComposable(
-                                    buttonData = button.data,
-                                    onKeyClicked = {
-                                        coroutineScope.launch {
-                                            scaffoldState.snackbarHostState.currentSnackbarData?.dismiss()
-                                            scaffoldState.snackbarHostState.showSnackbar("Clicked: ${it.id}")
+                    layout.pagesLayout.pages
+                        .firstOrNull()
+                        ?.buttons
+                        .orEmpty()
+                        .forEach { button ->
+                            GridItemComposable(
+                                modifier = Modifier.padding(16.dp),
+                                row = button.position.row,
+                                column = button.position.column,
+                                content = {
+                                    ButtonItemComposable(
+                                        buttonData = button.data,
+                                        onKeyClicked = {
+                                            coroutineScope.launch {
+                                                scaffoldState.snackbarHostState.currentSnackbarData?.dismiss()
+                                                scaffoldState.snackbarHostState.showSnackbar("Clicked: ${it}")
+                                            }
                                         }
-                                    }
-                                )
-                            }
-                        )
-                    }
+                                    )
+                                }
+                            )
+                        }
                 }
             }
         }
