@@ -18,7 +18,9 @@ fun GridComposable(gridViewModel: GridViewModel) {
             currentPage?.let {
                 PageComposable(
                     pageLayout = currentPage,
-                    scaffoldState = scaffoldState
+                    scaffoldState = scaffoldState,
+                    onButtonClicked = gridViewModel::onButtonClicked,
+                    stateToIndex = layout.stateToIndex
                 )
             }
         }

@@ -8,6 +8,7 @@ import org.company.grid.model.buttondata.BackButtonData
 import org.company.grid.model.buttondata.Base64ImageButtonData
 import org.company.grid.model.buttondata.ButtonData
 import org.company.grid.model.buttondata.ChannelButtonData
+import org.company.grid.model.buttondata.FanModeButtonData
 import org.company.grid.model.buttondata.HomeButtonData
 import org.company.grid.model.buttondata.InfoButtonData
 import org.company.grid.model.buttondata.MenuButtonData
@@ -105,6 +106,14 @@ internal fun ButtonItemComposable(
             Base64ImageButton(
                 base64Icon = buttonData.base64Image,
                 onClick = { onKeyClicked.invoke(buttonData.key) }
+            )
+        }
+
+        is FanModeButtonData -> {
+            TextButton(
+                onClick = { onKeyClicked.invoke(buttonData.states.random().data) },
+                text = "MODE",
+                background = Color(0xFF303030)
             )
         }
     }
