@@ -7,5 +7,5 @@ import org.company.grid.model.IfrKeyData
 @SerialName("MENU")
 @Serializable
 data class MenuButtonData(
-    override val key: IfrKeyData
+    override val keyData: IfrKeyData
 ) : SingleKeyButtonData

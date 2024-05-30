@@ -1,10 +1,9 @@
 package org.company.grid.model
 
-import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
 data class IfrKeyState(
-    val data: IfrKeyData,
+    val keyData: IfrKeyData,
     val value: String
 )

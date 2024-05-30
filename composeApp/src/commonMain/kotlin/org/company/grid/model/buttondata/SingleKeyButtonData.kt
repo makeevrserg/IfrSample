@@ -5,5 +5,5 @@ import org.company.grid.model.IfrKeyData
 
 @Serializable
 sealed interface SingleKeyButtonData : ButtonData {
-    val key: IfrKeyData
+    val keyData: IfrKeyData
 }

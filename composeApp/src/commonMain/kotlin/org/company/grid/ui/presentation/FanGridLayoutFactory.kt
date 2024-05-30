@@ -26,15 +26,15 @@ object FanGridLayoutFactory {
                             data = FanModeButtonData(
                                 keyStates = listOf(
                                     IfrKeyState(
-                                        data = IfrKeyData.RawDataHash("k"),
+                                        keyData = IfrKeyData.RawDataHash("k"),
                                         value = "COOL"
                                     ),
                                     IfrKeyState(
-                                        data = IfrKeyData.RawDataHash("h"),
+                                        keyData = IfrKeyData.RawDataHash("h"),
                                         value = "HEAT"
                                     ),
                                     IfrKeyState(
-                                        data = IfrKeyData.RawDataHash("f"),
+                                        keyData = IfrKeyData.RawDataHash("f"),
                                         value = "FAN"
                                     ),
                                 )

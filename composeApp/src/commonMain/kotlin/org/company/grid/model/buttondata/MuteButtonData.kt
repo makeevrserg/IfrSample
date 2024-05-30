@@ -7,5 +7,5 @@ import org.company.grid.model.IfrKeyData
 @SerialName("MUTE")
 @Serializable
 data class MuteButtonData(
-    override val key: IfrKeyData
+    override val keyData: IfrKeyData
 ) : SingleKeyButtonData

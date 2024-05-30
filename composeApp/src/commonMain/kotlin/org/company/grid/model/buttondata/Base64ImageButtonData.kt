@@ -7,6 +7,6 @@ import org.company.grid.model.IfrKeyData
 @SerialName("BASE64_IMAGE")
 @Serializable
 data class Base64ImageButtonData(
-    override val key: IfrKeyData,
+    override val keyData: IfrKeyData,
     val base64Image: String,
 ) : SingleKeyButtonData

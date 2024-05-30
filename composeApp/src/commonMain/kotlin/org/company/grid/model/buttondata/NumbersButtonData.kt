@@ -7,5 +7,5 @@ import org.company.grid.model.IfrKeyData
 @SerialName("NUMBERS")
 @Serializable
 data class NumbersButtonData(
-    override val key: IfrKeyData
+    override val keyData: IfrKeyData
 ) : SingleKeyButtonData

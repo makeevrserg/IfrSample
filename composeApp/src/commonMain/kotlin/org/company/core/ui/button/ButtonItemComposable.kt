@@ -31,43 +31,43 @@ internal fun ButtonItemComposable(
     when (buttonData) {
         UnknownButtonData -> {
             buttonData as SingleKeyButtonData
-            UnknownButton { onKeyClicked.invoke(buttonData.key) }
+            UnknownButton { onKeyClicked.invoke(buttonData.keyData) }
         }
 
         is PowerButtonData -> {
-            PowerButton { onKeyClicked.invoke(buttonData.key) }
+            PowerButton { onKeyClicked.invoke(buttonData.keyData) }
         }
 
         is HomeButtonData -> {
-            HomeButton { onKeyClicked.invoke(buttonData.key) }
+            HomeButton { onKeyClicked.invoke(buttonData.keyData) }
         }
 
         is MenuButtonData -> {
-            MenuButton { onKeyClicked.invoke(buttonData.key) }
+            MenuButton { onKeyClicked.invoke(buttonData.keyData) }
         }
 
         is TvAvButtonData -> {
-            TvAvButton { onKeyClicked.invoke(buttonData.key) }
+            TvAvButton { onKeyClicked.invoke(buttonData.keyData) }
         }
 
         is InfoButtonData -> {
-            InfoButton { onKeyClicked.invoke(buttonData.key) }
+            InfoButton { onKeyClicked.invoke(buttonData.keyData) }
         }
 
         is BackButtonData -> {
-            BackButton { onKeyClicked.invoke(buttonData.key) }
+            BackButton { onKeyClicked.invoke(buttonData.keyData) }
         }
 
         is MoreButtonData -> {
-            MoreButton { onKeyClicked.invoke(buttonData.key) }
+            MoreButton { onKeyClicked.invoke(buttonData.keyData) }
         }
 
         is NumbersButtonData -> {
-            NumbersButton { onKeyClicked.invoke(buttonData.key) }
+            NumbersButton { onKeyClicked.invoke(buttonData.keyData) }
         }
 
         is MuteButtonData -> {
-            MuteButton { onKeyClicked.invoke(buttonData.key) }
+            MuteButton { onKeyClicked.invoke(buttonData.keyData) }
         }
 
         is ChannelButtonData -> {
@@ -96,7 +96,7 @@ internal fun ButtonItemComposable(
 
         is TextButtonData -> {
             TextButton(
-                onClick = { onKeyClicked.invoke(buttonData.key) },
+                onClick = { onKeyClicked.invoke(buttonData.keyData) },
                 text = buttonData.text,
                 background = Color(0xFF303030)
             )
@@ -105,13 +105,13 @@ internal fun ButtonItemComposable(
         is Base64ImageButtonData -> {
             Base64ImageButton(
                 base64Icon = buttonData.base64Image,
-                onClick = { onKeyClicked.invoke(buttonData.key) }
+                onClick = { onKeyClicked.invoke(buttonData.keyData) }
             )
         }
 
         is FanModeButtonData -> {
             TextButton(
-                onClick = { onKeyClicked.invoke(buttonData.keyStates.random().data) },
+                onClick = { onKeyClicked.invoke(buttonData.keyStates.random().keyData) },
                 text = "MODE",
                 background = Color(0xFF303030)
             )

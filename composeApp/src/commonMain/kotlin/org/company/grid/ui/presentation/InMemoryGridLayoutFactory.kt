@@ -48,7 +48,7 @@ object InMemoryGridLayoutFactory {
                         ).run(::add)
                         IfrButton(
                             data = Base64ImageButtonData(
-                                key = IfrKeyData.RawDataHash("sample"),
+                                keyData = IfrKeyData.RawDataHash("sample"),
                                 base64Image = GridConstants.TEMP_BASE64_IMAGE
                             ),
                             position = IfrButton.Position(2f, 0f, zIndex = 10f)
