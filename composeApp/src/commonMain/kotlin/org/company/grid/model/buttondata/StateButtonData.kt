@@ -5,5 +5,5 @@ import org.company.grid.model.IfrKeyState
 
 @Serializable
 sealed interface StateButtonData: ButtonData {
-    val states: List<IfrKeyState>
+    val keyStates: List<IfrKeyState>
 }

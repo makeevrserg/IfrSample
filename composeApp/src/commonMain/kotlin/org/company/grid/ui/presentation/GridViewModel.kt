@@ -45,7 +45,7 @@ class GridViewModel : CoroutineScope by IoCoroutineScope() {
         layout.update {
             val map = it.stateToIndex.toMutableMap()
             val currentIndex = (map.getOrDefault(stateButtonData, 0) + 1)
-            map[stateButtonData] = currentIndex % stateButtonData.states.size
+            map[stateButtonData] = currentIndex % stateButtonData.keyStates.size
             it.copy(stateToIndex = map.toMap())
         }
     }

@@ -7,5 +7,5 @@ import org.company.grid.model.IfrKeyState
 @SerialName("FAN_MODE")
 @Serializable
 data class FanModeButtonData(
-    override val states: List<IfrKeyState>
+    override val keyStates: List<IfrKeyState>
 ) : StateButtonData

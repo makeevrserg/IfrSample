@@ -24,7 +24,7 @@ object FanGridLayoutFactory {
                         ).run(::add)
                         IfrButton(
                             data = FanModeButtonData(
-                                states = listOf(
+                                keyStates = listOf(
                                     IfrKeyState(
                                         data = IfrKeyData.RawDataHash("k"),
                                         value = "COOL"

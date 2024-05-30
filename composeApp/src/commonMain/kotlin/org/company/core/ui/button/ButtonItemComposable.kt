@@ -111,7 +111,7 @@ internal fun ButtonItemComposable(
 
         is FanModeButtonData -> {
             TextButton(
-                onClick = { onKeyClicked.invoke(buttonData.states.random().data) },
+                onClick = { onKeyClicked.invoke(buttonData.keyStates.random().data) },
                 text = "MODE",
                 background = Color(0xFF303030)
             )
