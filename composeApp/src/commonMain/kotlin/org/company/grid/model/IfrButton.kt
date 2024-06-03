@@ -2,8 +2,9 @@ package org.company.grid.model
 
 import kotlinx.serialization.Serializable
 import org.company.grid.model.buttondata.ButtonData
+import org.company.grid.model.serialization.IfrButtonSerializer
 
-@Serializable
+@Serializable(IfrButtonSerializer::class)
 data class IfrButton(
     val data: ButtonData,
     val position: Position,

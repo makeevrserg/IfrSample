@@ -4,19 +4,10 @@ import org.company.grid.model.IfrButton
 import org.company.grid.model.IfrKeyData
 import org.company.grid.model.PageLayout
 import org.company.grid.model.PagesLayout
-import org.company.grid.model.buttondata.BackButtonData
-import org.company.grid.model.buttondata.Base64ImageButtonData
+import org.company.grid.model.buttondata.ButtonData
 import org.company.grid.model.buttondata.ChannelButtonData
-import org.company.grid.model.buttondata.HomeButtonData
-import org.company.grid.model.buttondata.InfoButtonData
-import org.company.grid.model.buttondata.MenuButtonData
-import org.company.grid.model.buttondata.MoreButtonData
-import org.company.grid.model.buttondata.MuteButtonData
+import org.company.grid.model.buttondata.IconType
 import org.company.grid.model.buttondata.NavigationButtonData
-import org.company.grid.model.buttondata.NumbersButtonData
-import org.company.grid.model.buttondata.PowerButtonData
-import org.company.grid.model.buttondata.TextButtonData
-import org.company.grid.model.buttondata.TvAvButtonData
 import org.company.grid.model.buttondata.VolumeButtonData
 import org.company.grid.ui.util.GridConstants
 
@@ -28,7 +19,10 @@ object InMemoryGridLayoutFactory {
                     buttons = buildList {
                         // Sample Text Button
                         IfrButton(
-                            data = TextButtonData(IfrKeyData.RawDataHash("power"), "PWR"),
+                            data = ButtonData.IconButtonData(
+                                keyData = IfrKeyData.RawDataHash("power"),
+                                iconType = IconType.POWER
+                            ),
                             position = IfrButton.Position(
                                 x = 1f,
                                 y = 0f,
@@ -39,39 +33,60 @@ object InMemoryGridLayoutFactory {
                         ).run(::add)
                         // First
                         IfrButton(
-                            data = PowerButtonData(IfrKeyData.RawDataHash("power")),
+                            data = ButtonData.TextButtonData(
+                                keyData = IfrKeyData.RawDataHash("power"),
+                                text = "PWR"
+                            ),
                             position = IfrButton.Position(0f, 0f)
                         ).run(::add)
                         IfrButton(
-                            data = MenuButtonData(IfrKeyData.RawDataHash("menu")),
+                            data = ButtonData.TextButtonData(
+                                keyData = IfrKeyData.RawDataHash("menu"),
+                                text = "MENU"
+                            ),
                             position = IfrButton.Position(0f, 2f)
                         ).run(::add)
                         IfrButton(
-                            data = Base64ImageButtonData(
+                            data = ButtonData.Base64ImageButtonData(
                                 keyData = IfrKeyData.RawDataHash("sample"),
                                 base64Image = GridConstants.TEMP_BASE64_IMAGE
                             ),
                             position = IfrButton.Position(2f, 0f, zIndex = 10f)
                         ).run(::add)
                         IfrButton(
-                            data = TvAvButtonData(IfrKeyData.RawDataHash("tv_av")),
+                            data = ButtonData.TextButtonData(
+                                keyData = IfrKeyData.RawDataHash("tv_av"),
+                                text = "TV/AV"
+                            ),
                             position = IfrButton.Position(0f, 4f)
                         ).run(::add)
                         // Second
                         IfrButton(
-                            data = InfoButtonData(IfrKeyData.RawDataHash("info")),
+                            data = ButtonData.IconButtonData(
+                                keyData = IfrKeyData.RawDataHash("info"),
+                                iconType = IconType.INFO
+                            ),
                             position = IfrButton.Position(1f, 0f)
                         ).run(::add)
                         IfrButton(
-                            data = HomeButtonData(IfrKeyData.RawDataHash("home")),
+                            data = ButtonData.IconButtonData(
+                                keyData = IfrKeyData.RawDataHash("home"),
+                                iconType = IconType.HOME
+                            ),
                             position = IfrButton.Position(1f, 1f)
                         ).run(::add)
                         IfrButton(
-                            data = BackButtonData(IfrKeyData.RawDataHash("back")),
+                            data = ButtonData.IconButtonData(
+                                keyData = IfrKeyData.RawDataHash("back"),
+                                iconType = IconType.BACK
+                            ),
                             position = IfrButton.Position(1f, 3f)
                         ).run(::add)
                         IfrButton(
-                            data = MoreButtonData(IfrKeyData.RawDataHash("more")),
+                            data = ButtonData.IconButtonData(
+                                keyData = IfrKeyData.RawDataHash("more"),
+                                iconType = IconType.MORE
+                            ),
                             position = IfrButton.Position(1f, 4f)
                         ).run(::add)
                         // Nav
@@ -108,11 +123,17 @@ object InMemoryGridLayoutFactory {
                         ).run(::add)
                         // Bottom Button
                         IfrButton(
-                            data = NumbersButtonData(IfrKeyData.RawDataHash("123")),
+                            data = ButtonData.TextButtonData(
+                                keyData = IfrKeyData.RawDataHash("123"),
+                                text = "123"
+                            ),
                             position = IfrButton.Position(10f, 0f)
                         ).run(::add)
                         IfrButton(
-                            data = MuteButtonData(IfrKeyData.RawDataHash("mute")),
+                            data = ButtonData.IconButtonData(
+                                keyData = IfrKeyData.RawDataHash("mute"),
+                                iconType = IconType.MUTE
+                            ),
                             position = IfrButton.Position(10f, 4f)
                         ).run(::add)
                     }

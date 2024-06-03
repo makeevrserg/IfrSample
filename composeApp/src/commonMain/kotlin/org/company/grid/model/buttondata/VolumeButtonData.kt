@@ -9,4 +9,6 @@ import org.company.grid.model.IfrKeyData
 data class VolumeButtonData(
     val add: IfrKeyData,
     val reduce: IfrKeyData,
-) : ButtonData
+) : ButtonData {
+    override val type: ButtonType = ButtonType.VOLUME
+}

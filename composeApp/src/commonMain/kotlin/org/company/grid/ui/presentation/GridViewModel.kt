@@ -9,10 +9,10 @@ import kotlinx.coroutines.launch
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 import org.company.core.IoCoroutineScope
-import org.company.grid.model.PagesLayout
-import java.io.File
 import org.company.grid.model.IfrButton
-import org.company.grid.model.buttondata.StateButtonData
+import org.company.grid.model.PagesLayout
+import org.company.grid.model.buttondata.ButtonData
+import java.io.File
 
 class GridViewModel : CoroutineScope by IoCoroutineScope() {
     val layout = MutableStateFlow<Model>(Model())
@@ -32,7 +32,7 @@ class GridViewModel : CoroutineScope by IoCoroutineScope() {
 
     private fun startInMemoryJob() {
         layout.update {
-            val gridLayout = FanGridLayoutFactory.create()
+            val gridLayout = InMemoryGridLayoutFactory.create()
             val file = File("./temp_json.json")
             if (!file.exists()) file.createNewFile()
             file.writeText(Json { prettyPrint = true }.encodeToString(gridLayout))
@@ -41,7 +41,7 @@ class GridViewModel : CoroutineScope by IoCoroutineScope() {
     }
 
     fun onButtonClicked(button: IfrButton) {
-        val stateButtonData = button.data as? StateButtonData ?: return
+        val stateButtonData = button.data as? ButtonData.StateButtonData ?: return
         layout.update {
             val map = it.stateToIndex.toMutableMap()
             val currentIndex = (map.getOrDefault(stateButtonData, 0) + 1)
@@ -51,11 +51,12 @@ class GridViewModel : CoroutineScope by IoCoroutineScope() {
     }
 
     init {
-        startInMemoryJob()
+//        startInMemoryJob()
+        startLookupJob()
     }
 
     data class Model(
         val pagesLayout: PagesLayout = PagesLayout(emptyList()),
-        val stateToIndex: Map<StateButtonData, Int> = emptyMap()
+        val stateToIndex: Map<ButtonData.StateButtonData, Int> = emptyMap()
     )
 }

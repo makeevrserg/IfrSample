@@ -4,23 +4,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
 import org.company.core.ui.button.core.TextButton
 import org.company.grid.model.IfrKeyData
-import org.company.grid.model.buttondata.BackButtonData
-import org.company.grid.model.buttondata.Base64ImageButtonData
 import org.company.grid.model.buttondata.ButtonData
 import org.company.grid.model.buttondata.ChannelButtonData
-import org.company.grid.model.buttondata.FanModeButtonData
-import org.company.grid.model.buttondata.HomeButtonData
-import org.company.grid.model.buttondata.InfoButtonData
-import org.company.grid.model.buttondata.MenuButtonData
-import org.company.grid.model.buttondata.MoreButtonData
-import org.company.grid.model.buttondata.MuteButtonData
+import org.company.grid.model.buttondata.IconType
 import org.company.grid.model.buttondata.NavigationButtonData
-import org.company.grid.model.buttondata.NumbersButtonData
-import org.company.grid.model.buttondata.PowerButtonData
-import org.company.grid.model.buttondata.SingleKeyButtonData
-import org.company.grid.model.buttondata.TextButtonData
-import org.company.grid.model.buttondata.TvAvButtonData
-import org.company.grid.model.buttondata.UnknownButtonData
 import org.company.grid.model.buttondata.VolumeButtonData
 
 @Composable
@@ -29,45 +16,15 @@ internal fun ButtonItemComposable(
     onKeyClicked: (IfrKeyData) -> Unit
 ) {
     when (buttonData) {
-        UnknownButtonData -> {
-            buttonData as SingleKeyButtonData
-            UnknownButton { onKeyClicked.invoke(buttonData.keyData) }
-        }
-
-        is PowerButtonData -> {
-            PowerButton { onKeyClicked.invoke(buttonData.keyData) }
-        }
-
-        is HomeButtonData -> {
-            HomeButton { onKeyClicked.invoke(buttonData.keyData) }
-        }
-
-        is MenuButtonData -> {
-            MenuButton { onKeyClicked.invoke(buttonData.keyData) }
-        }
-
-        is TvAvButtonData -> {
-            TvAvButton { onKeyClicked.invoke(buttonData.keyData) }
-        }
-
-        is InfoButtonData -> {
-            InfoButton { onKeyClicked.invoke(buttonData.keyData) }
-        }
-
-        is BackButtonData -> {
-            BackButton { onKeyClicked.invoke(buttonData.keyData) }
-        }
-
-        is MoreButtonData -> {
-            MoreButton { onKeyClicked.invoke(buttonData.keyData) }
-        }
-
-        is NumbersButtonData -> {
-            NumbersButton { onKeyClicked.invoke(buttonData.keyData) }
-        }
-
-        is MuteButtonData -> {
-            MuteButton { onKeyClicked.invoke(buttonData.keyData) }
+        is ButtonData.IconButtonData -> {
+            when (buttonData.iconType) {
+                IconType.BACK -> BackButton { onKeyClicked.invoke(buttonData.keyData) }
+                IconType.HOME -> HomeButton { onKeyClicked.invoke(buttonData.keyData) }
+                IconType.INFO -> InfoButton { onKeyClicked.invoke(buttonData.keyData) }
+                IconType.MORE -> MoreButton { onKeyClicked.invoke(buttonData.keyData) }
+                IconType.MUTE -> MuteButton { onKeyClicked.invoke(buttonData.keyData) }
+                IconType.POWER -> PowerButton { onKeyClicked.invoke(buttonData.keyData) }
+            }
         }
 
         is ChannelButtonData -> {
@@ -94,7 +51,7 @@ internal fun ButtonItemComposable(
             )
         }
 
-        is TextButtonData -> {
+        is ButtonData.TextButtonData -> {
             TextButton(
                 onClick = { onKeyClicked.invoke(buttonData.keyData) },
                 text = buttonData.text,
@@ -102,19 +59,19 @@ internal fun ButtonItemComposable(
             )
         }
 
-        is Base64ImageButtonData -> {
+        is ButtonData.Base64ImageButtonData -> {
             Base64ImageButton(
                 base64Icon = buttonData.base64Image,
                 onClick = { onKeyClicked.invoke(buttonData.keyData) }
             )
         }
 
-        is FanModeButtonData -> {
-            TextButton(
-                onClick = { onKeyClicked.invoke(buttonData.keyStates.random().keyData) },
-                text = "MODE",
-                background = Color(0xFF303030)
-            )
+        ButtonData.UnknownButtonData -> {
+            UnknownButton { }
+        }
+
+        else -> {
+            UnknownButton { }
         }
     }
 }
