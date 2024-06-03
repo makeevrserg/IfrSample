@@ -10,6 +10,7 @@ import org.company.grid.model.buttondata.ButtonData
 import org.company.grid.model.buttondata.ChannelButtonData
 import org.company.grid.model.buttondata.IconButtonData
 import org.company.grid.model.buttondata.NavigationButtonData
+import org.company.grid.model.buttondata.StatefulButtonData
 import org.company.grid.model.buttondata.TextButtonData
 import org.company.grid.model.buttondata.UnknownButtonData
 import org.company.grid.model.buttondata.VolumeButtonData
@@ -17,7 +18,7 @@ import org.company.grid.model.buttondata.VolumeButtonData
 @Composable
 internal fun ButtonItemComposable(
     buttonData: ButtonData,
-    onKeyClicked: (IfrKeyData) -> Unit
+    onKeyClicked: (IfrKeyData) -> Unit,
 ) {
     when (buttonData) {
         is IconButtonData -> {
@@ -67,8 +68,23 @@ internal fun ButtonItemComposable(
             UnknownButton { }
         }
 
-        else -> {
-            UnknownButton { }
+        is StatefulButtonData.StatefulBase64ImageButtonData -> {
+            Base64ImageButton(
+                base64Icon = buttonData.base64Image,
+                onClick = { onKeyClicked.invoke(buttonData.keyStates.first().keyData) }
+            )
+        }
+
+        is StatefulButtonData.StatefulIconButtonData -> {
+            SquareIconButton(buttonData.iconType) { onKeyClicked.invoke(buttonData.keyStates.first().keyData) }
+        }
+
+        is StatefulButtonData.StatefulTextButtonData -> {
+            TextButton(
+                onClick = { onKeyClicked.invoke(buttonData.keyStates.first().keyData) },
+                text = buttonData.text,
+                background = Color(0xFF303030)
+            )
         }
     }
 }
