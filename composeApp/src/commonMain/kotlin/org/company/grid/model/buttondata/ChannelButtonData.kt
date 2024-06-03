@@ -10,5 +10,5 @@ data class ChannelButtonData(
     val add: IfrKeyData,
     val reduce: IfrKeyData,
 ) : ButtonData {
-    override val type: ButtonType = ButtonType.CHANNEL
+    override val type: ButtonData.ButtonType = ButtonData.ButtonType.CHANNEL
 }

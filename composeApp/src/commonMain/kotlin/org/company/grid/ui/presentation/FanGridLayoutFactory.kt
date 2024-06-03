@@ -5,7 +5,8 @@ import org.company.grid.model.IfrKeyData
 import org.company.grid.model.IfrKeyState
 import org.company.grid.model.PageLayout
 import org.company.grid.model.PagesLayout
-import org.company.grid.model.buttondata.ButtonData
+import org.company.grid.model.buttondata.StateButtonData
+import org.company.grid.model.buttondata.TextButtonData
 
 object FanGridLayoutFactory {
     fun create(): PagesLayout {
@@ -15,14 +16,14 @@ object FanGridLayoutFactory {
                     buttons = buildList {
                         // Sample Text Button
                         IfrButton(
-                            data = ButtonData.TextButtonData(IfrKeyData.RawDataHash("power"), "PWR"),
+                            data = TextButtonData(IfrKeyData.RawDataHash("power"), "PWR"),
                             position = IfrButton.Position(
                                 x = 0f,
                                 y = 4f,
                             ),
                         ).run(::add)
                         IfrButton(
-                            data = ButtonData.StateButtonData.Default(
+                            data = StateButtonData.Default(
                                 keyStates = listOf(
                                     IfrKeyState(
                                         keyData = IfrKeyData.RawDataHash("k"),

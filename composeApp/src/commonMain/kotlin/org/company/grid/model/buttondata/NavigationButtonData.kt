@@ -13,5 +13,5 @@ data class NavigationButtonData(
     val right: IfrKeyData,
     val ok: IfrKeyData,
 ) : ButtonData {
-    override val type: ButtonType = ButtonType.NAVIGATION
+    override val type: ButtonData.ButtonType = ButtonData.ButtonType.NAVIGATION
 }

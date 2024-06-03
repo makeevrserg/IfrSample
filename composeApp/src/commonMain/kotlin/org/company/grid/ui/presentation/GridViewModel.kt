@@ -11,7 +11,7 @@ import kotlinx.serialization.json.Json
 import org.company.core.IoCoroutineScope
 import org.company.grid.model.IfrButton
 import org.company.grid.model.PagesLayout
-import org.company.grid.model.buttondata.ButtonData
+import org.company.grid.model.buttondata.StateButtonData
 import java.io.File
 
 class GridViewModel : CoroutineScope by IoCoroutineScope() {
@@ -41,7 +41,7 @@ class GridViewModel : CoroutineScope by IoCoroutineScope() {
     }
 
     fun onButtonClicked(button: IfrButton) {
-        val stateButtonData = button.data as? ButtonData.StateButtonData ?: return
+        val stateButtonData = button.data as? StateButtonData ?: return
         layout.update {
             val map = it.stateToIndex.toMutableMap()
             val currentIndex = (map.getOrDefault(stateButtonData, 0) + 1)
@@ -57,6 +57,6 @@ class GridViewModel : CoroutineScope by IoCoroutineScope() {
 
     data class Model(
         val pagesLayout: PagesLayout = PagesLayout(emptyList()),
-        val stateToIndex: Map<ButtonData.StateButtonData, Int> = emptyMap()
+        val stateToIndex: Map<StateButtonData, Int> = emptyMap()
     )
 }

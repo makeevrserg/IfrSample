@@ -2,12 +2,16 @@ package org.company.core.ui.button
 
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.graphics.Color
+import org.company.core.ui.button.core.SquareIconButton
 import org.company.core.ui.button.core.TextButton
 import org.company.grid.model.IfrKeyData
+import org.company.grid.model.buttondata.Base64ImageButtonData
 import org.company.grid.model.buttondata.ButtonData
 import org.company.grid.model.buttondata.ChannelButtonData
-import org.company.grid.model.buttondata.IconType
+import org.company.grid.model.buttondata.IconButtonData
 import org.company.grid.model.buttondata.NavigationButtonData
+import org.company.grid.model.buttondata.TextButtonData
+import org.company.grid.model.buttondata.UnknownButtonData
 import org.company.grid.model.buttondata.VolumeButtonData
 
 @Composable
@@ -16,15 +20,8 @@ internal fun ButtonItemComposable(
     onKeyClicked: (IfrKeyData) -> Unit
 ) {
     when (buttonData) {
-        is ButtonData.IconButtonData -> {
-            when (buttonData.iconType) {
-                IconType.BACK -> BackButton { onKeyClicked.invoke(buttonData.keyData) }
-                IconType.HOME -> HomeButton { onKeyClicked.invoke(buttonData.keyData) }
-                IconType.INFO -> InfoButton { onKeyClicked.invoke(buttonData.keyData) }
-                IconType.MORE -> MoreButton { onKeyClicked.invoke(buttonData.keyData) }
-                IconType.MUTE -> MuteButton { onKeyClicked.invoke(buttonData.keyData) }
-                IconType.POWER -> PowerButton { onKeyClicked.invoke(buttonData.keyData) }
-            }
+        is IconButtonData -> {
+            SquareIconButton(buttonData.iconType) { onKeyClicked.invoke(buttonData.keyData) }
         }
 
         is ChannelButtonData -> {
@@ -51,7 +48,7 @@ internal fun ButtonItemComposable(
             )
         }
 
-        is ButtonData.TextButtonData -> {
+        is TextButtonData -> {
             TextButton(
                 onClick = { onKeyClicked.invoke(buttonData.keyData) },
                 text = buttonData.text,
@@ -59,14 +56,14 @@ internal fun ButtonItemComposable(
             )
         }
 
-        is ButtonData.Base64ImageButtonData -> {
+        is Base64ImageButtonData -> {
             Base64ImageButton(
                 base64Icon = buttonData.base64Image,
                 onClick = { onKeyClicked.invoke(buttonData.keyData) }
             )
         }
 
-        ButtonData.UnknownButtonData -> {
+        UnknownButtonData -> {
             UnknownButton { }
         }
 

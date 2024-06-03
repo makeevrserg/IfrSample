@@ -10,5 +10,5 @@ data class VolumeButtonData(
     val add: IfrKeyData,
     val reduce: IfrKeyData,
 ) : ButtonData {
-    override val type: ButtonType = ButtonType.VOLUME
+    override val type: ButtonData.ButtonType = ButtonData.ButtonType.VOLUME
 }

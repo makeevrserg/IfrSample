@@ -18,12 +18,12 @@ import kotlinx.coroutines.launch
 import org.company.core.ui.button.ButtonItemComposable
 import org.company.grid.model.IfrButton
 import org.company.grid.model.PageLayout
-import org.company.grid.model.buttondata.ButtonData
+import org.company.grid.model.buttondata.StateButtonData
 
 @Composable
 fun PageComposable(
     pageLayout: PageLayout,
-    stateToIndex: Map<ButtonData.StateButtonData, Int>,
+    stateToIndex: Map<StateButtonData, Int>,
     scaffoldState: ScaffoldState,
     onButtonClicked: (IfrButton) -> Unit,
 ) {
@@ -44,10 +44,10 @@ fun PageComposable(
                         contentAlignment = Alignment.CenterStart,
                         content = {
                             pageLayout.buttons
-                                .filter { it.data is ButtonData.StateButtonData }
+                                .filter { it.data is StateButtonData }
                                 .also { println("INSTANCE: ${it.size}") }
                                 .forEach { button ->
-                                    val stateButtonData = button.data as ButtonData.StateButtonData
+                                    val stateButtonData = button.data as StateButtonData
                                     val index = stateToIndex.getOrDefault(stateButtonData, 0)
                                     val state = stateButtonData.keyStates[index]
                                     Text(

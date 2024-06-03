@@ -8,10 +8,14 @@ import kotlinx.serialization.json.jsonObject
 import kotlinx.serialization.json.jsonPrimitive
 import org.company.grid.model.IfrButton
 import org.company.grid.model.RawIfrButton
+import org.company.grid.model.buttondata.Base64ImageButtonData
 import org.company.grid.model.buttondata.ButtonData
-import org.company.grid.model.buttondata.ButtonType
 import org.company.grid.model.buttondata.ChannelButtonData
+import org.company.grid.model.buttondata.IconButtonData
 import org.company.grid.model.buttondata.NavigationButtonData
+import org.company.grid.model.buttondata.StateButtonData
+import org.company.grid.model.buttondata.TextButtonData
+import org.company.grid.model.buttondata.UnknownButtonData
 import org.company.grid.model.buttondata.VolumeButtonData
 
 internal object RawIfrButtonMapper {
@@ -21,78 +25,78 @@ internal object RawIfrButtonMapper {
 
     private fun toButtonData(jsonObject: JsonObject): ButtonData {
         val type = jsonObject["type"]?.jsonPrimitive?.content
-        val buttonType = ButtonType.entries.find { entry -> entry.name == type }
+        val buttonType = ButtonData.ButtonType.entries.find { entry -> entry.name == type }
         return when (buttonType) {
-            ButtonType.BASE64_IMAGE -> {
-                json.decodeFromJsonElement<ButtonData.Base64ImageButtonData>(jsonObject)
+            ButtonData.ButtonType.BASE64_IMAGE -> {
+                json.decodeFromJsonElement<Base64ImageButtonData>(jsonObject)
             }
 
-            ButtonType.TEXT -> {
-                json.decodeFromJsonElement<ButtonData.TextButtonData>(jsonObject)
+            ButtonData.ButtonType.TEXT -> {
+                json.decodeFromJsonElement<TextButtonData>(jsonObject)
             }
 
-            ButtonType.CHANNEL -> {
+            ButtonData.ButtonType.CHANNEL -> {
                 json.decodeFromJsonElement<ChannelButtonData>(jsonObject)
             }
 
-            ButtonType.NAVIGATION -> {
+            ButtonData.ButtonType.NAVIGATION -> {
                 json.decodeFromJsonElement<NavigationButtonData>(jsonObject)
             }
 
-            ButtonType.VOLUME -> {
+            ButtonData.ButtonType.VOLUME -> {
                 json.decodeFromJsonElement<VolumeButtonData>(jsonObject)
             }
 
-            ButtonType.STATEFUL -> {
-                json.decodeFromJsonElement<ButtonData.StateButtonData.Default>(jsonObject)
+            ButtonData.ButtonType.STATEFUL -> {
+                json.decodeFromJsonElement<StateButtonData.Default>(jsonObject)
             }
 
-            ButtonType.UNKNOWN, null -> ButtonData.UnknownButtonData
-            ButtonType.ICON -> {
-                json.decodeFromJsonElement<ButtonData.IconButtonData>(jsonObject)
+            ButtonData.ButtonType.UNKNOWN, null -> UnknownButtonData
+            ButtonData.ButtonType.ICON -> {
+                json.decodeFromJsonElement<IconButtonData>(jsonObject)
             }
         }
     }
 
     private fun toJsonObject(buttonData: ButtonData): JsonObject {
         return when (buttonData.type) {
-            ButtonType.UNKNOWN -> {
-                buttonData as ButtonData.UnknownButtonData
+            ButtonData.ButtonType.UNKNOWN -> {
+                buttonData as UnknownButtonData
                 json.encodeToJsonElement(buttonData)
             }
 
-            ButtonType.BASE64_IMAGE -> {
-                buttonData as ButtonData.Base64ImageButtonData
+            ButtonData.ButtonType.BASE64_IMAGE -> {
+                buttonData as Base64ImageButtonData
                 json.encodeToJsonElement(buttonData)
             }
 
-            ButtonType.TEXT -> {
-                buttonData as ButtonData.TextButtonData
+            ButtonData.ButtonType.TEXT -> {
+                buttonData as TextButtonData
                 json.encodeToJsonElement(buttonData)
             }
 
-            ButtonType.CHANNEL -> {
+            ButtonData.ButtonType.CHANNEL -> {
                 buttonData as ChannelButtonData
                 json.encodeToJsonElement(buttonData)
             }
 
-            ButtonType.NAVIGATION -> {
+            ButtonData.ButtonType.NAVIGATION -> {
                 buttonData as NavigationButtonData
                 json.encodeToJsonElement(buttonData)
             }
 
-            ButtonType.VOLUME -> {
+            ButtonData.ButtonType.VOLUME -> {
                 buttonData as VolumeButtonData
                 json.encodeToJsonElement(buttonData)
             }
 
-            ButtonType.STATEFUL -> {
-                buttonData as ButtonData.StateButtonData.Default
+            ButtonData.ButtonType.STATEFUL -> {
+                buttonData as StateButtonData.Default
                 json.encodeToJsonElement(buttonData)
             }
 
-            ButtonType.ICON -> {
-                buttonData as ButtonData.IconButtonData
+            ButtonData.ButtonType.ICON -> {
+                buttonData as IconButtonData
                 json.encodeToJsonElement(buttonData)
             }
         }.jsonObject
