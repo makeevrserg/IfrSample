@@ -4,7 +4,6 @@ import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 import org.company.grid.model.IfrKeyData
 
-@SerialName("NAV")
 @Serializable
 data class NavigationButtonData(
     val up: IfrKeyData,

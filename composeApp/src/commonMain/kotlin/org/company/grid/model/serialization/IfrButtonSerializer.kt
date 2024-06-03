@@ -11,11 +11,14 @@ import org.company.grid.model.IfrButton
 import org.company.grid.model.RawIfrButton
 
 internal object IfrButtonSerializer : KSerializer<IfrButton> {
-    override val descriptor: SerialDescriptor = buildClassSerialDescriptor("Flipper.IfrButton") {
-        element<IfrButton.Position>("position")
-        element<IfrButton.Size>("size")
-        element<JsonObject>("data")
-    }
+    override val descriptor: SerialDescriptor = buildClassSerialDescriptor(
+        serialName = "Flipper.IfrButton",
+        builderAction = {
+            element<IfrButton.Position>("position")
+            element<IfrButton.Size>("size")
+            element<JsonObject>("data")
+        }
+    )
 
     override fun deserialize(decoder: Decoder): IfrButton {
         val rawIfrButton = RawIfrButton.serializer().deserialize(decoder)

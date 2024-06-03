@@ -17,6 +17,11 @@ import java.io.File
 class GridViewModel : CoroutineScope by IoCoroutineScope() {
     val layout = MutableStateFlow<Model>(Model())
 
+    private val json = Json {
+        prettyPrint = true
+        encodeDefaults = true
+    }
+
     private fun startLookupJob() {
         launch {
             while (isActive) {
@@ -35,7 +40,7 @@ class GridViewModel : CoroutineScope by IoCoroutineScope() {
             val gridLayout = FanGridLayoutFactory.create()
             val file = File("./temp_json.json")
             if (!file.exists()) file.createNewFile()
-            file.writeText(Json { prettyPrint = true }.encodeToString(gridLayout))
+            file.writeText(json.encodeToString(gridLayout))
             Model(gridLayout)
         }
     }

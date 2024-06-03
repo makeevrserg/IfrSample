@@ -8,14 +8,14 @@ sealed interface ButtonData {
 
     enum class ButtonType {
         UNKNOWN,
-        BASE64_IMAGE,
         TEXT,
+        ICON,
+        BASE64_IMAGE,
         CHANNEL,
         NAVIGATION,
         VOLUME,
         STATEFUL_TEXT,
         STATEFUL_ICON,
         STATEFUL_BASE64,
-        ICON
     }
 }
