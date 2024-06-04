@@ -1,4 +1,4 @@
-package org.company.grid.ui.content
+package org.company.core.ui.layout.core
 
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Box

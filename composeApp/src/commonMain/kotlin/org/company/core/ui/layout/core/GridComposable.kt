@@ -1,10 +1,11 @@
-package org.company.grid.ui.content
+package org.company.core.ui.layout.core
 
 import androidx.compose.material.Scaffold
 import androidx.compose.material.rememberScaffoldState
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
+import org.company.grid.ui.content.PageComposable
 import org.company.grid.ui.presentation.GridViewModel
 
 @Composable
