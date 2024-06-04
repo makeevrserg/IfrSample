@@ -21,30 +21,18 @@ object FanGridLayoutFactory {
                         id = "mode_cool",
                         value = "k"
                     ),
-                    displayData = DisplayData(
-                        text = "COOL",
-                        position = IfrButton.Position(0f, 0f)
-                    )
                 ),
                 IfrKeyState(
                     keyData = IfrKeyData.RawDataHash(
                         id = "mode_heat",
                         value = "h"
                     ),
-                    displayData = DisplayData(
-                        text = "HEAT",
-                        position = IfrButton.Position(1f, 0f)
-                    )
                 ),
                 IfrKeyState(
                     keyData = IfrKeyData.RawDataHash(
                         id = "mode_fan",
                         value = "f"
                     ),
-                    displayData = DisplayData(
-                        text = "FAN",
-                        position = IfrButton.Position(2f, 0f)
-                    )
                 ),
             ),
             text = "MODE"
@@ -63,30 +51,18 @@ object FanGridLayoutFactory {
                         id = "temp_16",
                         value = "STUB"
                     ),
-                    displayData = DisplayData(
-                        text = "temp_16",
-                        position = IfrButton.Position(2f, 1f)
-                    )
                 ),
                 IfrKeyState(
                     keyData = IfrKeyData.RawDataHash(
                         id = "temp_17",
                         value = "STUB"
                     ),
-                    displayData = DisplayData(
-                        text = "temp_17",
-                        position = IfrButton.Position(2f, 1f)
-                    )
                 ),
                 IfrKeyState(
                     keyData = IfrKeyData.RawDataHash(
                         id = "temp_18",
                         value = "STUB"
                     ),
-                    displayData = DisplayData(
-                        text = "temp_18",
-                        position = IfrButton.Position(2f, 1f)
-                    )
                 ),
             ),
         ),
@@ -97,6 +73,39 @@ object FanGridLayoutFactory {
         size = IfrButton.Size(
             width = 1f,
             height = 2f
+        )
+    )
+
+    private fun getDisplayItems() = listOf(
+        DisplayData(
+            refId = "temp_17",
+            text = "temp_17",
+            position = IfrButton.Position(2f, 1f)
+        ),
+        DisplayData(
+            refId = "temp_16",
+            text = "temp_16",
+            position = IfrButton.Position(2f, 1f)
+        ),
+        DisplayData(
+            refId = "temp_18",
+            text = "temp_18",
+            position = IfrButton.Position(2f, 1f)
+        ),
+        DisplayData(
+            refId = "mode_fan",
+            text = "FAN",
+            position = IfrButton.Position(2f, 0f)
+        ),
+        DisplayData(
+            refId = "mode_heat",
+            text = "HEAT",
+            position = IfrButton.Position(1f, 0f)
+        ),
+        DisplayData(
+            refId = "mode_cool",
+            text = "COOL",
+            position = IfrButton.Position(0f, 0f)
         )
     )
 
@@ -113,7 +122,8 @@ object FanGridLayoutFactory {
                         size = IfrButton.Size(
                             width = 5f,
                             height = 3f
-                        )
+                        ),
+                        items = getDisplayItems()
                     ),
                     buttons = buildList {
                         // Sample Text Button

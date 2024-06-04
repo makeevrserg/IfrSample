@@ -34,7 +34,8 @@ fun PageComposable(
                     pageLayout.buttons.forEach { button ->
                         val data = button.data as? StatefulButtonData ?: return@forEach
                         val keyState = data.keyStates[stateToIndex[data] ?: 0]
-                        val displayData = keyState.displayData ?: return@forEach
+                        val id = keyState.keyData.id
+                        val displayData = display.items.firstOrNull { it.refId == id } ?: return@forEach
                         GridItemComposable(
                             position = displayData.position,
                             size = IfrButton.Size(1f, 1f),
