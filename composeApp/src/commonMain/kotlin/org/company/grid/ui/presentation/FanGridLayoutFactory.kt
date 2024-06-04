@@ -6,35 +6,25 @@ import org.company.grid.model.IfrKeyData
 import org.company.grid.model.IfrKeyState
 import org.company.grid.model.PageLayout
 import org.company.grid.model.PagesLayout
+import org.company.grid.model.Visibility
 import org.company.grid.model.buttondata.IconButtonData
 import org.company.grid.model.buttondata.StatefulButtonData
-import org.company.grid.model.buttondata.StatefulTemperatureButtonData
+import org.company.grid.model.buttondata.StatefulDoubleButtonData
 import org.company.grid.model.display.DisplayData
 
 object FanGridLayoutFactory {
 
     private fun getModeButton() = IfrButton(
         data = StatefulButtonData.StatefulTextButtonData(
-            keyStates = listOf(
+            id = "mode",
+            keyStates = listOf("COOL", "HEAT", "FAN").map { mode ->
                 IfrKeyState(
                     keyData = IfrKeyData.RawDataHash(
-                        id = "mode_cool",
-                        value = "k"
+                        id = "mode_$mode",
+                        value = "${mode.first()}"
                     ),
-                ),
-                IfrKeyState(
-                    keyData = IfrKeyData.RawDataHash(
-                        id = "mode_heat",
-                        value = "h"
-                    ),
-                ),
-                IfrKeyState(
-                    keyData = IfrKeyData.RawDataHash(
-                        id = "mode_fan",
-                        value = "f"
-                    ),
-                ),
-            ),
+                )
+            },
             text = "MODE"
         ),
         position = IfrButton.Position(
@@ -44,30 +34,24 @@ object FanGridLayoutFactory {
     )
 
     private fun getTemperatureButton() = IfrButton(
-        data = StatefulTemperatureButtonData(
-            keyStates = listOf(
-                IfrKeyState(
-                    keyData = IfrKeyData.RawDataHash(
-                        id = "temp_16",
-                        value = "STUB"
-                    ),
-                ),
-                IfrKeyState(
-                    keyData = IfrKeyData.RawDataHash(
-                        id = "temp_17",
-                        value = "STUB"
-                    ),
-                ),
-                IfrKeyState(
-                    keyData = IfrKeyData.RawDataHash(
-                        id = "temp_18",
-                        value = "STUB"
-                    ),
-                ),
+        data = StatefulDoubleButtonData(
+            text = "TEMP_C",
+            id = "temperature",
+            visibility = Visibility.ActiveState(
+                dataRefId = "mode",
+                stateRefId = "mode_COOL"
             ),
+            keyStates = IntRange(16, 24).map { i ->
+                IfrKeyState(
+                    keyData = IfrKeyData.RawDataHash(
+                        id = "temp_$i",
+                        value = "STUB"
+                    ),
+                )
+            },
         ),
         position = IfrButton.Position(
-            x = 2f,
+            x = 1f,
             y = 4f,
         ),
         size = IfrButton.Size(
@@ -76,38 +60,48 @@ object FanGridLayoutFactory {
         )
     )
 
-    private fun getDisplayItems() = listOf(
-        DisplayData(
-            refId = "temp_17",
-            text = "temp_17",
-            position = IfrButton.Position(2f, 1f)
+    private fun getTimerButton() = IfrButton(
+        data = StatefulDoubleButtonData(
+            text = "TIMER",
+            id = "timer",
+            keyStates = List(8) { i ->
+                IfrKeyState(
+                    keyData = IfrKeyData.RawDataHash(
+                        id = "timer_${0.5 * i}",
+                        value = "STUB"
+                    ),
+                )
+            },
         ),
-        DisplayData(
-            refId = "temp_16",
-            text = "temp_16",
-            position = IfrButton.Position(2f, 1f)
+        position = IfrButton.Position(
+            x = 3f,
+            y = 4f,
         ),
-        DisplayData(
-            refId = "temp_18",
-            text = "temp_18",
-            position = IfrButton.Position(2f, 1f)
-        ),
-        DisplayData(
-            refId = "mode_fan",
-            text = "FAN",
-            position = IfrButton.Position(2f, 0f)
-        ),
-        DisplayData(
-            refId = "mode_heat",
-            text = "HEAT",
-            position = IfrButton.Position(1f, 0f)
-        ),
-        DisplayData(
-            refId = "mode_cool",
-            text = "COOL",
-            position = IfrButton.Position(0f, 0f)
+        size = IfrButton.Size(
+            width = 1f,
+            height = 2f
         )
     )
+
+    private fun getDisplayItems() = IntRange(16, 24).map { i ->
+        DisplayData(
+            keyDataRefId = "temp_$i",
+            text = "$i°",
+            position = IfrButton.Position(2f, 1f)
+        )
+    } + listOf("COOL", "HEAT", "FAN").map { mode ->
+        DisplayData(
+            keyDataRefId = "mode_$mode",
+            text = "$mode",
+            position = IfrButton.Position(1f, 0f)
+        )
+    } + List(8) { i ->
+        DisplayData(
+            keyDataRefId = "timer_${0.5 * i}",
+            text = if (i == 0) "T: OFF" else "${0.5 * i} H",
+            position = IfrButton.Position(2f, 0f)
+        )
+    }
 
     fun create(): PagesLayout {
         return PagesLayout(
@@ -142,6 +136,7 @@ object FanGridLayoutFactory {
                         ).run(::add)
                         getModeButton().run(::add)
                         getTemperatureButton().run(::add)
+                        getTimerButton().run(::add)
                     }
                 ).run(::add)
             }

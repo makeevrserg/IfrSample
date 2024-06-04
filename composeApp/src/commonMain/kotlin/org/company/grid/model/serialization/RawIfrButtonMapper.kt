@@ -14,7 +14,7 @@ import org.company.grid.model.buttondata.ChannelButtonData
 import org.company.grid.model.buttondata.IconButtonData
 import org.company.grid.model.buttondata.NavigationButtonData
 import org.company.grid.model.buttondata.StatefulButtonData
-import org.company.grid.model.buttondata.StatefulTemperatureButtonData
+import org.company.grid.model.buttondata.StatefulDoubleButtonData
 import org.company.grid.model.buttondata.TextButtonData
 import org.company.grid.model.buttondata.UnknownButtonData
 import org.company.grid.model.buttondata.VolumeButtonData
@@ -66,7 +66,7 @@ internal object RawIfrButtonMapper {
             }
 
             ButtonData.ButtonType.STATEFUL_TEMPERATURE -> {
-                json.decodeFromJsonElement<StatefulTemperatureButtonData>(jsonObject)
+                json.decodeFromJsonElement<StatefulDoubleButtonData>(jsonObject)
             }
         }
     }
@@ -124,7 +124,7 @@ internal object RawIfrButtonMapper {
             }
 
             ButtonData.ButtonType.STATEFUL_TEMPERATURE -> {
-                buttonData as StatefulTemperatureButtonData
+                buttonData as StatefulDoubleButtonData
                 json.encodeToJsonElement(buttonData)
             }
         }.jsonObject

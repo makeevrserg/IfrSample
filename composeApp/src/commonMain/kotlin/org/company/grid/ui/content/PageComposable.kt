@@ -14,6 +14,7 @@ import org.company.core.ui.button.ButtonItemComposable
 import org.company.grid.model.IfrButton
 import org.company.grid.model.IfrKeyState
 import org.company.grid.model.PageLayout
+import org.company.grid.model.Visibility
 import org.company.grid.model.buttondata.StatefulButtonData
 
 @Composable
@@ -35,7 +36,20 @@ fun PageComposable(
                         val data = button.data as? StatefulButtonData ?: return@forEach
                         val keyState = data.keyStates[stateToIndex[data] ?: 0]
                         val id = keyState.keyData.id
-                        val displayData = display.items.firstOrNull { it.refId == id } ?: return@forEach
+                        val displayData = display.items.firstOrNull { it.keyDataRefId == id } ?: return@forEach
+                        val isVisible = when (val visibility = data.visibility) {
+                            is Visibility.ActiveState -> {
+                                val data = pageLayout.buttons
+                                    .mapNotNull { it.data as? StatefulButtonData }
+                                    .firstOrNull { it.id == visibility.dataRefId }
+                                    ?: return@forEach
+                                val index = stateToIndex[data] ?: return@forEach
+                                data.keyStates[index].keyData.id == visibility.stateRefId
+                            }
+
+                            Visibility.Always -> true
+                        }
+                        if (!isVisible) return@forEach
                         GridItemComposable(
                             position = displayData.position,
                             size = IfrButton.Size(1f, 1f),
@@ -54,6 +68,20 @@ fun PageComposable(
                     }
                 }
                 pageLayout.buttons.forEach { button ->
+                    val isVisible = when (val visibility = (button.data as? StatefulButtonData)?.visibility) {
+                        is Visibility.ActiveState -> {
+                            val data = pageLayout.buttons
+                                .mapNotNull { it.data as? StatefulButtonData }
+                                .firstOrNull { it.id == visibility.dataRefId }
+                                ?: return@forEach
+                            val index = stateToIndex[data] ?: 0
+                            data.keyStates[index].keyData.id == visibility.stateRefId
+                        }
+
+                        Visibility.Always -> true
+                        null -> true
+                    }
+                    if (!isVisible) return@forEach
                     GridItemComposable(
                         modifier = Modifier,
                         position = button.position,

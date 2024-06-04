@@ -12,7 +12,7 @@ import org.company.grid.model.buttondata.ChannelButtonData
 import org.company.grid.model.buttondata.IconButtonData
 import org.company.grid.model.buttondata.NavigationButtonData
 import org.company.grid.model.buttondata.StatefulButtonData
-import org.company.grid.model.buttondata.StatefulTemperatureButtonData
+import org.company.grid.model.buttondata.StatefulDoubleButtonData
 import org.company.grid.model.buttondata.TextButtonData
 import org.company.grid.model.buttondata.UnknownButtonData
 import org.company.grid.model.buttondata.VolumeButtonData
@@ -127,7 +127,7 @@ internal fun ButtonItemComposable(
             )
         }
 
-        is StatefulTemperatureButtonData -> {
+        is StatefulDoubleButtonData -> {
             DoubleButton(
                 onFirstClicked = {
                     val keyState = getNextKeyState(
@@ -145,7 +145,7 @@ internal fun ButtonItemComposable(
                     )
                     onKeyStateClicked.invoke(keyState)
                 },
-                text = "TEMP",
+                text = buttonData.text,
                 firstText = "+",
                 lastText = "-"
             )
