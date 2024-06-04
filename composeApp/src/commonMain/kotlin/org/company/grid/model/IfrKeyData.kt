@@ -13,14 +13,18 @@ sealed interface IfrKeyData {
     @SerialName("RAW_DATA_HASH")
     @Serializable
     class RawDataHash(
+        @SerialName("id")
         override val id: String,
+        @SerialName("value")
         val value: String
     ) : IfrKeyData
 
     @SerialName("ADDRESS_HASH")
     @Serializable
     class AddressHash(
+        @SerialName("id")
         override val id: String,
+        @SerialName("value")
         val value: String
     ) : IfrKeyData
 }
