@@ -17,5 +17,6 @@ sealed interface ButtonData {
         STATEFUL_TEXT,
         STATEFUL_ICON,
         STATEFUL_BASE64,
+        STATEFUL_TEMPERATURE,
     }
 }

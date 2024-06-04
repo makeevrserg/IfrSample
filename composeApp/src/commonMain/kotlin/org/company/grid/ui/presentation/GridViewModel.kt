@@ -10,6 +10,7 @@ import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 import org.company.core.IoCoroutineScope
 import org.company.grid.model.IfrButton
+import org.company.grid.model.IfrKeyState
 import org.company.grid.model.PagesLayout
 import org.company.grid.model.buttondata.StatefulButtonData
 import java.io.File
@@ -42,6 +43,17 @@ class GridViewModel : CoroutineScope by IoCoroutineScope() {
             if (!file.exists()) file.createNewFile()
             file.writeText(json.encodeToString(gridLayout))
             Model(gridLayout)
+        }
+    }
+
+    fun onStateButtonClicked(button: IfrButton, ifrKeyState: IfrKeyState) {
+        val data = button.data as? StatefulButtonData ?: return
+
+        layout.update {
+            val map = it.stateToIndex.toMutableMap()
+            val newIndex = data.keyStates.indexOf(ifrKeyState)
+            map[data] = newIndex
+            it.copy(stateToIndex = map.toMap())
         }
     }
 

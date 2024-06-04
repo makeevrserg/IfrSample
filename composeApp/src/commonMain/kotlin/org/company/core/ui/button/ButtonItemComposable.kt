@@ -5,53 +5,72 @@ import androidx.compose.ui.graphics.Color
 import org.company.core.ui.button.core.SquareIconButton
 import org.company.core.ui.button.core.TextButton
 import org.company.grid.model.IfrKeyData
+import org.company.grid.model.IfrKeyState
 import org.company.grid.model.buttondata.Base64ImageButtonData
 import org.company.grid.model.buttondata.ButtonData
 import org.company.grid.model.buttondata.ChannelButtonData
 import org.company.grid.model.buttondata.IconButtonData
 import org.company.grid.model.buttondata.NavigationButtonData
 import org.company.grid.model.buttondata.StatefulButtonData
+import org.company.grid.model.buttondata.StatefulTemperatureButtonData
 import org.company.grid.model.buttondata.TextButtonData
 import org.company.grid.model.buttondata.UnknownButtonData
 import org.company.grid.model.buttondata.VolumeButtonData
 
+private fun getNextKeyState(
+    stateToIndex: Map<StatefulButtonData, Int>,
+    buttonData: StatefulButtonData,
+    increment: Int
+): IfrKeyState {
+    val nextValue = (stateToIndex[buttonData] ?: 0) + increment
+    return if (nextValue < 0) {
+        buttonData.keyStates[buttonData.keyStates.size - 1]
+    } else if (nextValue >= buttonData.keyStates.size) {
+        buttonData.keyStates.first()
+    } else {
+        buttonData.keyStates[nextValue % buttonData.keyStates.size]
+    }
+}
+
 @Composable
 internal fun ButtonItemComposable(
     buttonData: ButtonData,
-    onKeyClicked: (IfrKeyData) -> Unit,
+    onKeyDataClicked: (IfrKeyData) -> Unit,
+    onKeyStateClicked: (IfrKeyState) -> Unit,
+    stateToIndex: Map<StatefulButtonData, Int>
 ) {
     when (buttonData) {
         is IconButtonData -> {
-            SquareIconButton(buttonData.iconType) { onKeyClicked.invoke(buttonData.keyData) }
+            SquareIconButton(buttonData.iconType) { onKeyDataClicked.invoke(buttonData.keyData) }
         }
 
         is ChannelButtonData -> {
             ChannelButton(
-                onNextClicked = { onKeyClicked.invoke(buttonData.add) },
-                onPrevClicked = { onKeyClicked.invoke(buttonData.reduce) }
+                onNextClicked = { onKeyDataClicked.invoke(buttonData.add) },
+                onPrevClicked = { onKeyDataClicked.invoke(buttonData.reduce) }
             )
         }
 
         is VolumeButtonData -> {
             VolumeButton(
-                onAddClicked = { onKeyClicked.invoke(buttonData.add) },
-                onReduceClicked = { onKeyClicked.invoke(buttonData.reduce) },
+                onAddClicked = { onKeyDataClicked.invoke(buttonData.add) },
+                onReduceClicked = { onKeyDataClicked.invoke(buttonData.reduce) },
             )
         }
 
         is NavigationButtonData -> {
             NavigationButton(
-                onLeftClicked = { onKeyClicked.invoke(buttonData.left) },
-                onRightClicked = { onKeyClicked.invoke(buttonData.right) },
-                onDownClicked = { onKeyClicked.invoke(buttonData.down) },
-                onUpClicked = { onKeyClicked.invoke(buttonData.up) },
-                onOkClicked = { onKeyClicked.invoke(buttonData.ok) }
+                onLeftClicked = { onKeyDataClicked.invoke(buttonData.left) },
+                onRightClicked = { onKeyDataClicked.invoke(buttonData.right) },
+                onDownClicked = { onKeyDataClicked.invoke(buttonData.down) },
+                onUpClicked = { onKeyDataClicked.invoke(buttonData.up) },
+                onOkClicked = { onKeyDataClicked.invoke(buttonData.ok) }
             )
         }
 
         is TextButtonData -> {
             TextButton(
-                onClick = { onKeyClicked.invoke(buttonData.keyData) },
+                onClick = { onKeyDataClicked.invoke(buttonData.keyData) },
                 text = buttonData.text,
                 background = Color(0xFF303030)
             )
@@ -60,7 +79,7 @@ internal fun ButtonItemComposable(
         is Base64ImageButtonData -> {
             Base64ImageButton(
                 base64Icon = buttonData.base64Image,
-                onClick = { onKeyClicked.invoke(buttonData.keyData) }
+                onClick = { onKeyDataClicked.invoke(buttonData.keyData) }
             )
         }
 
@@ -71,19 +90,64 @@ internal fun ButtonItemComposable(
         is StatefulButtonData.StatefulBase64ImageButtonData -> {
             Base64ImageButton(
                 base64Icon = buttonData.base64Image,
-                onClick = { onKeyClicked.invoke(buttonData.keyStates.first().keyData) }
+                onClick = {
+                    val keyState = getNextKeyState(
+                        stateToIndex = stateToIndex,
+                        buttonData = buttonData,
+                        increment = 1
+                    )
+                    onKeyStateClicked.invoke(keyState)
+                }
             )
         }
 
         is StatefulButtonData.StatefulIconButtonData -> {
-            SquareIconButton(buttonData.iconType) { onKeyClicked.invoke(buttonData.keyStates.first().keyData) }
+            SquareIconButton(buttonData.iconType) {
+                val keyState = getNextKeyState(
+                    stateToIndex = stateToIndex,
+                    buttonData = buttonData,
+                    increment = 1
+                )
+                onKeyStateClicked.invoke(keyState)
+            }
         }
 
         is StatefulButtonData.StatefulTextButtonData -> {
             TextButton(
-                onClick = { onKeyClicked.invoke(buttonData.keyStates.first().keyData) },
+                onClick = {
+                    val keyState = getNextKeyState(
+                        stateToIndex = stateToIndex,
+                        buttonData = buttonData,
+                        increment = 1
+                    )
+                    onKeyStateClicked.invoke(keyState)
+                },
                 text = buttonData.text,
                 background = Color(0xFF303030)
+            )
+        }
+
+        is StatefulTemperatureButtonData -> {
+            DoubleButton(
+                onFirstClicked = {
+                    val keyState = getNextKeyState(
+                        stateToIndex = stateToIndex,
+                        buttonData = buttonData,
+                        increment = 1
+                    )
+                    onKeyStateClicked.invoke(keyState)
+                },
+                onLastClicked = {
+                    val keyState = getNextKeyState(
+                        stateToIndex = stateToIndex,
+                        buttonData = buttonData,
+                        increment = -1
+                    )
+                    onKeyStateClicked.invoke(keyState)
+                },
+                text = "TEMP",
+                firstText = "+",
+                lastText = "-"
             )
         }
     }

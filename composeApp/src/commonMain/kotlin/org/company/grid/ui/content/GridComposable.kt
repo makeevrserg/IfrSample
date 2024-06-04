@@ -20,7 +20,8 @@ fun GridComposable(gridViewModel: GridViewModel) {
                     pageLayout = currentPage,
                     scaffoldState = scaffoldState,
                     onButtonClicked = gridViewModel::onButtonClicked,
-                    stateToIndex = layout.stateToIndex
+                    stateToIndex = layout.stateToIndex,
+                    onStateButtonClicked = gridViewModel::onStateButtonClicked
                 )
             }
         }
