@@ -7,11 +7,11 @@ import androidx.compose.foundation.layout.BoxWithConstraintsScope
 import androidx.compose.foundation.layout.offset
 import androidx.compose.foundation.layout.size
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.Dp
 import androidx.compose.ui.zIndex
+import org.company.core.ui.ext.toComposeAlignment
 import org.company.grid.model.IfrButton
 import org.company.grid.ui.util.GridConstants.MAX_COLUMNS
 import org.company.grid.ui.util.GridConstants.MAX_HEIGHT
@@ -51,14 +51,4 @@ internal fun BoxWithConstraintsScope.GridItemComposable(
         contentAlignment = position.alignment.toComposeAlignment(),
         content = content
     )
-}
-
-fun IfrButton.Alignment.toComposeAlignment() = when (this) {
-    IfrButton.Alignment.CENTER -> Alignment.Center
-    IfrButton.Alignment.TOP_LEFT -> Alignment.TopStart
-    IfrButton.Alignment.TOP_RIGHT -> Alignment.TopEnd
-    IfrButton.Alignment.BOTTOM_LEFT -> Alignment.BottomStart
-    IfrButton.Alignment.BOTTOM_RIGHT -> Alignment.BottomEnd
-    IfrButton.Alignment.CENTER_LEFT -> Alignment.CenterStart
-    IfrButton.Alignment.CENTER_RIGHT -> Alignment.CenterEnd
 }

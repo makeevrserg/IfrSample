@@ -10,6 +10,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
+import org.company.core.ui.ext.toComposeAlignment
 import org.company.core.ui.theme.AppTheme
 import org.company.grid.model.Display
 

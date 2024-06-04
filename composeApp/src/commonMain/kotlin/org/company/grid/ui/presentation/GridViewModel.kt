@@ -13,6 +13,8 @@ import org.company.grid.model.IfrButton
 import org.company.grid.model.IfrKeyState
 import org.company.grid.model.PagesLayout
 import org.company.grid.model.buttondata.StatefulButtonData
+import org.company.grid.ui.presentation.layout.fan.FanLayoutFactory
+import org.company.grid.ui.presentation.layout.json.JsonGridLayoutFactory
 import java.io.File
 
 class GridViewModel : CoroutineScope by IoCoroutineScope() {
@@ -38,7 +40,7 @@ class GridViewModel : CoroutineScope by IoCoroutineScope() {
 
     private fun startInMemoryJob() {
         layout.update {
-            val gridLayout = FanGridLayoutFactory.create()
+            val gridLayout = FanLayoutFactory.create()
             val file = File("./temp_json.json")
             if (!file.exists()) file.createNewFile()
             file.writeText(json.encodeToString(gridLayout))

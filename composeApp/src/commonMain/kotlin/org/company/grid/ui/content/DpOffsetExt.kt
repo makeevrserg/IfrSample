@@ -26,22 +26,3 @@ internal fun BoxWithConstraintsScope.rememberDpOffset(
         )
     }
 }
-
-data class GridSize(val width: Dp, val height: Dp)
-
-@Composable
-internal fun BoxWithConstraintsScope.rememberGridSize(
-    maxRows: Int,
-    maxColumns: Int,
-    maxWidth: Dp,
-    maxHeight: Dp
-): GridSize {
-    val calculatedWidth = this.maxWidth.coerceAtMost(maxWidth)
-    val calculatedHeight = this.maxHeight.coerceAtMost(maxHeight)
-    return remember(calculatedWidth, calculatedHeight) {
-        GridSize(
-            width = calculatedWidth / maxColumns,
-            height = calculatedHeight / maxRows
-        )
-    }
-}

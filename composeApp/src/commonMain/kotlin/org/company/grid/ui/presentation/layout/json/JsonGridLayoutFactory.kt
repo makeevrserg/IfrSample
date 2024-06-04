@@ -1,4 +1,4 @@
-package org.company.grid.ui.presentation
+package org.company.grid.ui.presentation.layout.json
 
 import kotlinx.serialization.json.Json
 import org.company.grid.model.PagesLayout

@@ -1,4 +1,4 @@
-package org.company.grid.ui.presentation
+package org.company.grid.ui.presentation.layout.kitchen
 
 import org.company.grid.model.IfrButton
 import org.company.grid.model.IfrKeyData
@@ -12,7 +12,7 @@ import org.company.grid.model.buttondata.TextButtonData
 import org.company.grid.model.buttondata.VolumeButtonData
 import org.company.grid.ui.util.GridConstants
 
-object InMemoryGridLayoutFactory {
+object KitchenLayoutFactory {
     fun create(): PagesLayout {
         return PagesLayout(
             pages = buildList {
