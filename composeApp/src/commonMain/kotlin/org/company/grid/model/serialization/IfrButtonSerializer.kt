@@ -28,7 +28,7 @@ internal object IfrButtonSerializer : KSerializer<IfrButton> {
     override fun deserialize(decoder: Decoder): IfrButton {
         val rawIfrButton = RawIfrButton.serializer().deserialize(decoder)
         return IfrButton(
-            data = ButtonDataDecoder(json).decode(rawIfrButton.data),
+            data = ButtonDataDecoder(json).decodeFromJsonObject(rawIfrButton.data),
             position = rawIfrButton.position,
             size = rawIfrButton.size
         )
@@ -36,7 +36,7 @@ internal object IfrButtonSerializer : KSerializer<IfrButton> {
 
     override fun serialize(encoder: Encoder, value: IfrButton) {
         val rawIfrButton = RawIfrButton(
-            data = ButtonDataEncoder(json).encode(value.data),
+            data = ButtonDataEncoder(json).encodeToJsonObject(value.data),
             position = value.position,
             size = value.size
         )

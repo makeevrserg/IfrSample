@@ -16,7 +16,7 @@ import org.company.grid.model.buttondata.UnknownButtonData
 import org.company.grid.model.buttondata.VolumeButtonData
 
 internal class ButtonDataEncoder(private val json: Json) {
-    fun encode(buttonData: ButtonData): JsonObject {
+    fun encodeToJsonObject(buttonData: ButtonData): JsonObject {
         return when (buttonData.type) {
             ButtonData.ButtonType.UNKNOWN -> {
                 buttonData as UnknownButtonData

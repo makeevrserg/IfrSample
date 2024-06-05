@@ -16,7 +16,7 @@ import org.company.grid.model.buttondata.UnknownButtonData
 import org.company.grid.model.buttondata.VolumeButtonData
 
 internal class ButtonDataDecoder(private val json: Json) {
-    fun decode(jsonObject: JsonObject): ButtonData {
+    fun decodeFromJsonObject(jsonObject: JsonObject): ButtonData {
         val type = jsonObject["type"]?.jsonPrimitive?.content
         val buttonType = ButtonData.ButtonType.entries.find { entry -> entry.name == type }
         return when (buttonType) {
