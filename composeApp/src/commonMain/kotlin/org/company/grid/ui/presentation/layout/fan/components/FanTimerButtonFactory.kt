@@ -1,4 +1,4 @@
-package org.company.grid.ui.presentation.layout.fan
+package org.company.grid.ui.presentation.layout.fan.components
 
 import org.company.grid.model.IfrButton
 import org.company.grid.model.IfrKeyData

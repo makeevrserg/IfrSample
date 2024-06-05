@@ -21,7 +21,6 @@ object KitchenLayoutFactory {
                         // Sample Text Button
                         IfrButton(
                             data = IconButtonData(
-
                                 keyData = IfrKeyData.RawDataHash(
                                     id = "power",
                                     value = "power"
@@ -61,7 +60,6 @@ object KitchenLayoutFactory {
                         ).run(::add)
                         IfrButton(
                             data = Base64ImageButtonData(
-
                                 keyData = IfrKeyData.RawDataHash(
                                     id = "image",
                                     value = "sample"
@@ -84,7 +82,6 @@ object KitchenLayoutFactory {
                         // Second
                         IfrButton(
                             data = IconButtonData(
-
                                 keyData = IfrKeyData.RawDataHash(
                                     id = "info",
                                     value = "info"

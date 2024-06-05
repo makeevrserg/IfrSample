@@ -1,10 +1,11 @@
-package org.company.grid.ui.presentation.layout.fan
+package org.company.grid.ui.presentation.layout.fan.components
 
 import org.company.grid.model.IfrButton
 import org.company.grid.model.IfrKeyData
 import org.company.grid.model.IfrKeyState
 import org.company.grid.model.Visibility
 import org.company.grid.model.buttondata.StatefulDoubleButtonData
+import org.company.grid.model.display.ButtonReference
 
 object FanTemperatureButtonFactory {
     fun create() = IfrButton(
@@ -12,8 +13,10 @@ object FanTemperatureButtonFactory {
             text = "TEMP",
             id = "temperature",
             visibility = Visibility.ActiveState(
-                dataRefId = "mode",
-                stateRefId = "mode_COOL"
+                ref = ButtonReference.ButtonAndKeyData(
+                    buttonDataId = "mode",
+                    keyDataId = "mode_COOL"
+                )
             ),
             keyStates = IntRange(16, 24).map { i ->
                 IfrKeyState(

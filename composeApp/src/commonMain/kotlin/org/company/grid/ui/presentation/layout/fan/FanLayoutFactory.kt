@@ -4,6 +4,12 @@ import org.company.grid.model.Display
 import org.company.grid.model.IfrButton
 import org.company.grid.model.PageLayout
 import org.company.grid.model.PagesLayout
+import org.company.grid.ui.presentation.layout.fan.components.FanDisplayItemsFactory
+import org.company.grid.ui.presentation.layout.fan.components.FanFanButtonFactory
+import org.company.grid.ui.presentation.layout.fan.components.FanModeButtonFactory
+import org.company.grid.ui.presentation.layout.fan.components.FanPowerButtonFactory
+import org.company.grid.ui.presentation.layout.fan.components.FanTemperatureButtonFactory
+import org.company.grid.ui.presentation.layout.fan.components.FanTimerButtonFactory
 
 object FanLayoutFactory {
     fun create(): PagesLayout {

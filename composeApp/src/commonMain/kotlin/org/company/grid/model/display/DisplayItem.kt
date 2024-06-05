@@ -6,8 +6,8 @@ import org.company.grid.model.IfrButton
 
 @Serializable
 class DisplayItem(
-    @SerialName("key_data_ref_id")
-    val keyDataRefId: String,
+    @SerialName("ref")
+    val ref: ButtonReference.KeyData,
     @SerialName("position")
     val position: IfrButton.Position,
     @SerialName("size")
