@@ -17,7 +17,7 @@ import org.company.grid.model.buttondata.StatefulButtonData
 private fun isButtonVisible(
     button: IfrButton,
     buttons: List<IfrButton>,
-    stateToIndex: Map<StatefulButtonData, Int>
+    stateToIndex: Map<String, Int>
 ): Boolean {
     val isVisible = when (val visibility = (button.data as? StatefulButtonData)?.visibility) {
         is Visibility.ActiveState -> {
@@ -25,7 +25,7 @@ private fun isButtonVisible(
                 .mapNotNull { it.data as? StatefulButtonData }
                 .firstOrNull { it.id == visibility.ref.buttonDataId }
                 ?: return false
-            val index = stateToIndex[data] ?: 0
+            val index = stateToIndex[data.id] ?: 0
             data.keyStates[index].keyData.id == visibility.ref.keyDataId
         }
 
@@ -38,7 +38,7 @@ private fun isButtonVisible(
 @Composable
 internal fun BoxWithConstraintsScope.ButtonsComposable(
     pageLayout: PageLayout,
-    stateToIndex: Map<StatefulButtonData, Int>,
+    stateToIndex: Map<String, Int>,
     scaffoldState: ScaffoldState,
     onButtonClicked: (IfrButton) -> Unit,
     onStateButtonClicked: (IfrButton, IfrKeyState) -> Unit,

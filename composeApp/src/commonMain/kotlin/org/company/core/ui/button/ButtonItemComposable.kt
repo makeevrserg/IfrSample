@@ -18,11 +18,11 @@ import org.company.grid.model.buttondata.UnknownButtonData
 import org.company.grid.model.buttondata.VolumeButtonData
 
 private fun getNextKeyState(
-    stateToIndex: Map<StatefulButtonData, Int>,
+    stateToIndex: Map<String, Int>,
     buttonData: StatefulButtonData,
     increment: Int
 ): IfrKeyState {
-    val nextValue = (stateToIndex[buttonData] ?: 0) + increment
+    val nextValue = (stateToIndex[buttonData.id] ?: 0) + increment
     return if (nextValue < 0) {
         buttonData.keyStates[buttonData.keyStates.size - 1]
     } else if (nextValue >= buttonData.keyStates.size) {
@@ -37,7 +37,7 @@ internal fun ButtonItemComposable(
     buttonData: ButtonData,
     onKeyDataClicked: (IfrKeyData) -> Unit,
     onKeyStateClicked: (IfrKeyState) -> Unit,
-    stateToIndex: Map<StatefulButtonData, Int>
+    stateToIndex: Map<String, Int>
 ) {
     when (buttonData) {
         is IconButtonData -> {

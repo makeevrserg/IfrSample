@@ -16,6 +16,7 @@ import org.company.grid.ui.presentation.layout.data.PagesRepository
 
 class GridViewModel : CoroutineScope by IoCoroutineScope() {
     private val pagesRepository: PagesRepository = LookupPagesRepository
+//    private val pagesRepository: PagesRepository = InMemoryPagesRepository
     val layout = MutableStateFlow(Model())
 
     fun onStateButtonClicked(button: IfrButton, ifrKeyState: IfrKeyState) {
@@ -23,7 +24,7 @@ class GridViewModel : CoroutineScope by IoCoroutineScope() {
         layout.update {
             val map = it.stateToIndex.toMutableMap()
             val newIndex = data.keyStates.indexOf(ifrKeyState)
-            map[data] = newIndex
+            map[data.id] = newIndex
             it.copy(stateToIndex = map.toMap())
         }
     }
@@ -32,8 +33,8 @@ class GridViewModel : CoroutineScope by IoCoroutineScope() {
         val statefulButtonData = button.data as? StatefulButtonData ?: return
         layout.update {
             val map = it.stateToIndex.toMutableMap()
-            val currentIndex = (map.getOrDefault(statefulButtonData, 0) + 1)
-            map[statefulButtonData] = currentIndex % statefulButtonData.keyStates.size
+            val currentIndex = (map.getOrDefault(statefulButtonData.id, 0) + 1)
+            map[statefulButtonData.id] = currentIndex % statefulButtonData.keyStates.size
             it.copy(stateToIndex = map.toMap())
         }
     }
@@ -47,6 +48,9 @@ class GridViewModel : CoroutineScope by IoCoroutineScope() {
 
     data class Model(
         val pagesLayout: PagesLayout = PagesLayout(emptyList()),
-        val stateToIndex: Map<StatefulButtonData, Int> = emptyMap()
+        /**
+         * [StatefulButtonData.id] to index of it's [StatefulButtonData.keyStates] index
+         */
+        val stateToIndex: Map<String, Int> = emptyMap()
     )
 }

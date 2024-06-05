@@ -15,10 +15,10 @@ private fun findDisplayItem(
     button: IfrButton,
     buttons: List<IfrButton>,
     displayItems: List<DisplayItem>,
-    stateToIndex: Map<StatefulButtonData, Int>,
+    stateToIndex: Map<String, Int>,
 ): DisplayItem? {
     val data = button.data as? StatefulButtonData ?: return null
-    val keyState = data.keyStates[stateToIndex[data] ?: 0]
+    val keyState = data.keyStates[stateToIndex[data.id] ?: 0]
     val displayItem = displayItems.firstOrNull { it.ref.keyDataId == keyState.keyData.id } ?: return null
     val isVisible = when (val visibility = data.visibility) {
         is Visibility.ActiveState -> {
@@ -26,7 +26,7 @@ private fun findDisplayItem(
                 .mapNotNull { it.data as? StatefulButtonData }
                 .firstOrNull { it.id == visibility.ref.buttonDataId }
                 ?: return null
-            val index = stateToIndex[data] ?: 0
+            val index = stateToIndex[data.id] ?: 0
             data.keyStates[index].keyData.id == visibility.ref.keyDataId
         }
 
@@ -39,7 +39,7 @@ private fun findDisplayItem(
 @Composable
 internal fun BoxWithConstraintsScope.DisplayItemsComposable(
     pageLayout: PageLayout,
-    stateToIndex: Map<StatefulButtonData, Int>,
+    stateToIndex: Map<String, Int>,
 ) {
     val display = pageLayout.display ?: return
     DisplayComposable(display) {

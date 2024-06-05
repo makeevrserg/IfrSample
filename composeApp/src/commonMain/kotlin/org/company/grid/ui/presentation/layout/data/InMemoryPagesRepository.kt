@@ -7,6 +7,8 @@ import kotlinx.serialization.json.Json
 import org.company.grid.model.PagesLayout
 import org.company.grid.ui.presentation.layout.kitchen.KitchenLayoutFactory
 import java.io.File
+import org.company.grid.ui.presentation.layout.fan.FanLayoutFactory
+import org.company.grid.ui.presentation.layout.fan.components.FanDisplayItemsFactory
 
 object InMemoryPagesRepository : PagesRepository {
     private val json = Json {
@@ -15,7 +17,7 @@ object InMemoryPagesRepository : PagesRepository {
     }
 
     override fun pagesFlow(): Flow<PagesLayout> = flow {
-        val pagesLayout = KitchenLayoutFactory.create()
+        val pagesLayout = FanLayoutFactory.create()
         val file = File("./temp_json.json")
         if (!file.exists()) file.createNewFile()
         file.writeText(json.encodeToString(pagesLayout))
