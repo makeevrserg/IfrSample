@@ -11,12 +11,11 @@ import org.company.grid.model.IfrKeyState
 import org.company.grid.model.PagesLayout
 import org.company.grid.model.buttondata.StatefulButtonData
 import org.company.grid.ui.presentation.layout.data.InMemoryPagesRepository
-import org.company.grid.ui.presentation.layout.data.LookupPagesRepository
 import org.company.grid.ui.presentation.layout.data.PagesRepository
 
 class GridViewModel : CoroutineScope by IoCoroutineScope() {
-    private val pagesRepository: PagesRepository = LookupPagesRepository
-//    private val pagesRepository: PagesRepository = InMemoryPagesRepository
+//    private val pagesRepository: PagesRepository = LookupPagesRepository
+    private val pagesRepository: PagesRepository = InMemoryPagesRepository
     val layout = MutableStateFlow(Model())
 
     fun onStateButtonClicked(button: IfrButton, ifrKeyState: IfrKeyState) {
