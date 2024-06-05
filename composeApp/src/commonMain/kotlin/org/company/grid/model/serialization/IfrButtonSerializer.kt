@@ -6,6 +6,7 @@ import kotlinx.serialization.descriptors.buildClassSerialDescriptor
 import kotlinx.serialization.descriptors.element
 import kotlinx.serialization.encoding.Decoder
 import kotlinx.serialization.encoding.Encoder
+import kotlinx.serialization.json.Json
 import kotlinx.serialization.json.JsonObject
 import org.company.grid.model.IfrButton
 import org.company.grid.model.RawIfrButton
@@ -20,13 +21,25 @@ internal object IfrButtonSerializer : KSerializer<IfrButton> {
         }
     )
 
+    private val json: Json = Json {
+        encodeDefaults = true
+    }
+
     override fun deserialize(decoder: Decoder): IfrButton {
         val rawIfrButton = RawIfrButton.serializer().deserialize(decoder)
-        return RawIfrButtonMapper.toIfrButton(rawIfrButton)
+        return IfrButton(
+            data = ButtonDataDecoder(json).decode(rawIfrButton.data),
+            position = rawIfrButton.position,
+            size = rawIfrButton.size
+        )
     }
 
     override fun serialize(encoder: Encoder, value: IfrButton) {
-        val rawIfrButton = RawIfrButtonMapper.fromIfrButton(value)
+        val rawIfrButton = RawIfrButton(
+            data = ButtonDataEncoder(json).encode(value.data),
+            position = value.position,
+            size = value.size
+        )
         RawIfrButton.serializer().serialize(encoder, rawIfrButton)
     }
 }
