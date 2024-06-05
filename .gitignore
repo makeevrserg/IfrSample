@@ -14,3 +14,6 @@ xcuserdata/
 Pods/
 *.jks
 *yarn.lock
+components/controllers/model/build
+components/controllers/ui/build
+components/core/theme/build

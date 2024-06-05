@@ -1,5 +1,4 @@
 rootProject.name = "Multiplatform-App"
-include(":composeApp")
 
 pluginManagement {
     repositories {
@@ -15,3 +14,10 @@ dependencyResolutionManagement {
         mavenCentral()
     }
 }
+
+enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
+
+include(":components:controllers:model")
+include(":components:controllers:ui")
+include(":components:core:theme")
+include("composeApp")

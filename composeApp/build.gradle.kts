@@ -30,6 +30,10 @@ kotlin {
             implementation(libs.composeImageLoader)
             implementation(libs.kotlinx.coroutines.core)
             implementation(libs.kotlin.serialization.json)
+            // Local
+            implementation(projects.components.core.theme)
+            implementation(projects.components.controllers.ui)
+            implementation(projects.components.controllers.model)
         }
 
         commonTest.dependencies {
