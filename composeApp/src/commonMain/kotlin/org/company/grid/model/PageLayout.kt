@@ -5,8 +5,6 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 data class PageLayout(
-    @SerialName("display")
-    val display: Display? = null,
     @SerialName("buttons")
     val buttons: List<IfrButton>
 )

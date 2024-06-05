@@ -5,39 +5,19 @@ import androidx.compose.ui.graphics.Color
 import org.company.core.ui.button.core.SquareIconButton
 import org.company.core.ui.button.core.TextButton
 import org.company.grid.model.IfrKeyData
-import org.company.grid.model.IfrKeyState
 import org.company.grid.model.buttondata.Base64ImageButtonData
 import org.company.grid.model.buttondata.ButtonData
 import org.company.grid.model.buttondata.ChannelButtonData
 import org.company.grid.model.buttondata.IconButtonData
 import org.company.grid.model.buttondata.NavigationButtonData
-import org.company.grid.model.buttondata.StatefulButtonData
-import org.company.grid.model.buttondata.StatefulDoubleButtonData
 import org.company.grid.model.buttondata.TextButtonData
 import org.company.grid.model.buttondata.UnknownButtonData
 import org.company.grid.model.buttondata.VolumeButtonData
-
-private fun getNextKeyState(
-    stateToIndex: Map<String, Int>,
-    buttonData: StatefulButtonData,
-    increment: Int
-): IfrKeyState {
-    val nextValue = (stateToIndex[buttonData.id] ?: 0) + increment
-    return if (nextValue < 0) {
-        buttonData.keyStates[buttonData.keyStates.size - 1]
-    } else if (nextValue >= buttonData.keyStates.size) {
-        buttonData.keyStates.first()
-    } else {
-        buttonData.keyStates[nextValue % buttonData.keyStates.size]
-    }
-}
 
 @Composable
 internal fun ButtonItemComposable(
     buttonData: ButtonData,
     onKeyDataClicked: (IfrKeyData) -> Unit,
-    onKeyStateClicked: (IfrKeyState) -> Unit,
-    stateToIndex: Map<String, Int>
 ) {
     when (buttonData) {
         is IconButtonData -> {
@@ -85,70 +65,6 @@ internal fun ButtonItemComposable(
 
         UnknownButtonData -> {
             UnknownButton { }
-        }
-
-        is StatefulButtonData.StatefulBase64ImageButtonData -> {
-            Base64ImageButton(
-                base64Icon = buttonData.base64Image,
-                onClick = {
-                    val keyState = getNextKeyState(
-                        stateToIndex = stateToIndex,
-                        buttonData = buttonData,
-                        increment = 1
-                    )
-                    onKeyStateClicked.invoke(keyState)
-                }
-            )
-        }
-
-        is StatefulButtonData.StatefulIconButtonData -> {
-            SquareIconButton(buttonData.iconType) {
-                val keyState = getNextKeyState(
-                    stateToIndex = stateToIndex,
-                    buttonData = buttonData,
-                    increment = 1
-                )
-                onKeyStateClicked.invoke(keyState)
-            }
-        }
-
-        is StatefulButtonData.StatefulTextButtonData -> {
-            TextButton(
-                onClick = {
-                    val keyState = getNextKeyState(
-                        stateToIndex = stateToIndex,
-                        buttonData = buttonData,
-                        increment = 1
-                    )
-                    onKeyStateClicked.invoke(keyState)
-                },
-                text = buttonData.text,
-                background = Color(0xFF303030)
-            )
-        }
-
-        is StatefulDoubleButtonData -> {
-            DoubleButton(
-                onFirstClicked = {
-                    val keyState = getNextKeyState(
-                        stateToIndex = stateToIndex,
-                        buttonData = buttonData,
-                        increment = 1
-                    )
-                    onKeyStateClicked.invoke(keyState)
-                },
-                onLastClicked = {
-                    val keyState = getNextKeyState(
-                        stateToIndex = stateToIndex,
-                        buttonData = buttonData,
-                        increment = -1
-                    )
-                    onKeyStateClicked.invoke(keyState)
-                },
-                text = buttonData.text,
-                firstText = "+",
-                lastText = "-"
-            )
         }
     }
 }

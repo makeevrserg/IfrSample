@@ -9,8 +9,6 @@ import org.company.grid.model.buttondata.ButtonData
 import org.company.grid.model.buttondata.ChannelButtonData
 import org.company.grid.model.buttondata.IconButtonData
 import org.company.grid.model.buttondata.NavigationButtonData
-import org.company.grid.model.buttondata.StatefulButtonData
-import org.company.grid.model.buttondata.StatefulDoubleButtonData
 import org.company.grid.model.buttondata.TextButtonData
 import org.company.grid.model.buttondata.UnknownButtonData
 import org.company.grid.model.buttondata.VolumeButtonData
@@ -48,28 +46,8 @@ internal class ButtonDataEncoder(private val json: Json) {
                 json.encodeToJsonElement(buttonData)
             }
 
-            ButtonData.ButtonType.STATEFUL_ICON -> {
-                buttonData as StatefulButtonData.StatefulIconButtonData
-                json.encodeToJsonElement(buttonData)
-            }
-
-            ButtonData.ButtonType.STATEFUL_BASE64 -> {
-                buttonData as StatefulButtonData.StatefulBase64ImageButtonData
-                json.encodeToJsonElement(buttonData)
-            }
-
-            ButtonData.ButtonType.STATEFUL_TEXT -> {
-                buttonData as StatefulButtonData.StatefulTextButtonData
-                json.encodeToJsonElement(buttonData)
-            }
-
             ButtonData.ButtonType.ICON -> {
                 buttonData as IconButtonData
-                json.encodeToJsonElement(buttonData)
-            }
-
-            ButtonData.ButtonType.STATEFUL_TEMPERATURE -> {
-                buttonData as StatefulDoubleButtonData
                 json.encodeToJsonElement(buttonData)
             }
         }.jsonObject

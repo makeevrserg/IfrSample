@@ -10,7 +10,6 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import org.company.grid.ui.content.ButtonsComposable
-import org.company.grid.ui.content.DisplayItemsComposable
 import org.company.grid.ui.presentation.GridViewModel
 
 @Composable
@@ -26,16 +25,10 @@ fun GridComposable(gridViewModel: GridViewModel) {
                     modifier = Modifier.fillMaxSize(),
                     contentAlignment = Alignment.TopStart,
                     content = {
-                        DisplayItemsComposable(
-                            pageLayout = currentPage,
-                            stateToIndex = layout.stateToIndex
-                        )
                         ButtonsComposable(
                             pageLayout = currentPage,
                             scaffoldState = scaffoldState,
-                            onButtonClicked = gridViewModel::onButtonClicked,
-                            onStateButtonClicked = gridViewModel::onStateButtonClicked,
-                            stateToIndex = layout.stateToIndex
+                            onButtonClicked = {},
                         )
                     }
                 )

@@ -5,16 +5,12 @@ import kotlinx.serialization.Serializable
 
 @Serializable
 sealed interface IfrKeyData {
-    val id: String
-
     /**
      * SHA-256 of raw data
      */
     @SerialName("RAW_DATA_HASH")
     @Serializable
     class RawDataHash(
-        @SerialName("id")
-        override val id: String,
         @SerialName("value")
         val value: String
     ) : IfrKeyData
@@ -22,8 +18,6 @@ sealed interface IfrKeyData {
     @SerialName("ADDRESS_HASH")
     @Serializable
     class AddressHash(
-        @SerialName("id")
-        override val id: String,
         @SerialName("value")
         val value: String
     ) : IfrKeyData

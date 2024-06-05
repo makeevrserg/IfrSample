@@ -22,7 +22,6 @@ object KitchenLayoutFactory {
                         IfrButton(
                             data = IconButtonData(
                                 keyData = IfrKeyData.RawDataHash(
-                                    id = "power",
                                     value = "power"
                                 ),
                                 iconType = IconButtonData.IconType.POWER
@@ -38,9 +37,7 @@ object KitchenLayoutFactory {
                         // First
                         IfrButton(
                             data = TextButtonData(
-
                                 keyData = IfrKeyData.RawDataHash(
-                                    id = "power2",
                                     value = "power"
                                 ),
                                 text = "PWR"
@@ -49,9 +46,7 @@ object KitchenLayoutFactory {
                         ).run(::add)
                         IfrButton(
                             data = TextButtonData(
-
                                 keyData = IfrKeyData.RawDataHash(
-                                    id = "menu",
                                     value = "menu"
                                 ),
                                 text = "MENU"
@@ -61,7 +56,6 @@ object KitchenLayoutFactory {
                         IfrButton(
                             data = Base64ImageButtonData(
                                 keyData = IfrKeyData.RawDataHash(
-                                    id = "image",
                                     value = "sample"
                                 ),
                                 base64Image = GridConstants.TEMP_BASE64_IMAGE
@@ -70,9 +64,7 @@ object KitchenLayoutFactory {
                         ).run(::add)
                         IfrButton(
                             data = TextButtonData(
-
                                 keyData = IfrKeyData.RawDataHash(
-                                    id = "tv_av",
                                     value = "tv_av"
                                 ),
                                 text = "TV/AV"
@@ -83,7 +75,6 @@ object KitchenLayoutFactory {
                         IfrButton(
                             data = IconButtonData(
                                 keyData = IfrKeyData.RawDataHash(
-                                    id = "info",
                                     value = "info"
                                 ),
                                 iconType = IconButtonData.IconType.INFO
@@ -92,9 +83,7 @@ object KitchenLayoutFactory {
                         ).run(::add)
                         IfrButton(
                             data = IconButtonData(
-
                                 keyData = IfrKeyData.RawDataHash(
-                                    id = "home",
                                     value = "home"
                                 ),
                                 iconType = IconButtonData.IconType.HOME
@@ -103,9 +92,7 @@ object KitchenLayoutFactory {
                         ).run(::add)
                         IfrButton(
                             data = IconButtonData(
-
                                 keyData = IfrKeyData.RawDataHash(
-                                    id = "back",
                                     value = "back"
                                 ),
                                 iconType = IconButtonData.IconType.BACK
@@ -114,9 +101,7 @@ object KitchenLayoutFactory {
                         ).run(::add)
                         IfrButton(
                             data = IconButtonData(
-
                                 keyData = IfrKeyData.RawDataHash(
-                                    id = "more",
                                     value = "more"
                                 ),
                                 iconType = IconButtonData.IconType.MORE
@@ -126,25 +111,19 @@ object KitchenLayoutFactory {
                         // Nav
                         IfrButton(
                             data = NavigationButtonData(
-
                                 up = IfrKeyData.RawDataHash(
-                                    id = "nav_up",
                                     value = "up"
                                 ),
                                 left = IfrKeyData.RawDataHash(
-                                    id = "nav_left",
                                     value = "left"
                                 ),
                                 down = IfrKeyData.RawDataHash(
-                                    id = "nav_down",
                                     value = "down"
                                 ),
                                 right = IfrKeyData.RawDataHash(
-                                    id = "nav_right",
                                     value = "right"
                                 ),
                                 ok = IfrKeyData.RawDataHash(
-                                    id = "nav_ok",
                                     value = "ok"
                                 )
                             ),
@@ -157,13 +136,10 @@ object KitchenLayoutFactory {
                         // Channel Volume
                         IfrButton(
                             data = ChannelButtonData(
-
                                 add = IfrKeyData.RawDataHash(
-                                    id = "channels_min",
                                     value = "ch+"
                                 ),
                                 reduce = IfrKeyData.RawDataHash(
-                                    id = "channels_more",
                                     value = "ch-"
                                 ),
                             ),
@@ -175,13 +151,10 @@ object KitchenLayoutFactory {
                         ).run(::add)
                         IfrButton(
                             data = VolumeButtonData(
-
                                 add = IfrKeyData.RawDataHash(
-                                    id = "volumes_plus",
                                     value = "vol+"
                                 ),
                                 reduce = IfrKeyData.RawDataHash(
-                                    id = "volumes_minus",
                                     value = "vol-"
                                 )
                             ),
@@ -194,9 +167,7 @@ object KitchenLayoutFactory {
                         // Bottom Button
                         IfrButton(
                             data = TextButtonData(
-
                                 keyData = IfrKeyData.RawDataHash(
-                                    id = "123",
                                     value = "123"
                                 ),
                                 text = "123"
@@ -205,9 +176,7 @@ object KitchenLayoutFactory {
                         ).run(::add)
                         IfrButton(
                             data = IconButtonData(
-
                                 keyData = IfrKeyData.RawDataHash(
-                                    id = "mute",
                                     value = "mute"
                                 ),
                                 iconType = IconButtonData.IconType.MUTE
