@@ -1,4 +1,4 @@
-rootProject.name = "Multiplatform-App"
+rootProject.name = "FlipperIFRSample"
 
 pluginManagement {
     repositories {
