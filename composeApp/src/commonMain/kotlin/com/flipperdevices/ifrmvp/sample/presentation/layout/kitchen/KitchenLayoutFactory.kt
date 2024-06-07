@@ -2,7 +2,7 @@ package com.flipperdevices.ifrmvp.sample.presentation.layout.kitchen
 
 import com.flipperdevices.ifrmvp.core.ui.util.GridConstants
 import com.flipperdevices.ifrmvp.model.IfrButton
-import com.flipperdevices.ifrmvp.model.IfrKeyData
+import com.flipperdevices.ifrmvp.model.IfrKeyIdentifier
 import com.flipperdevices.ifrmvp.model.PageLayout
 import com.flipperdevices.ifrmvp.model.PagesLayout
 import com.flipperdevices.ifrmvp.model.buttondata.Base64ImageButtonData
@@ -21,24 +21,26 @@ object KitchenLayoutFactory {
                         // Sample Text Button
                         IfrButton(
                             data = IconButtonData(
-                                keyData = IfrKeyData.RawDataHash(
-                                    value = "power"
+                                keyIdentifier = IfrKeyIdentifier.Sha256(
+                                    name = "power",
+                                    sha256String = "60d18bb96f05eee3bde60a0c3f87b13f74b0c4d3d934d659ef7738f415881740"
                                 ),
-                                iconType = IconButtonData.IconType.POWER
+                                iconId = IconButtonData.IconType.POWER
                             ),
                             position = IfrButton.Position(
                                 x = 1f,
                                 y = 0f,
                                 zIndex = 10f,
                                 alignment = IfrButton.Alignment.CENTER,
+                                containerWidth = 2f,
                             ),
-                            size = IfrButton.Size(2f)
                         ).run(::add)
                         // First
                         IfrButton(
                             data = TextButtonData(
-                                keyData = IfrKeyData.RawDataHash(
-                                    value = "power"
+                                keyIdentifier = IfrKeyIdentifier.Sha256(
+                                    name = "power",
+                                    sha256String = "60d18bb96f05eee3bde60a0c3f87b13f74b0c4d3d934d659ef7738f415881740"
                                 ),
                                 text = "PWR"
                             ),
@@ -46,8 +48,9 @@ object KitchenLayoutFactory {
                         ).run(::add)
                         IfrButton(
                             data = TextButtonData(
-                                keyData = IfrKeyData.RawDataHash(
-                                    value = "menu"
+                                keyIdentifier = IfrKeyIdentifier.Sha256(
+                                    name = "menu",
+                                    sha256String = "60d18bb96f05eee3bde60a0c3f87b13f74b0c4d3d934d659ef7738f415881740"
                                 ),
                                 text = "MENU"
                             ),
@@ -55,8 +58,9 @@ object KitchenLayoutFactory {
                         ).run(::add)
                         IfrButton(
                             data = Base64ImageButtonData(
-                                keyData = IfrKeyData.RawDataHash(
-                                    value = "sample"
+                                keyIdentifier = IfrKeyIdentifier.Sha256(
+                                    name = "power",
+                                    sha256String = "60d18bb96f05eee3bde60a0c3f87b13f74b0c4d3d934d659ef7738f415881740"
                                 ),
                                 base64Image = GridConstants.TEMP_BASE64_IMAGE
                             ),
@@ -64,8 +68,9 @@ object KitchenLayoutFactory {
                         ).run(::add)
                         IfrButton(
                             data = TextButtonData(
-                                keyData = IfrKeyData.RawDataHash(
-                                    value = "tv_av"
+                                keyIdentifier = IfrKeyIdentifier.Sha256(
+                                    name = "tv_av",
+                                    sha256String = "60d18bb96f05eee3bde60a0c3f87b13f74b0c4d3d934d659ef7738f415881740"
                                 ),
                                 text = "TV/AV"
                             ),
@@ -74,101 +79,121 @@ object KitchenLayoutFactory {
                         // Second
                         IfrButton(
                             data = IconButtonData(
-                                keyData = IfrKeyData.RawDataHash(
-                                    value = "info"
+                                keyIdentifier = IfrKeyIdentifier.Sha256(
+                                    name = "info",
+                                    sha256String = "60d18bb96f05eee3bde60a0c3f87b13f74b0c4d3d934d659ef7738f415881740"
                                 ),
-                                iconType = IconButtonData.IconType.INFO
+                                iconId = IconButtonData.IconType.INFO
                             ),
                             position = IfrButton.Position(1f, 0f)
                         ).run(::add)
                         IfrButton(
                             data = IconButtonData(
-                                keyData = IfrKeyData.RawDataHash(
-                                    value = "home"
+                                keyIdentifier = IfrKeyIdentifier.Sha256(
+                                    name = "hm",
+                                    sha256String = "60d18bb96f05eee3bde60a0c3f87b13f74b0c4d3d934d659ef7738f415881740"
                                 ),
-                                iconType = IconButtonData.IconType.HOME
+                                iconId = IconButtonData.IconType.HOME
                             ),
                             position = IfrButton.Position(1f, 1f)
                         ).run(::add)
                         IfrButton(
                             data = IconButtonData(
-                                keyData = IfrKeyData.RawDataHash(
-                                    value = "back"
+                                keyIdentifier = IfrKeyIdentifier.Sha256(
+                                    name = "back",
+                                    sha256String = "60d18bb96f05eee3bde60a0c3f87b13f74b0c4d3d934d659ef7738f415881740"
                                 ),
-                                iconType = IconButtonData.IconType.BACK
+                                iconId = IconButtonData.IconType.BACK
                             ),
                             position = IfrButton.Position(1f, 3f)
                         ).run(::add)
                         IfrButton(
                             data = IconButtonData(
-                                keyData = IfrKeyData.RawDataHash(
-                                    value = "more"
+                                keyIdentifier = IfrKeyIdentifier.Sha256(
+                                    name = "more",
+                                    sha256String = "60d18bb96f05eee3bde60a0c3f87b13f74b0c4d3d934d659ef7738f415881740"
                                 ),
-                                iconType = IconButtonData.IconType.MORE
+                                iconId = IconButtonData.IconType.MORE
                             ),
                             position = IfrButton.Position(1f, 4f)
                         ).run(::add)
                         // Nav
                         IfrButton(
                             data = NavigationButtonData(
-                                up = IfrKeyData.RawDataHash(
-                                    value = "up"
+                                upKeyIdentifier = IfrKeyIdentifier.Sha256(
+                                    name = "up",
+                                    sha256String = "60d18bb96f05eee3bde60a0c3f87b13f74b0c4d3d934d659ef7738f415881740"
                                 ),
-                                left = IfrKeyData.RawDataHash(
-                                    value = "left"
+                                leftKeyIdentifier = IfrKeyIdentifier.Sha256(
+                                    name = "left",
+                                    sha256String = "60d18bb96f05eee3bde60a0c3f87b13f74b0c4d3d934d659ef7738f415881740"
                                 ),
-                                down = IfrKeyData.RawDataHash(
-                                    value = "down"
+                                downKeyIdentifier = IfrKeyIdentifier.Sha256(
+                                    name = "down",
+                                    sha256String = "60d18bb96f05eee3bde60a0c3f87b13f74b0c4d3d934d659ef7738f415881740"
                                 ),
-                                right = IfrKeyData.RawDataHash(
-                                    value = "right"
+                                rightKeyIdentifier = IfrKeyIdentifier.Sha256(
+                                    name = "right",
+                                    sha256String = "60d18bb96f05eee3bde60a0c3f87b13f74b0c4d3d934d659ef7738f415881740"
                                 ),
-                                ok = IfrKeyData.RawDataHash(
-                                    value = "ok"
+                                okKeyIdentifier = IfrKeyIdentifier.Sha256(
+                                    name = "apply",
+                                    sha256String = "60d18bb96f05eee3bde60a0c3f87b13f74b0c4d3d934d659ef7738f415881740"
                                 )
                             ),
-                            position = IfrButton.Position(3f, 1f),
-                            size = IfrButton.Size(
-                                width = 3f,
-                                height = 3f
-                            )
+                            position = IfrButton.Position(
+                                y = 3f,
+                                x = 1f,
+                                containerWidth = 3f,
+                                containerHeight = 3f
+                            ),
+
                         ).run(::add)
                         // Channel Volume
                         IfrButton(
                             data = ChannelButtonData(
-                                add = IfrKeyData.RawDataHash(
-                                    value = "ch+"
+                                addKeyIdentifier = IfrKeyIdentifier.Sha256(
+                                    name = "ch+",
+                                    sha256String = "60d18bb96f05eee3bde60a0c3f87b13f74b0c4d3d934d659ef7738f415881740"
                                 ),
-                                reduce = IfrKeyData.RawDataHash(
-                                    value = "ch-"
+                                reduceKeyIdentifier = IfrKeyIdentifier.Sha256(
+                                    name = "ch-",
+                                    sha256String = "60d18bb96f05eee3bde60a0c3f87b13f74b0c4d3d934d659ef7738f415881740"
                                 ),
                             ),
-                            position = IfrButton.Position(7f, 0f),
-                            size = IfrButton.Size(
-                                width = 1f,
-                                height = 3f
-                            )
+                            position = IfrButton.Position(
+                                y = 7f,
+                                x = 0f,
+                                containerWidth = 1f,
+                                containerHeight = 3f
+                            ),
+
                         ).run(::add)
                         IfrButton(
                             data = VolumeButtonData(
-                                add = IfrKeyData.RawDataHash(
-                                    value = "vol+"
+                                addKeyIdentifier = IfrKeyIdentifier.Sha256(
+                                    name = "v+",
+                                    sha256String = "60d18bb96f05eee3bde60a0c3f87b13f74b0c4d3d934d659ef7738f415881740"
                                 ),
-                                reduce = IfrKeyData.RawDataHash(
-                                    value = "vol-"
+                                reduceKeyIdentifier = IfrKeyIdentifier.Sha256(
+                                    name = "v-",
+                                    sha256String = "60d18bb96f05eee3bde60a0c3f87b13f74b0c4d3d934d659ef7738f415881740"
                                 )
                             ),
-                            position = IfrButton.Position(7f, 4f),
-                            size = IfrButton.Size(
-                                width = 1f,
-                                height = 3f
-                            )
+                            position = IfrButton.Position(
+                                y = 7f,
+                                x = 4f,
+                                containerWidth = 1f,
+                                containerHeight = 3f
+                            ),
+
                         ).run(::add)
                         // Bottom Button
                         IfrButton(
                             data = TextButtonData(
-                                keyData = IfrKeyData.RawDataHash(
-                                    value = "123"
+                                keyIdentifier = IfrKeyIdentifier.Sha256(
+                                    name = "123",
+                                    sha256String = "60d18bb96f05eee3bde60a0c3f87b13f74b0c4d3d934d659ef7738f415881740"
                                 ),
                                 text = "123"
                             ),
@@ -176,10 +201,11 @@ object KitchenLayoutFactory {
                         ).run(::add)
                         IfrButton(
                             data = IconButtonData(
-                                keyData = IfrKeyData.RawDataHash(
-                                    value = "mute"
+                                keyIdentifier = IfrKeyIdentifier.Sha256(
+                                    name = "sound_toggle",
+                                    sha256String = "60d18bb96f05eee3bde60a0c3f87b13f74b0c4d3d934d659ef7738f415881740"
                                 ),
-                                iconType = IconButtonData.IconType.MUTE
+                                iconId = IconButtonData.IconType.MUTE
                             ),
                             position = IfrButton.Position(10f, 4f)
                         ).run(::add)

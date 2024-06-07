@@ -1,13 +1,13 @@
 package com.flipperdevices.ifrmvp.model.buttondata
 
-import com.flipperdevices.ifrmvp.model.IfrKeyData
+import com.flipperdevices.ifrmvp.model.IfrKeyIdentifier
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
 data class TextButtonData(
-    @SerialName("key_data")
-    override val keyData: IfrKeyData,
+    @SerialName("key_id")
+    override val keyIdentifier: IfrKeyIdentifier,
     @SerialName("text")
     val text: String
 ) : SingleKeyButtonData {

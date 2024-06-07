@@ -23,7 +23,6 @@ internal fun BoxWithConstraintsScope.ButtonsComposable(
             GridItemComposable(
                 modifier = Modifier,
                 position = button.position,
-                size = button.size,
                 content = {
                     ButtonItemComposable(
                         buttonData = button.data,

@@ -1,15 +1,15 @@
 package com.flipperdevices.ifrmvp.model.buttondata
 
-import com.flipperdevices.ifrmvp.model.IfrKeyData
+import com.flipperdevices.ifrmvp.model.IfrKeyIdentifier
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 
 @Serializable
 data class IconButtonData(
-    @SerialName("key_data")
-    override val keyData: IfrKeyData,
-    @SerialName("icon_type")
-    val iconType: IconType
+    @SerialName("key_id")
+    override val keyIdentifier: IfrKeyIdentifier,
+    @SerialName("icon_id")
+    val iconId: IconType
 ) : SingleKeyButtonData {
     override val type: ButtonData.ButtonType = ButtonData.ButtonType.ICON
 

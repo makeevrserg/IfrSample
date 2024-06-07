@@ -16,7 +16,6 @@ internal object IfrButtonSerializer : KSerializer<IfrButton> {
         serialName = "Flipper.IfrButton",
         builderAction = {
             element<IfrButton.Position>("position")
-            element<IfrButton.Size>("size")
             element<JsonObject>("data")
         }
     )
@@ -30,7 +29,6 @@ internal object IfrButtonSerializer : KSerializer<IfrButton> {
         return IfrButton(
             data = ButtonDataDecoder(json).decodeFromJsonObject(rawIfrButton.data),
             position = rawIfrButton.position,
-            size = rawIfrButton.size
         )
     }
 
@@ -38,7 +36,6 @@ internal object IfrButtonSerializer : KSerializer<IfrButton> {
         val rawIfrButton = RawIfrButton(
             data = ButtonDataEncoder(json).encodeToJsonObject(value.data),
             position = value.position,
-            size = value.size
         )
         RawIfrButton.serializer().serialize(encoder, rawIfrButton)
     }

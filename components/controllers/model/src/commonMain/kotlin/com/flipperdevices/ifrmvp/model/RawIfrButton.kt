@@ -15,6 +15,4 @@ data class RawIfrButton(
     val data: JsonObject,
     @SerialName("position")
     val position: IfrButton.Position,
-    @SerialName("size")
-    val size: IfrButton.Size = IfrButton.Size()
 )

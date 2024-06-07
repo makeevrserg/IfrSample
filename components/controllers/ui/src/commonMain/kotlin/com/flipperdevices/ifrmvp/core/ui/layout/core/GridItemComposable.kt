@@ -18,7 +18,6 @@ import com.flipperdevices.ifrmvp.model.IfrButton
 @Composable
 fun BoxWithConstraintsScope.GridItemComposable(
     position: IfrButton.Position,
-    size: IfrButton.Size,
     maxRows: Int = GridConstants.MAX_ROWS,
     maxColumns: Int = GridConstants.MAX_COLUMNS,
     maxWidth: Dp = GridConstants.MAX_WIDTH,
@@ -41,7 +40,7 @@ fun BoxWithConstraintsScope.GridItemComposable(
     )
     Box(
         modifier = modifier
-            .size(gridSize.width * size.width, gridSize.height * size.height)
+            .size(gridSize.width * position.containerWidth, gridSize.height * position.containerHeight)
             .offset(x = offset.x, y = offset.y)
             .background(Color(position.hashCode()).copy(alpha = .5f))
             .zIndex(position.zIndex),

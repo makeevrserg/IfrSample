@@ -11,8 +11,6 @@ data class IfrButton(
     val data: ButtonData,
     @SerialName("position")
     val position: Position,
-    @SerialName("position")
-    val size: Size = Size()
 ) {
     @Serializable
     data class Position(
@@ -23,15 +21,11 @@ data class IfrButton(
         @SerialName("alignment")
         val alignment: Alignment = Alignment.CENTER,
         @SerialName("z_index")
-        val zIndex: Float = 1f
-    )
-
-    @Serializable
-    data class Size(
-        @SerialName("width")
-        val width: Float = 1f,
-        @SerialName("height")
-        val height: Float = 1f
+        val zIndex: Float = 1f,
+        @SerialName("container_width")
+        val containerWidth: Float = 1f,
+        @SerialName("container_height")
+        val containerHeight: Float = 1f
     )
 
     @Serializable
