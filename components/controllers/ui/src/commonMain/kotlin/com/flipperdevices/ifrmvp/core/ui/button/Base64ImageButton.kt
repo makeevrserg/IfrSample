@@ -24,7 +24,7 @@ private fun resolveImage(imgBase64: String?): ByteArray? {
             }
         }
     } catch (e: Exception) {
-        throw Exception("Could not resolve image from base 64 string.", e)
+        error("Could not resolve image from base 64 string.")
     }
 }
 

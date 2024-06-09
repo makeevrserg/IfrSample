@@ -13,6 +13,8 @@ import com.flipperdevices.ifrmvp.model.buttondata.TextButtonData
 import com.flipperdevices.ifrmvp.model.buttondata.VolumeButtonData
 
 object KitchenLayoutFactory {
+    const val FILE_NAME: String = "KitchenLayout"
+
     fun create(): PagesLayout {
         return PagesLayout(
             pages = buildList {

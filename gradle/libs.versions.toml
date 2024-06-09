@@ -5,6 +5,7 @@ compose = "1.6.10"
 decompose = "2.2.2-compose-experimental"
 composeImageLoader = "1.7.8"
 kotlinx-coroutines = "1.8.1"
+kotlinx-io = "0.4.0"
 kotlin-serialization-json = "1.5.1"
 
 # klibs
@@ -20,6 +21,7 @@ kotlinx-coroutines-android = { module = "org.jetbrains.kotlinx:kotlinx-coroutine
 kotlinx-coroutines-swing = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-swing", version.ref = "kotlinx-coroutines" }
 kotlinx-coroutines-test = { module = "org.jetbrains.kotlinx:kotlinx-coroutines-test", version.ref = "kotlinx-coroutines" }
 kotlin-serialization-json = { module = "org.jetbrains.kotlinx:kotlinx-serialization-json", version.ref = "kotlin-serialization-json" }
+kotlinx-io = { module = "org.jetbrains.kotlinx:kotlinx-io-core", version.ref = "kotlinx-io" }
 
 [plugins]
 

@@ -10,6 +10,7 @@ plugins {
 
 kotlin {
     jvm()
+    iosX64()
 
     sourceSets {
         all {
@@ -23,13 +24,12 @@ kotlin {
             implementation(compose.material3)
             implementation(compose.materialIconsExtended)
             implementation(compose.components.resources)
-            implementation(compose.components.uiToolingPreview)
-            implementation(compose.uiTooling)
             implementation(libs.decompose)
             implementation(libs.decompose.compose)
             implementation(libs.composeImageLoader)
             implementation(libs.kotlinx.coroutines.core)
             implementation(libs.kotlin.serialization.json)
+            implementation(libs.kotlinx.io)
             // Local
             implementation(projects.components.core.theme)
             implementation(projects.components.controllers.ui)

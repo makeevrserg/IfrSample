@@ -7,6 +7,7 @@ plugins {
 
 kotlin {
     jvm()
+    iosX64()
     sourceSets {
         commonMain.dependencies {
             implementation(libs.kotlin.serialization.json)

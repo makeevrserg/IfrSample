@@ -9,6 +9,7 @@ plugins {
 
 kotlin {
     jvm()
+    iosX64()
     sourceSets {
         commonMain.dependencies {
             implementation(compose.runtime)
@@ -17,8 +18,6 @@ kotlin {
             implementation(compose.material3)
             implementation(compose.materialIconsExtended)
             implementation(compose.components.resources)
-            implementation(compose.components.uiToolingPreview)
-            implementation(compose.uiTooling)
             implementation(libs.decompose)
             implementation(libs.decompose.compose)
             implementation(libs.composeImageLoader)
