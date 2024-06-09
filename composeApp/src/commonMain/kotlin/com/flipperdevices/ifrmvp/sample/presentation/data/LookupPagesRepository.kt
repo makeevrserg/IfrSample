@@ -9,21 +9,21 @@ import kotlinx.coroutines.flow.flow
 import kotlinx.coroutines.isActive
 import kotlinx.serialization.json.Json
 
-object LookupPagesRepository : PagesRepository {
-    private val filesApi = FilesApiFactory.create()
-    private val json = Json {
-        isLenient = true
-        ignoreUnknownKeys = true
-    }
-
-    override fun pagesFlow(): Flow<PagesLayout> = flow {
-        while (currentCoroutineContext().isActive) {
-            val content = filesApi.readFile("./test_layout.json")
-            val pagesLayout = kotlin.runCatching {
-                json.decodeFromString<PagesLayout>(content)
-            }.getOrDefault(PagesLayout(emptyList()))
-            emit(pagesLayout)
-            delay(500L)
-        }
-    }
-}
+//object LookupPagesRepository : PagesRepository {
+//    private val filesApi = FilesApiFactory.create()
+//    private val json = Json {
+//        isLenient = true
+//        ignoreUnknownKeys = true
+//    }
+//
+//    override fun pagesFlow(): Flow<PagesLayout> = flow {
+//        while (currentCoroutineContext().isActive) {
+//            val content = filesApi.readFile("./test_layout.json")
+//            val pagesLayout = kotlin.runCatching {
+//                json.decodeFromString<PagesLayout>(content)
+//            }.getOrDefault(PagesLayout(emptyList()))
+//            emit(pagesLayout)
+//            delay(500L)
+//        }
+//    }
+//}

@@ -10,18 +10,18 @@
 		65A927DE2C15DB4100A5CF3E /* Application.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65A927DD2C15DB4100A5CF3E /* Application.swift */; };
 		65A927E02C15DB4100A5CF3E /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 65A927DF2C15DB4100A5CF3E /* ContentView.swift */; };
 		65A927E22C15DB4200A5CF3E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 65A927E12C15DB4200A5CF3E /* Assets.xcassets */; };
-		65A927EE2C15DBC800A5CF3E /* composeApp.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65A927ED2C15DBC800A5CF3E /* composeApp.xcframework */; };
-		65A927EF2C15DBC800A5CF3E /* composeApp.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 65A927ED2C15DBC800A5CF3E /* composeApp.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		65A927F52C15FFA700A5CF3E /* composeApp.xcframework in Frameworks */ = {isa = PBXBuildFile; fileRef = 65A927F42C15FFA700A5CF3E /* composeApp.xcframework */; };
+		65A927F62C15FFA700A5CF3E /* composeApp.xcframework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = 65A927F42C15FFA700A5CF3E /* composeApp.xcframework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
-		65A927F02C15DBC900A5CF3E /* Embed Frameworks */ = {
+		65A927F72C15FFA700A5CF3E /* Embed Frameworks */ = {
 			isa = PBXCopyFilesBuildPhase;
 			buildActionMask = 2147483647;
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				65A927EF2C15DBC800A5CF3E /* composeApp.xcframework in Embed Frameworks */,
+				65A927F62C15FFA700A5CF3E /* composeApp.xcframework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -34,6 +34,7 @@
 		65A927DF2C15DB4100A5CF3E /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		65A927E12C15DB4200A5CF3E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		65A927ED2C15DBC800A5CF3E /* composeApp.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = composeApp.xcframework; path = ../composeApp/build/XCFrameworks/debug/composeApp.xcframework; sourceTree = "<group>"; };
+		65A927F42C15FFA700A5CF3E /* composeApp.xcframework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcframework; name = composeApp.xcframework; path = ../composeApp/build/XCFrameworks/release/composeApp.xcframework; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -41,7 +42,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				65A927EE2C15DBC800A5CF3E /* composeApp.xcframework in Frameworks */,
+				65A927F52C15FFA700A5CF3E /* composeApp.xcframework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -78,6 +79,7 @@
 		65A927EC2C15DBC800A5CF3E /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				65A927F42C15FFA700A5CF3E /* composeApp.xcframework */,
 				65A927ED2C15DBC800A5CF3E /* composeApp.xcframework */,
 			);
 			name = Frameworks;
@@ -93,7 +95,7 @@
 				65A927D62C15DB4100A5CF3E /* Sources */,
 				65A927D72C15DB4100A5CF3E /* Frameworks */,
 				65A927D82C15DB4100A5CF3E /* Resources */,
-				65A927F02C15DBC900A5CF3E /* Embed Frameworks */,
+				65A927F72C15FFA700A5CF3E /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
