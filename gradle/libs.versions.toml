@@ -1,7 +1,7 @@
 [versions]
 
 kotlin = "2.0.0"
-compose = "1.6.10"
+compose = "1.6.11"
 decompose = "2.2.2-compose-experimental"
 composeImageLoader = "1.7.8"
 kotlinx-coroutines = "1.8.1"
