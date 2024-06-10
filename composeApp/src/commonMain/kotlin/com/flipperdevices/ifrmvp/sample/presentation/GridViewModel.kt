@@ -5,6 +5,7 @@ import com.flipperdevices.ifrmvp.model.PagesLayout
 import com.flipperdevices.ifrmvp.sample.presentation.data.InMemoryPagesRepository
 import com.flipperdevices.ifrmvp.sample.presentation.data.PagesRepository
 import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.delay
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.launchIn
 import kotlinx.coroutines.flow.onEach
@@ -18,7 +19,11 @@ class GridViewModel : CoroutineScope by IoCoroutineScope() {
     init {
         pagesRepository
             .pagesFlow()
-            .onEach { pagesLayout -> layout.update { model -> model.copy(pagesLayout = pagesLayout) } }
+            .onEach { pagesLayout ->
+                delay(3000)
+                print("Update pages")
+                layout.update { model -> model.copy(pagesLayout = pagesLayout) }
+            }
             .launchIn(this)
     }
 
