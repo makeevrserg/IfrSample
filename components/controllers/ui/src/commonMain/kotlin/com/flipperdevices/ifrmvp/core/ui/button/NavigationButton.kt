@@ -23,6 +23,7 @@ import androidx.compose.ui.graphics.vector.rememberVectorPainter
 import androidx.compose.ui.unit.dp
 import com.flipperdevices.ifrmvp.core.ui.util.GridConstants
 
+@Suppress("LongMethod")
 @Composable
 fun NavigationButton(
     background: Color = Color(0xFF303030),

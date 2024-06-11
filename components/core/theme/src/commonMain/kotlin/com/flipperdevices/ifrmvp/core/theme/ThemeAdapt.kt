@@ -29,7 +29,7 @@ private fun Material2ThemeAdapt(theme: Material2Theme, content: @Composable () -
 
 @Composable
 fun AdaptThemeFade(
-    composeTheme: ComposeTheme = ComposeTheme.DARK,
+    composeTheme: ComposeTheme = ComposeTheme.LIGHT,
     content: @Composable () -> Unit
 ) {
     val appTheme = when (composeTheme) {

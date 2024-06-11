@@ -14,8 +14,8 @@ const val PNG_BASE64_HEADER = "data:image/png;base64,"
 
 @OptIn(ExperimentalEncodingApi::class)
 private fun resolveImage(imgBase64: String?): ByteArray? {
-    try {
-        return imgBase64?.let {
+    return runCatching {
+        imgBase64?.let {
             if (it.startsWith(PNG_BASE64_HEADER)) {
                 Base64.Default.decode(it.replaceFirst(PNG_BASE64_HEADER, ""))
             } else {
@@ -23,9 +23,7 @@ private fun resolveImage(imgBase64: String?): ByteArray? {
                 null
             }
         }
-    } catch (e: Exception) {
-        error("Could not resolve image from base 64 string.")
-    }
+    }.onFailure { error("Could not resolve image from base 64 string.") }.getOrThrow()
 }
 
 private fun imageBitmapFromBytes(encodedImageData: ByteArray): ImageBitmap {
