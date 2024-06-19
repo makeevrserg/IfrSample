@@ -13,15 +13,15 @@ internal class LocalDeviceCategoriesRepository(
         withContext(dispatchers.IO) {
             delay(300L) // todo debug-only
             listOf(
-                DeviceCategory("TV", DeviceCategoryType.TV),
-                DeviceCategory("Air Conditioner", DeviceCategoryType.AIR_CONDITIONER),
-                DeviceCategory("Set-top Box", DeviceCategoryType.SET_TOP_BOX),
-                DeviceCategory("Camera", DeviceCategoryType.CAMERA),
-                DeviceCategory("Fan", DeviceCategoryType.FAN),
-                DeviceCategory("A/V Receiver", DeviceCategoryType.A_V_RECEIVER),
-                DeviceCategory("DVD Player", DeviceCategoryType.DVD_PLAYER),
-                DeviceCategory("Smart Box", DeviceCategoryType.SMART_BOX),
-                DeviceCategory("Projector", DeviceCategoryType.PROJECTOR),
+                DeviceCategory(1, "TV", DeviceCategoryType.TV),
+                DeviceCategory(2, "Air Conditioner", DeviceCategoryType.AIR_CONDITIONER),
+                DeviceCategory(3, "Set-top Box", DeviceCategoryType.SET_TOP_BOX),
+                DeviceCategory(4, "Camera", DeviceCategoryType.CAMERA),
+                DeviceCategory(5, "Fan", DeviceCategoryType.FAN),
+                DeviceCategory(6, "A/V Receiver", DeviceCategoryType.A_V_RECEIVER),
+                DeviceCategory(7, "DVD Player", DeviceCategoryType.DVD_PLAYER),
+                DeviceCategory(8, "Smart Box", DeviceCategoryType.SMART_BOX),
+                DeviceCategory(9, "Projector", DeviceCategoryType.PROJECTOR),
             )
         }
     }.onFailure(Throwable::printStackTrace)

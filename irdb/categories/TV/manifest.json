@@ -1,0 +1,6 @@
+{
+  "id": "tv",
+  "display_name": "TV",
+  "icon_id": "TV",
+  "icon_ref": "./assets/icons/tv.svg"
+}

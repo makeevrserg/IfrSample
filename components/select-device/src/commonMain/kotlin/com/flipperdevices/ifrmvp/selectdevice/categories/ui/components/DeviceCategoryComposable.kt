@@ -85,6 +85,7 @@ private fun DeviceCategoryComposablePreview() {
     AdaptThemeFade {
         DeviceCategoryComposable(
             deviceCategory = DeviceCategory(
+                id = 1,
                 name = "TV",
                 type = DeviceCategoryType.TV
             ),

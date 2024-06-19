@@ -36,7 +36,8 @@ kotlin {
             implementation(libs.decompose)
             implementation(libs.decompose.compose)
             implementation(libs.composeImageLoader)
-            // mikro
+            // klibs
+            implementation(libs.klibs.paging)
             implementation(libs.klibs.mikro.core)
             implementation(libs.klibs.mikro.extensions)
             // kotlinx
