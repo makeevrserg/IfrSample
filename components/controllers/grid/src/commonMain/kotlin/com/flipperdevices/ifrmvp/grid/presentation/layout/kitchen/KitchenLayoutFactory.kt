@@ -65,7 +65,7 @@ internal object KitchenLayoutFactory {
                                     name = "power",
                                     sha256String = "60d18bb96f05eee3bde60a0c3f87b13f74b0c4d3d934d659ef7738f415881740"
                                 ),
-                                base64Image = GridConstants.TEMP_BASE64_IMAGE
+                                pngBase64 = GridConstants.TEMP_BASE64_IMAGE
                             ),
                             position = IfrButton.Position(2, 0, zIndex = 10f)
                         ).run(::add)

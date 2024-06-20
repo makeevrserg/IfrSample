@@ -58,7 +58,7 @@ fun ButtonItemComposable(
 
         is Base64ImageButtonData -> {
             Base64ImageButton(
-                base64Icon = buttonData.base64Image,
+                base64Icon = buttonData.pngBase64,
                 onClick = { onKeyDataClicked.invoke(buttonData.keyIdentifier) }
             )
         }

@@ -8,8 +8,8 @@ import kotlinx.serialization.Serializable
 data class Base64ImageButtonData(
     @SerialName("key_id")
     override val keyIdentifier: IfrKeyIdentifier,
-    @SerialName("base64_image")
-    val base64Image: String,
+    @SerialName("png_base64")
+    val pngBase64: String,
 ) : SingleKeyButtonData {
     override val type: ButtonData.ButtonType = ButtonData.ButtonType.BASE64_IMAGE
 }
