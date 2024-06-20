@@ -31,11 +31,11 @@ internal object KitchenLayoutFactory {
                                 iconId = IconButtonData.IconType.POWER
                             ),
                             position = IfrButton.Position(
-                                x = 1f,
-                                y = 0f,
+                                x = 1,
+                                y = 0,
                                 zIndex = 10f,
                                 alignment = IfrButton.Alignment.CENTER,
-                                containerWidth = 2f,
+                                containerWidth = 2,
                             ),
                         ).run(::add)
                         // First
@@ -47,7 +47,7 @@ internal object KitchenLayoutFactory {
                                 ),
                                 text = "PWR"
                             ),
-                            position = IfrButton.Position(0f, 0f)
+                            position = IfrButton.Position(0, 0)
                         ).run(::add)
                         IfrButton(
                             data = TextButtonData(
@@ -57,7 +57,7 @@ internal object KitchenLayoutFactory {
                                 ),
                                 text = "MENU"
                             ),
-                            position = IfrButton.Position(0f, 2f)
+                            position = IfrButton.Position(0, 2)
                         ).run(::add)
                         IfrButton(
                             data = Base64ImageButtonData(
@@ -67,7 +67,7 @@ internal object KitchenLayoutFactory {
                                 ),
                                 base64Image = GridConstants.TEMP_BASE64_IMAGE
                             ),
-                            position = IfrButton.Position(2f, 0f, zIndex = 10f)
+                            position = IfrButton.Position(2, 0, zIndex = 10f)
                         ).run(::add)
                         IfrButton(
                             data = TextButtonData(
@@ -77,7 +77,7 @@ internal object KitchenLayoutFactory {
                                 ),
                                 text = "TV/AV"
                             ),
-                            position = IfrButton.Position(0f, 4f)
+                            position = IfrButton.Position(0, 4)
                         ).run(::add)
                         // Second
                         IfrButton(
@@ -88,7 +88,7 @@ internal object KitchenLayoutFactory {
                                 ),
                                 iconId = IconButtonData.IconType.INFO
                             ),
-                            position = IfrButton.Position(1f, 0f)
+                            position = IfrButton.Position(1, 0)
                         ).run(::add)
                         IfrButton(
                             data = IconButtonData(
@@ -98,7 +98,7 @@ internal object KitchenLayoutFactory {
                                 ),
                                 iconId = IconButtonData.IconType.HOME
                             ),
-                            position = IfrButton.Position(1f, 1f)
+                            position = IfrButton.Position(1, 1)
                         ).run(::add)
                         IfrButton(
                             data = IconButtonData(
@@ -108,7 +108,7 @@ internal object KitchenLayoutFactory {
                                 ),
                                 iconId = IconButtonData.IconType.BACK
                             ),
-                            position = IfrButton.Position(1f, 3f)
+                            position = IfrButton.Position(1, 3)
                         ).run(::add)
                         IfrButton(
                             data = IconButtonData(
@@ -118,7 +118,7 @@ internal object KitchenLayoutFactory {
                                 ),
                                 iconId = IconButtonData.IconType.MORE
                             ),
-                            position = IfrButton.Position(1f, 4f)
+                            position = IfrButton.Position(1, 4)
                         ).run(::add)
                         // Nav
                         IfrButton(
@@ -145,10 +145,10 @@ internal object KitchenLayoutFactory {
                                 )
                             ),
                             position = IfrButton.Position(
-                                y = 3f,
-                                x = 1f,
-                                containerWidth = 3f,
-                                containerHeight = 3f
+                                y = 3,
+                                x = 1,
+                                containerWidth = 3,
+                                containerHeight = 3
                             ),
 
                         ).run(::add)
@@ -165,10 +165,10 @@ internal object KitchenLayoutFactory {
                                 ),
                             ),
                             position = IfrButton.Position(
-                                y = 7f,
-                                x = 0f,
-                                containerWidth = 1f,
-                                containerHeight = 3f
+                                y = 7,
+                                x = 0,
+                                containerWidth = 1,
+                                containerHeight = 3
                             ),
 
                         ).run(::add)
@@ -184,10 +184,10 @@ internal object KitchenLayoutFactory {
                                 )
                             ),
                             position = IfrButton.Position(
-                                y = 7f,
-                                x = 4f,
-                                containerWidth = 1f,
-                                containerHeight = 3f
+                                y = 7,
+                                x = 4,
+                                containerWidth = 1,
+                                containerHeight = 3
                             ),
 
                         ).run(::add)
@@ -200,7 +200,7 @@ internal object KitchenLayoutFactory {
                                 ),
                                 text = "123"
                             ),
-                            position = IfrButton.Position(10f, 0f)
+                            position = IfrButton.Position(10, 0)
                         ).run(::add)
                         IfrButton(
                             data = IconButtonData(
@@ -210,7 +210,7 @@ internal object KitchenLayoutFactory {
                                 ),
                                 iconId = IconButtonData.IconType.MUTE
                             ),
-                            position = IfrButton.Position(10f, 4f)
+                            position = IfrButton.Position(10, 4)
                         ).run(::add)
                     }
                 ).run(::add)

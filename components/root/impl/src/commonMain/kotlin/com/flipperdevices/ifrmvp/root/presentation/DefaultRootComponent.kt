@@ -24,7 +24,7 @@ internal class DefaultRootComponent(
 
     override val childStack: Value<ChildStack<RootRoute, RootComponent.RootChild>> = childStack(
         source = navigation,
-        initialConfiguration = RootRoute.SelectDevice,
+        initialConfiguration = RootRoute.Controller,
         handleBackButton = true,
         serializer = RootRoute.serializer(),
         childFactory = { config, childContext ->

@@ -5,6 +5,7 @@ import com.flipperdevices.ifrmvp.grid.presentation.layout.kitchen.KitchenLayoutF
 import com.flipperdevices.ifrmvp.model.PagesLayout
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.flow
+import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 
 @Suppress("UnusedPrivateMember")
@@ -18,7 +19,7 @@ internal object InMemoryPagesRepository : PagesRepository {
 
     override fun pagesFlow(): Flow<PagesLayout> = flow {
         val pagesLayout = factory.create()
-        // filesApi.recreateAndWrite("${factory.FILE_NAME}.json", json.encodeToString(pagesLayout))
+        filesApi.recreateAndWrite("${factory.FILE_NAME}.json", json.encodeToString(pagesLayout))
         emit(pagesLayout)
     }
 }

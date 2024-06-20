@@ -21,8 +21,8 @@ fun BoxWithConstraintsScope.rememberDpOffset(
     val calculatedHeight = this.maxHeight.coerceAtMost(maxHeight)
     return remember(calculatedWidth, calculatedHeight, position) {
         DpOffset(
-            calculatedWidth * (position.x / maxColumns),
-            calculatedHeight * (position.y / maxRows)
+            calculatedWidth * (position.x.toFloat() / maxColumns),
+            calculatedHeight * (position.y.toFloat() / maxRows)
         )
     }
 }

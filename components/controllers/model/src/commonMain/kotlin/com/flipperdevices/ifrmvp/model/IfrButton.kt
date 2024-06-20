@@ -15,17 +15,17 @@ data class IfrButton(
     @Serializable
     data class Position(
         @SerialName("y")
-        val y: Float,
+        val y: Int,
         @SerialName("x")
-        val x: Float,
+        val x: Int,
         @SerialName("alignment")
         val alignment: Alignment = Alignment.CENTER,
         @SerialName("z_index")
         val zIndex: Float = 1f,
         @SerialName("container_width")
-        val containerWidth: Float = 1f,
+        val containerWidth: Int = 1,
         @SerialName("container_height")
-        val containerHeight: Float = 1f
+        val containerHeight: Int = 1
     )
 
     @Serializable
