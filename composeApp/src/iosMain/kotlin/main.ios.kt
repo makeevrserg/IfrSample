@@ -3,7 +3,6 @@
 import androidx.compose.ui.window.ComposeUIViewController
 import com.arkivanov.decompose.DefaultComponentContext
 import com.arkivanov.essenty.lifecycle.LifecycleRegistry
-import com.flipperdevices.ifrmvp.core.theme.AdaptThemeFade
 import com.flipperdevices.ifrmvp.root.di.RootModule
 import com.flipperdevices.ifrmvp.root.ui.RootApplicationComposable
 import platform.UIKit.UIViewController
@@ -14,8 +13,6 @@ fun getViewController(): UIViewController {
     val rootComponentContext = DefaultComponentContext(lifecycle)
     val rootComponent = rootModule.createRootComponent(rootComponentContext)
     return ComposeUIViewController {
-        AdaptThemeFade {
-            RootApplicationComposable(rootComponent)
-        }
+        RootApplicationComposable(rootComponent)
     }
 }

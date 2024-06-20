@@ -12,6 +12,7 @@ import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
+import com.flipperdevices.core.ui.theme.LocalPalletV2
 import com.flipperdevices.ifrmvp.backend.model.DeviceCategory
 import com.flipperdevices.ifrmvp.selectdevice.categories.presentation.DeviceCategoriesComponent
 import com.flipperdevices.ifrmvp.selectdevice.categories.ui.components.DeviceCategoryComposable
@@ -48,16 +49,19 @@ fun DeviceCategoriesScreen(deviceCategoriesComponent: DeviceCategoriesComponent)
     Scaffold(
         topBar = {
             SharedTopBar(
-                title = "Select brand",
+                title = "Select Device",
                 subtitle = "Add remote",
                 onBackClicked = deviceCategoriesComponent::onBackClicked
             )
-        }
+        },
+        backgroundColor = LocalPalletV2.current.surface.backgroundMain.body
     ) { scaffoldPaddings ->
         Crossfade(model) { model ->
             when (model) {
                 DeviceCategoriesComponent.Model.Error -> {
-                    ErrorComposable()
+                    ErrorComposable {
+                        deviceCategoriesComponent.tryLoad()
+                    }
                 }
 
                 is DeviceCategoriesComponent.Model.Loaded -> {

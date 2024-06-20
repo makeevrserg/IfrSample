@@ -18,6 +18,8 @@ klibs-mikro = "1.8.2" # https://github.com/makeevrserg/klibs.mikro
 
 klibs-paging = "2.2.4" # https://github.com/makeevrserg/klibs.paging
 
+moko-network = "0.21.2"
+
 [libraries]
 klibs-mikro-core = { module = "ru.astrainteractive.klibs:mikro-core", version.ref = "klibs-mikro" }
 klibs-mikro-extensions = { module = "ru.astrainteractive.klibs:mikro-extensions", version.ref = "klibs-mikro" }
@@ -65,3 +67,5 @@ klibs-gradle-android-compose = { id = "ru.astrainteractive.gradleplugin.android.
 klibs-gradle-android-apk-sign = { id = "ru.astrainteractive.gradleplugin.android.apk.sign", version.ref = "klibs-gradleplugin" }
 klibs-gradle-android-apk-name = { id = "ru.astrainteractive.gradleplugin.android.apk.name", version.ref = "klibs-gradleplugin" }
 klibs-gradle-android-publication = { id = "ru.astrainteractive.gradleplugin.android.publication", version.ref = "klibs-gradleplugin" }
+# moko
+moko-network-generator = { id = "dev.icerock.mobile.multiplatform-network-generator", version.ref = "moko-network" }

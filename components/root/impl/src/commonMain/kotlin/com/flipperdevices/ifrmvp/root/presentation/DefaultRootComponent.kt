@@ -24,7 +24,7 @@ internal class DefaultRootComponent(
 
     override val childStack: Value<ChildStack<RootRoute, RootComponent.RootChild>> = childStack(
         source = navigation,
-        initialConfiguration = RootRoute.Controller,
+        initialConfiguration = RootRoute.SelectDevice,
         handleBackButton = true,
         serializer = RootRoute.serializer(),
         childFactory = { config, childContext ->
@@ -38,7 +38,8 @@ internal class DefaultRootComponent(
 
                 RootRoute.SelectDevice -> RootComponent.RootChild.SelectDevice(
                     selectDeviceRootComponent = selectDeviceRootModule.createSelectDeviceRootComponent(
-                        componentContext = childContext
+                        componentContext = childContext,
+                        onBackClicked = navigation::pop
                     )
                 )
             }

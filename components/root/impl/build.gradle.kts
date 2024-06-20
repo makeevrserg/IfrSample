@@ -35,6 +35,7 @@ kotlin {
             implementation(projects.components.root.api)
             implementation(projects.components.selectDevice)
             implementation(projects.components.apiBackend)
+            implementation(projects.components.core.theme)
         }
     }
 }

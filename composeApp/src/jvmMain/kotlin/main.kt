@@ -6,7 +6,6 @@ import androidx.compose.ui.window.application
 import androidx.compose.ui.window.rememberWindowState
 import com.arkivanov.decompose.DefaultComponentContext
 import com.arkivanov.essenty.lifecycle.LifecycleRegistry
-import com.flipperdevices.ifrmvp.core.theme.AdaptThemeFade
 import com.flipperdevices.ifrmvp.root.di.RootModule
 import com.flipperdevices.ifrmvp.root.ui.RootApplicationComposable
 import java.awt.Dimension
@@ -23,8 +22,6 @@ fun main() = application {
     ) {
         window.minimumSize = Dimension(20, 20)
 
-        AdaptThemeFade {
-            RootApplicationComposable(rootComponent)
-        }
+        RootApplicationComposable(rootComponent)
     }
 }

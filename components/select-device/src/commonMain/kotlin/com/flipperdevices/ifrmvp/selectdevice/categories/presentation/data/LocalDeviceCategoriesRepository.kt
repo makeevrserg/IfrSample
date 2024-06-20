@@ -5,11 +5,13 @@ import com.flipperdevices.ifrmvp.backend.model.DeviceCategoryType
 import kotlinx.coroutines.delay
 import kotlinx.coroutines.withContext
 import ru.astrainteractive.klibs.mikro.core.dispatchers.KotlinDispatchers
+import kotlin.random.Random
 
 internal class LocalDeviceCategoriesRepository(
     private val dispatchers: KotlinDispatchers
 ) : DeviceCategoriesRepository {
     override suspend fun fetchCategories(): Result<List<DeviceCategory>> = runCatching {
+        if (Random.nextBoolean()) error("Some random error")
         withContext(dispatchers.IO) {
             delay(300L) // todo debug-only
             listOf(

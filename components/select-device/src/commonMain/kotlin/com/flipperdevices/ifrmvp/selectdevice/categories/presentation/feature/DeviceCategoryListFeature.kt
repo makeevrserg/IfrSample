@@ -11,14 +11,15 @@ internal class DeviceCategoryListFeature(
 ) : CoroutineFeature by CoroutineFeature.Main() {
     val model = MutableStateFlow<DeviceCategoriesComponent.Model>(DeviceCategoriesComponent.Model.Loading)
 
-    private fun loadCategories() = launch {
+    fun tryLoad() = launch {
         model.value = DeviceCategoriesComponent.Model.Loading
         deviceCategoriesRepository.fetchCategories()
             .onFailure { model.value = DeviceCategoriesComponent.Model.Error }
+            .onFailure(Throwable::printStackTrace)
             .onSuccess { categories -> model.value = DeviceCategoriesComponent.Model.Loaded(categories) }
     }
 
     init {
-        loadCategories()
+        tryLoad()
     }
 }

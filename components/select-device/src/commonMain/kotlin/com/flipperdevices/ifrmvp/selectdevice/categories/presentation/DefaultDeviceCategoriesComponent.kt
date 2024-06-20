@@ -8,7 +8,9 @@ import kotlinx.coroutines.flow.asStateFlow
 
 internal class DefaultDeviceCategoriesComponent(
     componentContext: ComponentContext,
-    createDeviceCategoryListFeature: () -> DeviceCategoryListFeature
+    createDeviceCategoryListFeature: () -> DeviceCategoryListFeature,
+    private val onBackClicked: () -> Unit,
+    private val onCategoryClicked: (DeviceCategory) -> Unit
 ) : DeviceCategoriesComponent,
     ComponentContext by componentContext {
     private val deviceCategoryListFeature = instanceKeeper.getOrCreate {
@@ -17,7 +19,11 @@ internal class DefaultDeviceCategoriesComponent(
 
     override val model = deviceCategoryListFeature.model.asStateFlow()
 
-    override fun onCategoryClicked(category: DeviceCategory) = Unit
+    override fun onCategoryClicked(category: DeviceCategory) = onCategoryClicked.invoke(category)
 
-    override fun onBackClicked() = Unit
+    override fun onBackClicked() = onBackClicked.invoke()
+
+    override fun tryLoad() {
+        deviceCategoryListFeature.tryLoad()
+    }
 }
