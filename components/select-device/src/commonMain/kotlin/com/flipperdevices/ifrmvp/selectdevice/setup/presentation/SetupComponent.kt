@@ -18,6 +18,7 @@ interface SetupComponent {
     sealed interface Model {
         data object Loading : Model
         data class Loaded(val response: SignalResponseModel) : Model
+
         data object Error : Model
     }
 

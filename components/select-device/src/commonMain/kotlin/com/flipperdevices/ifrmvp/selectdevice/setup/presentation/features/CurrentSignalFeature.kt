@@ -2,6 +2,7 @@ package com.flipperdevices.ifrmvp.selectdevice.setup.presentation.features
 
 import com.flipperdevices.ifrmvp.api.backend.ApiBackend
 import com.flipperdevices.ifrmvp.backend.model.SignalRequestModel
+import com.flipperdevices.ifrmvp.backend.model.SignalRequestModel.SignalResultData
 import com.flipperdevices.ifrmvp.backend.model.SignalResponseModel
 import com.flipperdevices.ifrmvp.selectdevice.setup.presentation.SetupComponent.Param
 import kotlinx.coroutines.Dispatchers
@@ -19,14 +20,14 @@ class CurrentSignalFeature(
     val state = MutableStateFlow<State>(State.Loading)
 
     fun load(
-        successfulSignalsIds: List<Long>,
-        failedSignalsIds: List<Long>
+        successResults: List<SignalResultData>,
+        failedResults: List<SignalResultData>
     ) = launch {
         state.value = State.Loading
         val result = kotlin.runCatching {
             val request = SignalRequestModel(
-                successSignalsIds = successfulSignalsIds,
-                failedSignalsIds = failedSignalsIds,
+                successResults = successResults,
+                failedResults = failedResults,
                 categoryId = param.categoryId,
                 brandId = param.brandId,
             )

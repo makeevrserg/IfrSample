@@ -9,13 +9,13 @@ import ru.astrainteractive.klibs.mikro.extensions.arkivanov.CoroutineFeature
 
 class BrandsListFeature(
     private val brandsRepository: BrandsRepository,
-    private val categoryName: String
+    private val categoryId: Long
 ) : CoroutineFeature by CoroutineFeature.Main() {
     val state = MutableStateFlow<State>(State.Loading)
 
     fun tryLoad() = launch {
         state.update { State.Loading }
-        brandsRepository.fetchBrands(categoryName)
+        brandsRepository.fetchBrands(categoryId)
             .onSuccess { state.value = State.Loaded(it) }
             .onFailure { state.value = State.Error }
             .onFailure(Throwable::printStackTrace)

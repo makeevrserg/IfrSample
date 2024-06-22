@@ -36,7 +36,8 @@ internal class DefaultSelectDeviceRootComponent(
                             componentContext = childContext,
                             onBackClicked = onBackClicked,
                             onCategoryClicked = { deviceCategory ->
-                                val configuration = Configuration.Brands(deviceCategory.name)
+                                val configuration = Configuration.Brands(deviceCategory.id)
+                                println("Clicked category id: ${configuration.categoryId}")
                                 navigation.push(configuration)
                             }
                         )
@@ -49,9 +50,12 @@ internal class DefaultSelectDeviceRootComponent(
                         .createBrandsComponent(
                             componentContext = childContext,
                             onBackClicked = navigation::pop,
-                            categoryName = config.categoryName,
+                            categoryId = config.categoryId,
                             onBrandClicked = {
-                                val configuration = Configuration.Setup()
+                                val configuration = Configuration.Setup(
+                                    categoryId = it.categoryId,
+                                    brandId = it.id
+                                )
                                 navigation.push(configuration)
                             }
                         )
@@ -63,7 +67,10 @@ internal class DefaultSelectDeviceRootComponent(
                         .setupComponentFactory
                         .createSetupComponent(
                             componentContext = childContext,
-                            param = SetupComponent.Param(1, 2),
+                            param = SetupComponent.Param(
+                                brandId = config.brandId,
+                                categoryId = config.categoryId
+                            ),
                             onBack = navigation::pop
                         )
                     SelectDeviceRootComponent.Child.Setup(setupComponent)
@@ -78,9 +85,9 @@ internal class DefaultSelectDeviceRootComponent(
         data object SelectCategory : Configuration
 
         @Serializable
-        data class Brands(val categoryName: String) : Configuration
+        data class Brands(val categoryId: Long) : Configuration
 
         @Serializable
-        class Setup : Configuration
+        class Setup(val categoryId: Long, val brandId: Long) : Configuration
     }
 }

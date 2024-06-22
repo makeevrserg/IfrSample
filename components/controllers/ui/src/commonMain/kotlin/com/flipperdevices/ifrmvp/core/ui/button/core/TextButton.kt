@@ -9,7 +9,7 @@ import androidx.compose.ui.unit.TextUnit
 
 @Composable
 fun TextButton(
-    background: Color = Color(0xFF303030),
+    background: Color = MaterialTheme.colors.primaryVariant,
     textColor: Color = MaterialTheme.colors.onPrimary,
     fontSize: TextUnit = MaterialTheme.typography.caption.fontSize,
     modifier: Modifier = Modifier,

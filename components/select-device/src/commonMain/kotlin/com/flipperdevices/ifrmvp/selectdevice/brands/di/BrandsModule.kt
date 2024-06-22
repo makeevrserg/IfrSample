@@ -17,7 +17,7 @@ interface BrandsModule {
         override val brandsComponentFactory = object : BrandsComponent.Factory {
             override fun createBrandsComponent(
                 componentContext: ComponentContext,
-                categoryName: String,
+                categoryId: Long,
                 onBackClicked: () -> Unit,
                 onBrandClicked: (BrandModel) -> Unit
             ): BrandsComponent {
@@ -26,7 +26,7 @@ interface BrandsModule {
                     onBackClicked = onBackClicked,
                     createBrandsListFeature = {
                         BrandsListFeature(
-                            categoryName = categoryName,
+                            categoryId = categoryId,
                             brandsRepository = BackendBrandsRepository(
                                 apiBackend = apiBackendModule.apiBackend,
                                 dispatchers = DefaultKotlinDispatchers

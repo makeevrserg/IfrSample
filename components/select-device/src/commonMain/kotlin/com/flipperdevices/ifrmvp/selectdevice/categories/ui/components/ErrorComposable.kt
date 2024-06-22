@@ -14,7 +14,10 @@ import androidx.compose.ui.Modifier
 import com.flipperdevices.core.ui.theme.LocalPalletV2
 
 @Composable
-internal fun ErrorComposable(onReload: (() -> Unit)? = null) {
+internal fun ErrorComposable(
+    desc: String? = null,
+    onReload: (() -> Unit)? = null
+) {
     Box(
         modifier = Modifier.fillMaxSize(),
         contentAlignment = Alignment.Center,
@@ -29,6 +32,15 @@ internal fun ErrorComposable(onReload: (() -> Unit)? = null) {
                     style = MaterialTheme.typography.subtitle2,
                     color = LocalPalletV2.current.text.title.blackOnColor
                 )
+
+                desc?.let {
+                    Text(
+                        text = desc,
+                        style = MaterialTheme.typography.subtitle2,
+                        color = LocalPalletV2.current.text.title.blackOnColor
+                    )
+                }
+
                 onReload?.let {
                     TextButton(onClick = onReload) {
                         Text(

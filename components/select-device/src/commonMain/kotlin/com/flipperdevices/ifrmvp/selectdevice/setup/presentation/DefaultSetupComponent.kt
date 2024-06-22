@@ -36,8 +36,8 @@ class DefaultSetupComponent(
 
     override fun tryLoad() {
         signalFeature.load(
-            successfulSignalsIds = historyFeature.state.value.successfulSignals,
-            failedSignalsIds = historyFeature.state.value.failedSignals
+            successResults = historyFeature.state.value.successfulSignals,
+            failedResults = historyFeature.state.value.failedSignals
         )
     }
 

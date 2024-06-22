@@ -35,7 +35,7 @@ interface BrandsComponent {
     interface Factory {
         fun createBrandsComponent(
             componentContext: ComponentContext,
-            categoryName: String,
+            categoryId: Long,
             onBackClicked: () -> Unit,
             onBrandClicked: (BrandModel) -> Unit
         ): BrandsComponent

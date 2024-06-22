@@ -16,7 +16,7 @@ import io.ktor.http.contentType
 
 interface ApiBackend {
     suspend fun getCategories(): CategoriesResponse
-    suspend fun getManufacturers(categoryName: String): BrandsResponse
+    suspend fun getManufacturers(categoryId: Long): BrandsResponse
     suspend fun getSignal(request: SignalRequestModel): SignalResponseModel
 }
 
@@ -31,10 +31,10 @@ internal class ApiBackendImpl(
         }.body()
     }
 
-    override suspend fun getManufacturers(categoryName: String): BrandsResponse {
+    override suspend fun getManufacturers(categoryId: Long): BrandsResponse {
         return httpClient.get {
             url(host = backendUrlHost, path = "manufacturers") {
-                parameter("category_name", categoryName)
+                parameter("category_id", categoryId)
             }
             contentType(ContentType.Application.Json)
         }.body()

@@ -14,23 +14,25 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.flipperdevices.core.ui.theme.LocalPalletV2
 import com.flipperdevices.ifrmvp.backend.model.SignalButtonInfo
-import com.flipperdevices.ifrmvp.core.ui.button.core.SquareIconButton
-import com.flipperdevices.ifrmvp.model.buttondata.IconButtonData
+import com.flipperdevices.ifrmvp.backend.model.SignalModel
+import com.flipperdevices.ifrmvp.core.ui.button.core.TextButton
 
 @Composable
 internal fun ButtonContent(
     onClicked: () -> Unit,
     modifier: Modifier = Modifier,
-    buttonInfo: SignalButtonInfo
+    buttonInfo: SignalButtonInfo,
+    signalModel: SignalModel
 ) {
     Column(
         modifier = modifier.fillMaxWidth(),
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        SquareIconButton(
-            IconButtonData.IconType.POWER,
-        ) {}
+        TextButton(
+            text = signalModel.name,
+            onClick = {}
+        )
         Spacer(modifier = Modifier.height(14.dp))
         Text(
             text = "Point Flipper Zero at the TV and tap the button",

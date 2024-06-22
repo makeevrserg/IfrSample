@@ -68,7 +68,7 @@ internal fun DeviceCategoryComposable(
                     modifier = Modifier.size(36.dp)
                 )
                 Text(
-                    text = deviceCategory.name,
+                    text = deviceCategory.displayName,
                     style = MaterialTheme.typography.subtitle2,
                     color = MaterialTheme.colors.onPrimary
                 )
@@ -84,7 +84,7 @@ private fun DeviceCategoryComposablePreview() {
         DeviceCategoryComposable(
             deviceCategory = DeviceCategory(
                 id = 1,
-                name = "TV",
+                displayName = "TV",
                 type = DeviceCategoryType.TV
             ),
             onClicked = {}
