@@ -1,0 +1,399 @@
+{
+  "openapi" : "3.1.0",
+  "info" : {
+    "title" : "IfrBackend",
+    "description" : "Api for IfrSample",
+    "termsOfService" : "https://somesite.com",
+    "contact" : {
+      "name" : "Some Name",
+      "url" : "https://someurl.corp",
+      "email" : "somemail@mail.mail"
+    },
+    "version" : "0.1.0"
+  },
+  "externalDocs" : {
+    "url" : "/"
+  },
+  "servers" : [ {
+    "url" : "127.0.0.1/8080",
+    "description" : "Web-Api server",
+    "variables" : {
+      "version" : {
+        "default" : "0.1.0",
+        "enum" : [ "0.1.0" ]
+      }
+    }
+  } ],
+  "tags" : [ ],
+  "paths" : {
+    "/categories" : {
+      "get" : {
+        "tags" : [ ],
+        "description" : "Get list of available categories",
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "Categories fetched successfully",
+            "headers" : { },
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/CategoriesResponse"
+                }
+              }
+            }
+          },
+          "default" : {
+            "description" : "Could not process request",
+            "headers" : { },
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ErrorResponseModel"
+                }
+              }
+            }
+          }
+        },
+        "deprecated" : false
+      }
+    },
+    "/manufacturers" : {
+      "get" : {
+        "tags" : [ ],
+        "description" : "Get list of category's manufacturers",
+        "parameters" : [ {
+          "name" : "category_name",
+          "in" : "query",
+          "description" : "Unique name of the category",
+          "required" : true,
+          "deprecated" : false,
+          "allowEmptyValue" : true,
+          "explode" : false,
+          "allowReserved" : true,
+          "schema" : {
+            "title" : "String",
+            "type" : "string"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "Manufacturers fetched successfully",
+            "headers" : { },
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/BrandsResponse"
+                }
+              }
+            }
+          },
+          "default" : {
+            "description" : "Could not process request",
+            "headers" : { },
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ErrorResponseModel"
+                }
+              }
+            }
+          }
+        },
+        "deprecated" : false
+      }
+    },
+    "/signal" : {
+      "post" : {
+        "tags" : [ ],
+        "description" : "Get signal for testing configuration",
+        "parameters" : [ ],
+        "requestBody" : {
+          "description" : "Required information to generate output signal",
+          "content" : {
+            "application/json" : {
+              "schema" : {
+                "$ref" : "#/components/schemas/SignalRequestModel"
+              }
+            }
+          },
+          "required" : true
+        },
+        "responses" : {
+          "200" : {
+            "description" : "Signal response",
+            "headers" : { },
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/SignalResponseModel"
+                }
+              }
+            }
+          },
+          "default" : {
+            "description" : "Could not process request",
+            "headers" : { },
+            "content" : {
+              "application/json" : {
+                "schema" : {
+                  "$ref" : "#/components/schemas/ErrorResponseModel"
+                }
+              }
+            }
+          }
+        },
+        "deprecated" : false
+      }
+    }
+  },
+  "components" : {
+    "schemas" : {
+      "DeviceCategory" : {
+        "title" : "DeviceCategory",
+        "required" : [ "id", "name", "type" ],
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "title" : "Long",
+            "type" : "integer",
+            "format" : "int64"
+          },
+          "name" : {
+            "title" : "String",
+            "type" : "string"
+          },
+          "type" : {
+            "$ref" : "#/components/schemas/DeviceCategoryType"
+          }
+        }
+      },
+      "DeviceCategoryType" : {
+        "title" : "DeviceCategoryType",
+        "enum" : [ "TV", "AIR_CONDITIONER", "SET_TOP_BOX", "CAMERA", "FAN", "A_V_RECEIVER", "DVD_PLAYER", "SMART_BOX", "PROJECTOR", "UNKNOWN" ]
+      },
+      "CategoriesResponse" : {
+        "title" : "CategoriesResponse",
+        "required" : [ "categories" ],
+        "type" : "object",
+        "properties" : {
+          "categories" : {
+            "title" : "List<DeviceCategory>",
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/DeviceCategory"
+            }
+          }
+        }
+      },
+      "ErrorType" : {
+        "title" : "ErrorType",
+        "enum" : [ "UNHANDLED", "CATEGORY_NOT_FOUND", "BRAND_NOT_FOUND", "NO_SIGNAL" ]
+      },
+      "ErrorResponseModel" : {
+        "title" : "ErrorResponseModel",
+        "required" : [ "errorType" ],
+        "type" : "object",
+        "properties" : {
+          "errorType" : {
+            "$ref" : "#/components/schemas/ErrorType"
+          }
+        }
+      },
+      "BrandModel" : {
+        "title" : "BrandModel",
+        "required" : [ "id", "name" ],
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "title" : "Long",
+            "type" : "integer",
+            "format" : "int64"
+          },
+          "name" : {
+            "title" : "String",
+            "type" : "string"
+          }
+        }
+      },
+      "BrandsResponse" : {
+        "title" : "BrandsResponse",
+        "required" : [ "brands" ],
+        "type" : "object",
+        "properties" : {
+          "brands" : {
+            "title" : "List<BrandModel>",
+            "type" : "array",
+            "items" : {
+              "$ref" : "#/components/schemas/BrandModel"
+            }
+          }
+        }
+      },
+      "SignalRequestModel" : {
+        "title" : "SignalRequestModel",
+        "required" : [ "brandId", "categoryId", "failedSignalsIds", "successSignalsIds" ],
+        "type" : "object",
+        "properties" : {
+          "brandId" : {
+            "title" : "Long",
+            "type" : "integer",
+            "format" : "int64"
+          },
+          "categoryId" : {
+            "title" : "Long",
+            "type" : "integer",
+            "format" : "int64"
+          },
+          "failedSignalsIds" : {
+            "title" : "List<Long>",
+            "type" : "array",
+            "items" : {
+              "title" : "Long",
+              "type" : "integer",
+              "format" : "int64"
+            }
+          },
+          "successSignalsIds" : {
+            "title" : "List<Long>",
+            "type" : "array",
+            "items" : {
+              "title" : "Long",
+              "type" : "integer",
+              "format" : "int64"
+            }
+          }
+        }
+      },
+      "SignalButtonInfo" : {
+        "title" : "SignalButtonInfo",
+        "required" : [ "backgroundColor", "tintColor" ],
+        "type" : "object",
+        "properties" : {
+          "backgroundColor" : {
+            "title" : "Long",
+            "type" : "integer",
+            "format" : "int64"
+          },
+          "iconType" : {
+            "$ref" : "#/components/schemas/SignalButtonIconType"
+          },
+          "iconUrl" : {
+            "title" : "String",
+            "type" : "string"
+          },
+          "text" : {
+            "title" : "String",
+            "type" : "string"
+          },
+          "tintColor" : {
+            "title" : "Long",
+            "type" : "integer",
+            "format" : "int64"
+          }
+        }
+      },
+      "SignalButtonIconType" : {
+        "title" : "SignalButtonIconType",
+        "enum" : [ "POWER", "SOUND_UP", "SOUND_DOWN" ]
+      },
+      "SignalModel" : {
+        "title" : "SignalModel",
+        "required" : [ "brandId", "categoryId", "id", "irFileId", "name", "type" ],
+        "type" : "object",
+        "properties" : {
+          "address" : {
+            "title" : "List<Byte>",
+            "type" : "array",
+            "items" : {
+              "title" : "Byte",
+              "maximum" : 127,
+              "minimum" : -128,
+              "type" : "integer"
+            }
+          },
+          "brandId" : {
+            "title" : "Long",
+            "type" : "integer",
+            "format" : "int64"
+          },
+          "categoryId" : {
+            "title" : "Long",
+            "type" : "integer",
+            "format" : "int64"
+          },
+          "command" : {
+            "title" : "List<Byte>",
+            "type" : "array",
+            "items" : {
+              "title" : "Byte",
+              "maximum" : 127,
+              "minimum" : -128,
+              "type" : "integer"
+            }
+          },
+          "data" : {
+            "title" : "List<Byte>",
+            "type" : "array",
+            "items" : {
+              "title" : "Byte",
+              "maximum" : 127,
+              "minimum" : -128,
+              "type" : "integer"
+            }
+          },
+          "dutyCycle" : {
+            "title" : "Float",
+            "type" : "number",
+            "format" : "float"
+          },
+          "frequency" : {
+            "title" : "Long",
+            "type" : "integer",
+            "format" : "int64"
+          },
+          "id" : {
+            "title" : "Long",
+            "type" : "integer",
+            "format" : "int64"
+          },
+          "irFileId" : {
+            "title" : "Long",
+            "type" : "integer",
+            "format" : "int64"
+          },
+          "name" : {
+            "title" : "String",
+            "type" : "string"
+          },
+          "protocol" : {
+            "title" : "String",
+            "type" : "string"
+          },
+          "type" : {
+            "title" : "String",
+            "type" : "string"
+          }
+        }
+      },
+      "SignalResponseModel" : {
+        "title" : "SignalResponseModel",
+        "required" : [ "buttonInfo", "hasNext" ],
+        "type" : "object",
+        "properties" : {
+          "buttonInfo" : {
+            "$ref" : "#/components/schemas/SignalButtonInfo"
+          },
+          "hasNext" : {
+            "title" : "Boolean",
+            "type" : "boolean"
+          },
+          "signalModel" : {
+            "$ref" : "#/components/schemas/SignalModel"
+          }
+        }
+      }
+    },
+    "examples" : { }
+  }
+}

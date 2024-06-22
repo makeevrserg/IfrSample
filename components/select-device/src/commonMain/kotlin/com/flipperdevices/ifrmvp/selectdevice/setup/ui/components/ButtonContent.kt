@@ -13,7 +13,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.flipperdevices.core.ui.theme.LocalPalletV2
-import com.flipperdevices.ifrmvp.backend.model.SignalResponseModel
+import com.flipperdevices.ifrmvp.backend.model.SignalButtonInfo
 import com.flipperdevices.ifrmvp.core.ui.button.core.SquareIconButton
 import com.flipperdevices.ifrmvp.model.buttondata.IconButtonData
 
@@ -21,7 +21,7 @@ import com.flipperdevices.ifrmvp.model.buttondata.IconButtonData
 internal fun ButtonContent(
     onClicked: () -> Unit,
     modifier: Modifier = Modifier,
-    buttonInfo: SignalResponseModel.ButtonInfo
+    buttonInfo: SignalButtonInfo
 ) {
     Column(
         modifier = modifier.fillMaxWidth(),
