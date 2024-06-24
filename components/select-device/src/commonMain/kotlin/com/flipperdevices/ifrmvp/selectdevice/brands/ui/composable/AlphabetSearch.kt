@@ -55,9 +55,11 @@ internal fun AlphabetSearch(
 
         val offsets = remember { mutableStateMapOf<Int, Float>() }
         var selectedHeaderIndex by remember { mutableStateOf(0) }
+        var isScrollingToIndex by remember { mutableStateOf(false) }
         val scope = rememberCoroutineScope()
 
         fun updateSelectedIndexIfNeeded(offset: Float) {
+            if (listState.isScrollInProgress) return
             val index = offsets
                 .mapValues { abs(it.value - offset) }
                 .entries
@@ -70,15 +72,19 @@ internal fun AlphabetSearch(
                 .map { it.name.first().uppercaseChar() }
                 .indexOfFirst { char -> char.code == model.headers[selectedHeaderIndex].code }
                 .coerceIn(0 until listState.layoutInfo.totalItemsCount)
-            scope.launch { listState.animateScrollToItem(selectedItemIndex) }
+            scope.launch {
+                isScrollingToIndex = true
+                listState.animateScrollToItem(selectedItemIndex)
+                isScrollingToIndex = false
+            }
         }
 
-        LaunchedEffect(listState.firstVisibleItemIndex) {
+        LaunchedEffect(listState.firstVisibleItemIndex, isScrollingToIndex) {
+            if (isScrollingToIndex) return@LaunchedEffect
             val ch = model.brands.getOrNull(listState.firstVisibleItemIndex)
                 ?.name
                 ?.first() ?: return@LaunchedEffect
-            val i = model.headers.indexOfFirst { it.dec() == ch }
-                .minus(1)
+            val i = model.headers.indexOfFirst { it.uppercaseChar() == ch }
                 .coerceIn(0, listState.layoutInfo.totalItemsCount)
             selectedHeaderIndex = i
         }
