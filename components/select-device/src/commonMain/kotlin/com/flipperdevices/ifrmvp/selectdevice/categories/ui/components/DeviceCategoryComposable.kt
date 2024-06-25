@@ -90,7 +90,7 @@ internal fun DeviceCategoryComposable(
                 }
 
                 Text(
-                    text = deviceCategory.displayName,
+                    text = deviceCategory.meta.manifest.displayName,
                     style = MaterialTheme.typography.subtitle2,
                     color = MaterialTheme.colors.onPrimary
                 )
@@ -106,7 +106,6 @@ private fun DeviceCategoryComposablePreview() {
         DeviceCategoryComposable(
             deviceCategory = DeviceCategory(
                 id = 1,
-                displayName = "TV",
                 type = DeviceCategoryType.TV,
                 meta = CategoryMeta(
                     iconPngBase64 = "",
