@@ -106,7 +106,6 @@ private fun DeviceCategoryComposablePreview() {
         DeviceCategoryComposable(
             deviceCategory = DeviceCategory(
                 id = 1,
-                type = DeviceCategoryType.TV,
                 meta = CategoryMeta(
                     iconPngBase64 = "",
                     iconSvgBase64 = "",
