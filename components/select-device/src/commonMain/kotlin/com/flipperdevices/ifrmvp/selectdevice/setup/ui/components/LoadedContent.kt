@@ -20,14 +20,14 @@ internal fun LoadedContent(
     onNegativeClicked: () -> Unit,
     modifier: Modifier = Modifier
 ) {
-    val buttonInfo = model.response.buttonInfo
-    val signalModel = model.response.signalModel
+    val ifrFileModel = model.response.ifrFileModel
+    val signalOrderModel = model.response.signalOrderModel
     Column(
         modifier = modifier.fillMaxSize(),
         verticalArrangement = Arrangement.SpaceBetween
     ) {
         when {
-            signalModel != null && !model.response.hasNext -> {
+            ifrFileModel != null -> {
                 Box(
                     modifier = Modifier.fillMaxSize(),
                     contentAlignment = Alignment.Center,
@@ -41,13 +41,12 @@ internal fun LoadedContent(
                 )
             }
 
-            signalModel != null && buttonInfo != null -> {
+            signalOrderModel != null -> {
                 Box(modifier = Modifier)
                 ButtonContent(
                     onClicked = {},
                     modifier = Modifier,
-                    buttonInfo = buttonInfo,
-                    signalModel = signalModel
+                    signalOrderModel = signalOrderModel
                 )
                 ConfirmContent(
                     text = "Does TV turn on/off?",

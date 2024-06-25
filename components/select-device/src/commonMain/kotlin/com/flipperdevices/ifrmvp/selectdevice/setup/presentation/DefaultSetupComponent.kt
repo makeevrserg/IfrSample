@@ -43,14 +43,14 @@ class DefaultSetupComponent(
 
     override fun onSuccessClicked() {
         val model = model.value as? SetupComponent.Model.Loaded ?: return
-        val signalModel = model.response.signalModel ?: return
+        val signalModel = model.response.signalOrderModel?.signalModel ?: return
         historyFeature.rememberSuccessful(signalModel)
         tryLoad()
     }
 
     override fun onFailedClicked() {
         val model = model.value as? SetupComponent.Model.Loaded ?: return
-        val signalModel = model.response.signalModel ?: return
+        val signalModel = model.response.signalOrderModel?.signalModel ?: return
         historyFeature.rememberFailed(signalModel)
         tryLoad()
     }

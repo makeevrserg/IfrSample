@@ -13,16 +13,14 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.flipperdevices.core.ui.theme.LocalPalletV2
-import com.flipperdevices.ifrmvp.backend.model.SignalButtonInfo
-import com.flipperdevices.ifrmvp.backend.model.SignalModel
+import com.flipperdevices.ifrmvp.backend.model.SignalOrderModel
 import com.flipperdevices.ifrmvp.core.ui.button.core.TextButton
 
 @Composable
 internal fun ButtonContent(
     onClicked: () -> Unit,
     modifier: Modifier = Modifier,
-    buttonInfo: SignalButtonInfo,
-    signalModel: SignalModel
+    signalOrderModel: SignalOrderModel
 ) {
     Column(
         modifier = modifier.fillMaxWidth(),
@@ -30,7 +28,7 @@ internal fun ButtonContent(
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         TextButton(
-            text = signalModel.name,
+            text = "Button",
             onClick = {}
         )
         Spacer(modifier = Modifier.height(14.dp))
