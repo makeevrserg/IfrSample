@@ -60,7 +60,7 @@ kotlin {
             implementation(projects.components.core.theme)
             implementation(projects.components.core.io)
             implementation(projects.components.controllers.ui)
-            implementation(projects.components.controllers.model)
+            implementation("com.flipperdevices.ifrmvp.backend:shared-backend-model")
             implementation(projects.components.controllers.grid)
             implementation(projects.components.root.impl)
             implementation(projects.components.root.api)

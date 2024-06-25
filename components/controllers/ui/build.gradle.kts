@@ -30,7 +30,8 @@ kotlin {
             implementation(libs.kotlinx.coroutines.core)
             implementation(libs.kotlin.serialization.json)
             // Local
-            implementation(projects.components.controllers.model)
+            implementation("com.flipperdevices.ifrmvp.backend:shared-backend-model")
+            implementation("com.flipperdevices.ifrmvp.backend:shared-ui-model")
         }
     }
 }

@@ -30,7 +30,7 @@ kotlin {
             implementation(libs.ktor.serialization.json)
             implementation(libs.ktor.logging)
             // Local
-            implementation("com.flipperdevices.ifrmvp.backend:core-models")
+            implementation("com.flipperdevices.ifrmvp.backend:shared-backend-model")
         }
     }
 }

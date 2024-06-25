@@ -1,0 +1,16 @@
+{
+  "selection": [
+    {
+      "order": 0,
+      "data": {
+        "key_id": {
+          "type": "SHA_256",
+          "key_name": "power",
+          "sha_256_string": "60d18bb96f05eee3bde60a0c3f87b13f74b0c4d3d934d659ef7738f415881740"
+        },
+        "icon_id": "POWER",
+        "type": "ICON"
+      }
+    }
+  ]
+}

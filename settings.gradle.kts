@@ -18,7 +18,6 @@ dependencyResolutionManagement {
 enableFeaturePreview("TYPESAFE_PROJECT_ACCESSORS")
 
 include(":components:api-backend")
-include(":components:controllers:model")
 include(":components:controllers:grid")
 include(":components:controllers:ui")
 include(":components:core:theme")
