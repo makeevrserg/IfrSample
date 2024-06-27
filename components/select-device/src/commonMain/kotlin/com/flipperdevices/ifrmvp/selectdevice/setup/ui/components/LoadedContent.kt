@@ -21,7 +21,7 @@ internal fun LoadedContent(
     modifier: Modifier = Modifier
 ) {
     val ifrFileModel = model.response.ifrFileModel
-    val signalOrderModel = model.response.signalOrderModel
+    val signalOrderModel = model.response.signalResponse
     Column(
         modifier = modifier.fillMaxSize(),
         verticalArrangement = Arrangement.SpaceBetween
@@ -46,7 +46,7 @@ internal fun LoadedContent(
                 ButtonContent(
                     onClicked = {},
                     modifier = Modifier,
-                    signalOrderModel = signalOrderModel
+                    signalResponse = signalOrderModel
                 )
                 ConfirmContent(
                     text = "Does TV turn on/off?",

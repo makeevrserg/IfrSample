@@ -33,7 +33,7 @@ internal class ApiBackendImpl(
 
     override suspend fun getManufacturers(categoryId: Long): BrandsResponse {
         return httpClient.get {
-            url(host = backendUrlHost, path = "manufacturers") {
+            url(host = backendUrlHost, path = "brands") {
                 parameter("category_id", categoryId)
             }
             contentType(ContentType.Application.Json)
