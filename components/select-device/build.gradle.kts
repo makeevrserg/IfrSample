@@ -48,9 +48,9 @@ kotlin {
             implementation(projects.components.core.theme)
             implementation(projects.components.core.io)
             implementation(projects.components.controllers.ui)
+            implementation("com.flipperdevices.ifrmvp.backend:shared-ui-model")
             implementation("com.flipperdevices.ifrmvp.backend:shared-backend-model")
             implementation(projects.components.apiBackend)
-            implementation("com.flipperdevices.ifrmvp.backend:shared-backend-model")
         }
 
         jvmMain.dependencies {

@@ -5,6 +5,7 @@ import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
+import androidx.compose.material.IconButton
 import androidx.compose.material.MaterialTheme
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
@@ -14,7 +15,39 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.flipperdevices.core.ui.theme.LocalPalletV2
 import com.flipperdevices.ifrmvp.backend.model.SignalOrderModel
+import com.flipperdevices.ifrmvp.core.ui.button.UnknownButton
+import com.flipperdevices.ifrmvp.core.ui.button.core.SquareIconButton
 import com.flipperdevices.ifrmvp.core.ui.button.core.TextButton
+import com.flipperdevices.ifrmvp.model.buttondata.ButtonData
+import com.flipperdevices.ifrmvp.model.buttondata.IconButtonData
+import com.flipperdevices.ifrmvp.model.buttondata.TextButtonData
+import com.flipperdevices.ifrmvp.model.buttondata.UnknownButtonData
+
+@Composable
+private fun Button(model: SignalOrderModel) {
+    val text = model.dataText
+    val iconType = IconButtonData.IconType.entries.firstOrNull { it.name == model.dataIconId }
+    when {
+        text != null -> {
+            TextButton(
+                text = text,
+                onClick = {}
+            )
+        }
+
+        iconType != null -> {
+            SquareIconButton(
+                iconType = iconType,
+                onClick = {}
+            )
+
+        }
+
+        else -> {
+            UnknownButton(onClick = {})
+        }
+    }
+}
 
 @Composable
 internal fun ButtonContent(
@@ -22,15 +55,13 @@ internal fun ButtonContent(
     modifier: Modifier = Modifier,
     signalOrderModel: SignalOrderModel
 ) {
+
     Column(
         modifier = modifier.fillMaxWidth(),
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        TextButton(
-            text = "Button",
-            onClick = {}
-        )
+        Button(signalOrderModel)
         Spacer(modifier = Modifier.height(14.dp))
         Text(
             text = "Point Flipper Zero at the TV and tap the button",
