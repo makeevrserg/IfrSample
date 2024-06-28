@@ -1,10 +1,7 @@
 package com.flipperdevices.ifrmvp.grid.presentation.data
 
 import com.flipperdevices.ifrmvp.files.FilesApiFactory
-import com.flipperdevices.ifrmvp.grid.presentation.layout.kitchen.KitchenLayoutFactory
 import com.flipperdevices.ifrmvp.model.PagesLayout
-import kotlinx.coroutines.flow.Flow
-import kotlinx.coroutines.flow.flow
 import kotlinx.serialization.encodeToString
 import kotlinx.serialization.json.Json
 
@@ -17,9 +14,15 @@ internal object InMemoryPagesRepository : PagesRepository {
     }
     private val factory = KitchenLayoutFactory
 
-    override fun pagesFlow(): Flow<PagesLayout> = flow {
+    override suspend fun fetchPages(
+        ifrFileId: Long,
+        uiFileId: Long
+    ): Result<PagesLayout> = kotlin.runCatching {
         val pagesLayout = factory.create()
-        filesApi.recreateAndWrite("${factory.FILE_NAME}.json", json.encodeToString(pagesLayout))
-        emit(pagesLayout)
+        filesApi.recreateAndWrite(
+            "${factory.FILE_NAME}.json",
+            json.encodeToString(pagesLayout)
+        )
+        pagesLayout
     }
 }

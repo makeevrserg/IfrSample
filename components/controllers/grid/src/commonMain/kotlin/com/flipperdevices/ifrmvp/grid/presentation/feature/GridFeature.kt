@@ -1,21 +1,30 @@
 package com.flipperdevices.ifrmvp.grid.presentation.feature
 
 import com.flipperdevices.ifrmvp.grid.presentation.data.PagesRepository
-import com.flipperdevices.ifrmvp.model.PagesLayout
+import com.flipperdevices.ifrmvp.grid.presentation.decompose.GridComponent
 import kotlinx.coroutines.flow.MutableStateFlow
-import kotlinx.coroutines.flow.launchIn
-import kotlinx.coroutines.flow.onEach
+import kotlinx.coroutines.launch
 import ru.astrainteractive.klibs.mikro.extensions.arkivanov.CoroutineFeature
 
 internal class GridFeature(
-    pagesRepository: PagesRepository
+    private val pagesRepository: PagesRepository,
+    private val param: GridComponent.Param
 ) : CoroutineFeature by CoroutineFeature.Main() {
-    val layout = MutableStateFlow(PagesLayout(emptyList()))
+    val model = MutableStateFlow<GridComponent.Model>(GridComponent.Model.Loading)
+
+    fun tryLoad() {
+        launch {
+            val result = pagesRepository.fetchPages(
+                ifrFileId = param.ifrFileId,
+                uiFileId = param.uiFileId
+            )
+            result
+                .onFailure { model.value = GridComponent.Model.Error }
+                .onSuccess { pagesLayout -> model.value = GridComponent.Model.Loaded(pagesLayout) }
+        }
+    }
 
     init {
-        pagesRepository
-            .pagesFlow()
-            .onEach { pagesLayout -> layout.value = pagesLayout }
-            .launchIn(this)
+        tryLoad()
     }
 }

@@ -1,22 +1,23 @@
 package com.flipperdevices.ifrmvp.grid.presentation.di
 
-import com.arkivanov.decompose.ComponentContext
-import com.flipperdevices.ifrmvp.grid.presentation.DefaultGridComponent
-import com.flipperdevices.ifrmvp.grid.presentation.GridComponent
 import com.flipperdevices.ifrmvp.grid.presentation.data.InMemoryPagesRepository
+import com.flipperdevices.ifrmvp.grid.presentation.decompose.GridComponent
+import com.flipperdevices.ifrmvp.grid.presentation.decompose.internal.DefaultGridComponent
 import com.flipperdevices.ifrmvp.grid.presentation.feature.GridFeature
 
 interface ControllerModule {
 
-    fun createGridComponent(componentContext: ComponentContext): GridComponent
+    val gridComponentFactory: GridComponent.Factory
 
     class Default : ControllerModule {
-        override fun createGridComponent(componentContext: ComponentContext): GridComponent {
-            return DefaultGridComponent(
+        override val gridComponentFactory = GridComponent.Factory { componentContext, param ->
+            DefaultGridComponent(
                 componentContext = componentContext,
-                createGridFeature = {
+                param = param,
+                createGridFeature = { param ->
                     GridFeature(
-                        pagesRepository = InMemoryPagesRepository
+                        pagesRepository = InMemoryPagesRepository,
+                        param = param
                     )
                 }
             )

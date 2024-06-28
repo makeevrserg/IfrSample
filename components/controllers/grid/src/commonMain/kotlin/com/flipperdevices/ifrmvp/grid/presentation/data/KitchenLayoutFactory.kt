@@ -1,4 +1,4 @@
-package com.flipperdevices.ifrmvp.grid.presentation.layout.kitchen
+package com.flipperdevices.ifrmvp.grid.presentation.data
 
 import com.flipperdevices.ifrmvp.core.ui.util.GridConstants
 import com.flipperdevices.ifrmvp.model.IfrButton

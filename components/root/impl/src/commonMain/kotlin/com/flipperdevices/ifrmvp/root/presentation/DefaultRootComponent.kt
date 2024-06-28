@@ -9,6 +9,7 @@ import com.arkivanov.decompose.router.stack.push
 import com.arkivanov.decompose.router.stack.replaceAll
 import com.arkivanov.decompose.router.stack.replaceCurrent
 import com.arkivanov.decompose.value.Value
+import com.flipperdevices.ifrmvp.grid.presentation.decompose.GridComponent
 import com.flipperdevices.ifrmvp.grid.presentation.di.ControllerModule
 import com.flipperdevices.ifrmvp.root.presentation.model.RootRoute
 import com.flipperdevices.ifrmvp.selectdevice.root.di.SelectDeviceRootModule
@@ -30,10 +31,15 @@ internal class DefaultRootComponent(
         childFactory = { config, childContext ->
 
             when (config) {
-                RootRoute.Controller -> RootComponent.RootChild.Controller(
-                    gridComponent = controllerModule.createGridComponent(
-                        componentContext = childContext
-                    )
+                is RootRoute.Controller -> RootComponent.RootChild.Controller(
+                    gridComponent = controllerModule.gridComponentFactory
+                        .create(
+                            componentContext = childContext,
+                            param = GridComponent.Param(
+                                ifrFileId = config.ifrFileId,
+                                uiFileId = config.uiFileId
+                            )
+                        )
                 )
 
                 RootRoute.SelectDevice -> RootComponent.RootChild.SelectDevice(

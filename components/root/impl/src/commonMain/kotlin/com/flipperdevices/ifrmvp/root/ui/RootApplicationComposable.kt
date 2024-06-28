@@ -4,7 +4,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import com.arkivanov.decompose.extensions.compose.subscribeAsState
 import com.flipperdevices.core.ui.theme.FlipperTheme
-import com.flipperdevices.ifrmvp.grid.ui.GridScreen
+import com.flipperdevices.ifrmvp.grid.ui.GridComposable
 import com.flipperdevices.ifrmvp.root.presentation.RootComponent
 import com.flipperdevices.ifrmvp.selectdevice.root.ui.SelectDeviceRootScreen
 
@@ -14,7 +14,7 @@ fun RootApplicationComposable(rootComponent: RootComponent) {
     FlipperTheme {
         when (val instance = child.active.instance) {
             is RootComponent.RootChild.Controller -> {
-                GridScreen(instance.gridComponent)
+                GridComposable(instance.gridComponent)
             }
 
             is RootComponent.RootChild.SelectDevice -> {

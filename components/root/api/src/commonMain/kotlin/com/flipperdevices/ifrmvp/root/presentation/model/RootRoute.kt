@@ -5,7 +5,10 @@ import kotlinx.serialization.Serializable
 @Serializable
 sealed interface RootRoute {
     @Serializable
-    data object Controller : RootRoute
+    data class Controller(
+        val ifrFileId: Long,
+        val uiFileId: Long
+    ) : RootRoute
 
     @Serializable
     data object SelectDevice : RootRoute

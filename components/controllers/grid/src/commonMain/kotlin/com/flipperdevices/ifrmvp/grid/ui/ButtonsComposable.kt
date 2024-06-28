@@ -8,16 +8,15 @@ import androidx.compose.ui.Modifier
 import com.flipperdevices.ifrmvp.core.ui.button.ButtonItemComposable
 import com.flipperdevices.ifrmvp.core.ui.layout.core.GridItemComposable
 import com.flipperdevices.ifrmvp.model.IfrButton
+import com.flipperdevices.ifrmvp.model.IfrKeyIdentifier
 import com.flipperdevices.ifrmvp.model.PageLayout
 import kotlinx.coroutines.launch
 
 @Composable
 internal fun BoxWithConstraintsScope.ButtonsComposable(
     pageLayout: PageLayout,
-    scaffoldState: ScaffoldState,
-    onButtonClicked: (IfrButton) -> Unit,
+    onButtonClicked: (IfrButton, IfrKeyIdentifier) -> Unit,
 ) {
-    val coroutineScope = rememberCoroutineScope()
     pageLayout.buttons
         .forEach { button ->
             GridItemComposable(
@@ -26,12 +25,8 @@ internal fun BoxWithConstraintsScope.ButtonsComposable(
                 content = {
                     ButtonItemComposable(
                         buttonData = button.data,
-                        onKeyDataClicked = {
-                            onButtonClicked.invoke(button)
-                            coroutineScope.launch {
-                                scaffoldState.snackbarHostState.currentSnackbarData?.dismiss()
-                                scaffoldState.snackbarHostState.showSnackbar("Clicked: $it")
-                            }
+                        onKeyDataClicked = { keyIdentifier ->
+                            onButtonClicked.invoke(button,keyIdentifier)
                         }
                     )
                 }

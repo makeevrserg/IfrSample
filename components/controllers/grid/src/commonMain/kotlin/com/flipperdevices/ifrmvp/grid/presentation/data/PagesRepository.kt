@@ -1,8 +1,7 @@
 package com.flipperdevices.ifrmvp.grid.presentation.data
 
 import com.flipperdevices.ifrmvp.model.PagesLayout
-import kotlinx.coroutines.flow.Flow
 
 internal interface PagesRepository {
-    fun pagesFlow(): Flow<PagesLayout>
+    suspend fun fetchPages(ifrFileId: Long, uiFileId: Long): Result<PagesLayout>
 }
