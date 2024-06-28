@@ -37,7 +37,7 @@ internal class DefaultRootComponent(
                             componentContext = childContext,
                             param = GridComponent.Param(
                                 ifrFileId = config.ifrFileId,
-                                uiFileId = config.uiFileId
+                                uiFileId = null
                             )
                         )
                 )
@@ -45,7 +45,13 @@ internal class DefaultRootComponent(
                 RootRoute.SelectDevice -> RootComponent.RootChild.SelectDevice(
                     selectDeviceRootComponent = selectDeviceRootModule.createSelectDeviceRootComponent(
                         componentContext = childContext,
-                        onBackClicked = navigation::pop
+                        onBackClicked = navigation::pop,
+                        onIfrFileFound = {
+                            val route = RootRoute.Controller(
+                                ifrFileId = it.id,
+                            )
+                            navigation.replaceCurrent(route)
+                        }
                     )
                 )
             }

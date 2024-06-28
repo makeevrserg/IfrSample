@@ -3,6 +3,7 @@ package com.flipperdevices.ifrmvp.selectdevice.setup.presentation.decompose.inte
 import androidx.compose.runtime.Composable
 import com.arkivanov.decompose.ComponentContext
 import com.arkivanov.decompose.childContext
+import com.flipperdevices.ifrmvp.backend.model.IfrFileModel
 import com.flipperdevices.ifrmvp.selectdevice.setup.presentation.decompose.SetupComponent
 import com.flipperdevices.ifrmvp.selectdevice.setup.presentation.decompose.SetupDecomposeComponent
 import com.flipperdevices.ifrmvp.selectdevice.setup.ui.SetupScreen
@@ -11,12 +12,14 @@ class SetupDecomposeComponentImpl(
     componentContext: ComponentContext,
     setupComponentFactory: SetupComponent.Factory,
     param: SetupComponent.Param,
-    onBack: () -> Unit
+    onBack: () -> Unit,
+    onIfrFileFound: (IfrFileModel) -> Unit
 ) : SetupDecomposeComponent, ComponentContext by componentContext {
     private val setupComponent = setupComponentFactory.createSetupComponent(
         componentContext = childContext("SetupComponent"),
         param = param,
-        onBack = onBack
+        onBack = onBack,
+        onIfrFileFound = onIfrFileFound
     )
 
     @Composable

@@ -7,7 +7,6 @@ sealed interface RootRoute {
     @Serializable
     data class Controller(
         val ifrFileId: Long,
-        val uiFileId: Long
     ) : RootRoute
 
     @Serializable

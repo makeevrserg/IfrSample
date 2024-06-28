@@ -2,6 +2,7 @@ package com.flipperdevices.ifrmvp.selectdevice.root.di
 
 import com.arkivanov.decompose.ComponentContext
 import com.flipperdevices.ifrmvp.api.backend.di.ApiBackendModule
+import com.flipperdevices.ifrmvp.backend.model.IfrFileModel
 import com.flipperdevices.ifrmvp.selectdevice.brands.di.BrandsModule
 import com.flipperdevices.ifrmvp.selectdevice.categories.di.DeviceCategoriesModule
 import com.flipperdevices.ifrmvp.selectdevice.categories.di.DeviceCategoriesModuleImpl
@@ -18,7 +19,8 @@ interface SelectDeviceRootModule {
 
     fun createSelectDeviceRootComponent(
         componentContext: ComponentContext,
-        onBackClicked: () -> Unit
+        onBackClicked: () -> Unit,
+        onIfrFileFound: (IfrFileModel) -> Unit
     ): SelectDeviceRootComponent
 
     class Default(
@@ -43,14 +45,16 @@ interface SelectDeviceRootModule {
 
         override fun createSelectDeviceRootComponent(
             componentContext: ComponentContext,
-            onBackClicked: () -> Unit
+            onBackClicked: () -> Unit,
+            onIfrFileFound: (IfrFileModel) -> Unit
         ): SelectDeviceRootComponent {
             return DefaultSelectDeviceRootComponent(
                 componentContext = componentContext,
                 deviceCategoriesModule = createDeviceCategoriesModule(),
                 brandsModule = createBrandsModule(),
                 setupModule = createSetupModule(),
-                onBackClicked = onBackClicked
+                onBackClicked = onBackClicked,
+                onIfrFileFound = onIfrFileFound
             )
         }
     }

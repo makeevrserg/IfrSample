@@ -36,6 +36,8 @@ kotlin {
             implementation(projects.components.selectDevice)
             implementation(projects.components.apiBackend)
             implementation(projects.components.core.theme)
+            implementation("com.flipperdevices.ifrmvp.backend:shared-ui-model")
+            implementation("com.flipperdevices.ifrmvp.backend:shared-backend-model")
         }
     }
 }

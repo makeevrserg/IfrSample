@@ -1,11 +1,14 @@
 package com.flipperdevices.ifrmvp.selectdevice.setup.presentation.decompose
 
 import com.arkivanov.decompose.ComponentContext
+import com.flipperdevices.ifrmvp.backend.model.IfrFileModel
 import com.flipperdevices.ifrmvp.backend.model.SignalResponseModel
+import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.StateFlow
 
 interface SetupComponent {
     val model: StateFlow<Model>
+    val remoteFoundFlow: Flow<IfrFileModel>
     val param: Param
 
     fun onBackClicked()
@@ -15,6 +18,8 @@ interface SetupComponent {
     fun dispatchSignal()
 
     fun tryLoad()
+
+    fun onFileFound(ifrFileModel: IfrFileModel)
 
     sealed interface Model {
         data object Loading : Model
@@ -32,7 +37,8 @@ interface SetupComponent {
         fun createSetupComponent(
             componentContext: ComponentContext,
             param: Param,
-            onBack: () -> Unit
+            onBack: () -> Unit,
+            onIfrFileFound: (IfrFileModel) -> Unit
         ): SetupComponent
     }
 }

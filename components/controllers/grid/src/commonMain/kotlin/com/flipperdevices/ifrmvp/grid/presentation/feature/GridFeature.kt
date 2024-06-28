@@ -16,7 +16,7 @@ internal class GridFeature(
         launch {
             val result = pagesRepository.fetchPages(
                 ifrFileId = param.ifrFileId,
-                uiFileId = param.uiFileId
+                uiFileId = param.uiFileId ?: -1
             )
             result
                 .onFailure { model.value = GridComponent.Model.Error }

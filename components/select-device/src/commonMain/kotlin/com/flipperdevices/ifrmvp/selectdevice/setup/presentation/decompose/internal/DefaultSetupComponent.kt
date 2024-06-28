@@ -2,17 +2,23 @@ package com.flipperdevices.ifrmvp.selectdevice.setup.presentation.decompose.inte
 
 import com.arkivanov.decompose.ComponentContext
 import com.arkivanov.essenty.instancekeeper.getOrCreate
+import com.flipperdevices.ifrmvp.backend.model.IfrFileModel
 import com.flipperdevices.ifrmvp.selectdevice.setup.presentation.decompose.SetupComponent
 import com.flipperdevices.ifrmvp.selectdevice.setup.presentation.feature.CurrentSignalFeature
+import com.flipperdevices.ifrmvp.selectdevice.setup.presentation.feature.CurrentSignalFeature.State
 import com.flipperdevices.ifrmvp.selectdevice.setup.presentation.feature.HistoryFeature
+import kotlinx.coroutines.flow.Flow
+import kotlinx.coroutines.flow.filterIsInstance
+import kotlinx.coroutines.flow.mapNotNull
 import ru.astrainteractive.klibs.mikro.core.util.combineStates
 
 class DefaultSetupComponent(
     componentContext: ComponentContext,
     override val param: SetupComponent.Param,
     private val onBackClicked: () -> Unit,
+    private val onIfrFileFound: (IfrFileModel) -> Unit,
     createCurrentSignalFeature: () -> CurrentSignalFeature,
-    createHistoryFeature: () -> HistoryFeature
+    createHistoryFeature: () -> HistoryFeature,
 ) : SetupComponent, ComponentContext by componentContext {
     private val signalFeature = instanceKeeper.getOrCreate {
         createCurrentSignalFeature.invoke()
@@ -35,11 +41,19 @@ class DefaultSetupComponent(
         }
     )
 
+    override val remoteFoundFlow: Flow<IfrFileModel> = model
+        .filterIsInstance<SetupComponent.Model.Loaded>()
+        .mapNotNull { it.response.ifrFileModel }
+
     override fun tryLoad() {
         signalFeature.load(
             successResults = historyFeature.state.value.successfulSignals,
             failedResults = historyFeature.state.value.failedSignals
         )
+    }
+
+    override fun onFileFound(ifrFileModel: IfrFileModel) {
+        onIfrFileFound.invoke(ifrFileModel)
     }
 
     override fun onSuccessClicked() {

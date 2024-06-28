@@ -7,6 +7,7 @@ import com.arkivanov.decompose.router.stack.childStack
 import com.arkivanov.decompose.router.stack.pop
 import com.arkivanov.decompose.router.stack.push
 import com.arkivanov.decompose.value.Value
+import com.flipperdevices.ifrmvp.backend.model.IfrFileModel
 import com.flipperdevices.ifrmvp.selectdevice.brands.di.BrandsModule
 import com.flipperdevices.ifrmvp.selectdevice.categories.di.DeviceCategoriesModule
 import com.flipperdevices.ifrmvp.selectdevice.setup.di.SetupModule
@@ -18,7 +19,8 @@ internal class DefaultSelectDeviceRootComponent(
     deviceCategoriesModule: DeviceCategoriesModule,
     brandsModule: BrandsModule,
     setupModule: SetupModule,
-    onBackClicked: () -> Unit
+    onBackClicked: () -> Unit,
+    onIfrFileFound: (IfrFileModel) -> Unit
 ) : SelectDeviceRootComponent, ComponentContext by componentContext {
     private val navigation = StackNavigation<Configuration>()
 
@@ -70,7 +72,8 @@ internal class DefaultSelectDeviceRootComponent(
                                 brandId = config.brandId,
                                 categoryId = config.categoryId
                             ),
-                            onBack = navigation::pop
+                            onBack = navigation::pop,
+                            onIfrFileFound = onIfrFileFound
                         )
                     SelectDeviceRootComponent.Child.Setup(setupDecomposeComponent)
                 }

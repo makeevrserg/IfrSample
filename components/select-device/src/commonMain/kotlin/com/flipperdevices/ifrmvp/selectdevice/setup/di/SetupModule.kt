@@ -2,6 +2,7 @@ package com.flipperdevices.ifrmvp.selectdevice.setup.di
 
 import com.arkivanov.decompose.ComponentContext
 import com.flipperdevices.ifrmvp.api.backend.di.ApiBackendModule
+import com.flipperdevices.ifrmvp.backend.model.IfrFileModel
 import com.flipperdevices.ifrmvp.selectdevice.setup.presentation.decompose.SetupComponent
 import com.flipperdevices.ifrmvp.selectdevice.setup.presentation.decompose.SetupDecomposeComponent
 import com.flipperdevices.ifrmvp.selectdevice.setup.presentation.decompose.internal.DefaultSetupComponent
@@ -17,12 +18,14 @@ interface SetupModule {
             override fun createSetupComponent(
                 componentContext: ComponentContext,
                 param: SetupComponent.Param,
-                onBack: () -> Unit
+                onBack: () -> Unit,
+                onIfrFileFound: (IfrFileModel) -> Unit
             ): SetupComponent {
                 return DefaultSetupComponent(
                     componentContext = componentContext,
                     param = param,
                     onBackClicked = onBack,
+                    onIfrFileFound = onIfrFileFound,
                     createHistoryFeature = {
                         HistoryFeature()
                     },
@@ -39,13 +42,15 @@ interface SetupModule {
             override fun createSetupComponent(
                 componentContext: ComponentContext,
                 param: SetupComponent.Param,
-                onBack: () -> Unit
+                onBack: () -> Unit,
+                onIfrFileFound: (IfrFileModel) -> Unit
             ): SetupDecomposeComponent {
                 return SetupDecomposeComponentImpl(
                     componentContext = componentContext,
                     setupComponentFactory = setupComponentFactory,
                     param = param,
-                    onBack = onBack
+                    onBack = onBack,
+                    onIfrFileFound = onIfrFileFound
                 )
             }
         }

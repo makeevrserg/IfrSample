@@ -19,7 +19,7 @@ interface GridComponent {
 
     class Param(
         val ifrFileId: Long,
-        val uiFileId: Long
+        val uiFileId: Long? = null
     )
 
     fun interface Factory {

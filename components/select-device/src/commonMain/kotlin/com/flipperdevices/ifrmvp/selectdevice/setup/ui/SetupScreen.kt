@@ -4,6 +4,7 @@ import androidx.compose.animation.Crossfade
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.Scaffold
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
@@ -15,10 +16,17 @@ import com.flipperdevices.ifrmvp.selectdevice.setup.presentation.decompose.Setup
 import com.flipperdevices.ifrmvp.selectdevice.setup.ui.components.LoadedContent
 import dev.icerock.moko.resources.compose.localized
 import dev.icerock.moko.resources.desc.desc
+import kotlinx.coroutines.flow.launchIn
+import kotlinx.coroutines.flow.onEach
 
 @Composable
 fun SetupScreen(setupComponent: SetupComponent) {
     val model by setupComponent.model.collectAsState()
+    LaunchedEffect(setupComponent.remoteFoundFlow) {
+        setupComponent.remoteFoundFlow
+            .onEach { setupComponent.onFileFound(it) }
+            .launchIn(this)
+    }
     Scaffold(
         topBar = {
             SharedTopBar(
