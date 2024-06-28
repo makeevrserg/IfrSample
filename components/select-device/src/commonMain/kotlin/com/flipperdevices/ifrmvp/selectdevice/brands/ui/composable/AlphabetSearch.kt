@@ -31,7 +31,7 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.flipperdevices.core.ui.theme.LocalPalletV2
 import com.flipperdevices.ifrmvp.backend.model.BrandModel
-import com.flipperdevices.ifrmvp.selectdevice.brands.presentation.BrandsComponent
+import com.flipperdevices.ifrmvp.selectdevice.brands.presentation.decompose.BrandsComponent
 import kotlinx.coroutines.launch
 import kotlin.math.abs
 

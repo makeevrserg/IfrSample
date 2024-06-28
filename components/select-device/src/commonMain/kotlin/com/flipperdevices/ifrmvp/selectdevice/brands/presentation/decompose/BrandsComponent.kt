@@ -1,4 +1,4 @@
-package com.flipperdevices.ifrmvp.selectdevice.brands.presentation
+package com.flipperdevices.ifrmvp.selectdevice.brands.presentation.decompose
 
 import com.arkivanov.decompose.ComponentContext
 import com.flipperdevices.ifrmvp.backend.model.BrandModel

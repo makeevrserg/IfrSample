@@ -1,8 +1,9 @@
-package com.flipperdevices.ifrmvp.selectdevice.brands.presentation
+package com.flipperdevices.ifrmvp.selectdevice.brands.presentation.decompose.internal
 
 import com.arkivanov.decompose.ComponentContext
 import com.arkivanov.essenty.instancekeeper.getOrCreate
 import com.flipperdevices.ifrmvp.backend.model.BrandModel
+import com.flipperdevices.ifrmvp.selectdevice.brands.presentation.decompose.BrandsComponent
 import com.flipperdevices.ifrmvp.selectdevice.brands.presentation.feature.BrandsListFeature
 import com.flipperdevices.ifrmvp.selectdevice.brands.presentation.feature.QueryFeature
 import kotlinx.coroutines.flow.StateFlow

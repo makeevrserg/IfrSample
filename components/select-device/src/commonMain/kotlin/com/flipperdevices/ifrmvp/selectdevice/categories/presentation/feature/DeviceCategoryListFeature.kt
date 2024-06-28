@@ -1,7 +1,7 @@
 package com.flipperdevices.ifrmvp.selectdevice.categories.presentation.feature
 
-import com.flipperdevices.ifrmvp.selectdevice.categories.presentation.DeviceCategoriesComponent
 import com.flipperdevices.ifrmvp.selectdevice.categories.presentation.data.DeviceCategoriesRepository
+import com.flipperdevices.ifrmvp.selectdevice.categories.presentation.decompose.DeviceCategoriesComponent
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.launch
 import ru.astrainteractive.klibs.mikro.extensions.arkivanov.CoroutineFeature

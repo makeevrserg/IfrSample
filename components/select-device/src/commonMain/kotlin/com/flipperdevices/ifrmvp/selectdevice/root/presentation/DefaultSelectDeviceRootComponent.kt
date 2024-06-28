@@ -10,7 +10,7 @@ import com.arkivanov.decompose.value.Value
 import com.flipperdevices.ifrmvp.selectdevice.brands.di.BrandsModule
 import com.flipperdevices.ifrmvp.selectdevice.categories.di.DeviceCategoriesModule
 import com.flipperdevices.ifrmvp.selectdevice.setup.di.SetupModule
-import com.flipperdevices.ifrmvp.selectdevice.setup.presentation.SetupComponent
+import com.flipperdevices.ifrmvp.selectdevice.setup.presentation.decompose.SetupComponent
 import kotlinx.serialization.Serializable
 
 internal class DefaultSelectDeviceRootComponent(
@@ -31,13 +31,12 @@ internal class DefaultSelectDeviceRootComponent(
             when (config) {
                 Configuration.SelectCategory -> {
                     val deviceCategoriesComponent = deviceCategoriesModule
-                        .deviceCategoriesFactory
-                        .createDeviceCategoriesComponent(
+                        .categoriesDecomposeComponentFactory
+                        .create(
                             componentContext = childContext,
                             onBackClicked = onBackClicked,
                             onCategoryClicked = { deviceCategory ->
                                 val configuration = Configuration.Brands(deviceCategory.id)
-                                println("Clicked category id: ${configuration.categoryId}")
                                 navigation.push(configuration)
                             }
                         )
@@ -45,8 +44,8 @@ internal class DefaultSelectDeviceRootComponent(
                 }
 
                 is Configuration.Brands -> {
-                    val brandsComponent = brandsModule
-                        .brandsComponentFactory
+                    val brandsDecomposeComponent = brandsModule
+                        .brandsDecomposeComponentFactory
                         .createBrandsComponent(
                             componentContext = childContext,
                             onBackClicked = navigation::pop,
@@ -59,12 +58,12 @@ internal class DefaultSelectDeviceRootComponent(
                                 navigation.push(configuration)
                             }
                         )
-                    SelectDeviceRootComponent.Child.Brands(brandsComponent)
+                    SelectDeviceRootComponent.Child.Brands(brandsDecomposeComponent)
                 }
 
                 is Configuration.Setup -> {
-                    val setupComponent = setupModule
-                        .setupComponentFactory
+                    val setupDecomposeComponent = setupModule
+                        .setupDecomposeComponentFactory
                         .createSetupComponent(
                             componentContext = childContext,
                             param = SetupComponent.Param(
@@ -73,7 +72,7 @@ internal class DefaultSelectDeviceRootComponent(
                             ),
                             onBack = navigation::pop
                         )
-                    SelectDeviceRootComponent.Child.Setup(setupComponent)
+                    SelectDeviceRootComponent.Child.Setup(setupDecomposeComponent)
                 }
             }
         }

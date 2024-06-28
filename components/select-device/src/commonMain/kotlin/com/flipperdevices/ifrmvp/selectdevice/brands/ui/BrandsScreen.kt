@@ -6,13 +6,15 @@ import androidx.compose.material.Scaffold
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Modifier
-import com.flipperdevices.ifrmvp.selectdevice.brands.presentation.BrandsComponent
+import com.flipperdevices.ifrmvp.components.select.device.RemoteSetupR
+import com.flipperdevices.ifrmvp.selectdevice.brands.presentation.decompose.BrandsComponent
 import com.flipperdevices.ifrmvp.selectdevice.brands.ui.composable.BrandsLoadedContent
 import com.flipperdevices.ifrmvp.selectdevice.categories.ui.components.ErrorComposable
 import com.flipperdevices.ifrmvp.selectdevice.categories.ui.components.LoadingComposable
 import com.flipperdevices.ifrmvp.selectdevice.categories.ui.components.SharedTopBar
+import dev.icerock.moko.resources.compose.localized
+import dev.icerock.moko.resources.desc.desc
 
 @Composable
 fun BrandsScreen(brandsComponent: BrandsComponent) {
@@ -20,8 +22,8 @@ fun BrandsScreen(brandsComponent: BrandsComponent) {
     Scaffold(
         topBar = {
             SharedTopBar(
-                title = "Select Brand",
-                subtitle = "Add remote",
+                title = RemoteSetupR.strings.brands_title.desc().localized(),
+                subtitle = RemoteSetupR.strings.brands_subtitle.desc().localized(),
                 onBackClicked = brandsComponent::onBackClicked
             )
         }

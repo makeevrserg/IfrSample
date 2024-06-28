@@ -21,6 +21,9 @@ import androidx.compose.ui.draw.clip
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.flipperdevices.core.ui.theme.LocalPalletV2
+import com.flipperdevices.ifrmvp.components.select.device.RemoteSetupR
+import dev.icerock.moko.resources.compose.localized
+import dev.icerock.moko.resources.desc.desc
 
 @Composable
 internal fun ConfirmContent(
@@ -59,7 +62,7 @@ internal fun ConfirmContent(
                     modifier = Modifier.fillMaxWidth().padding(vertical = 42.dp, horizontal = 38.dp)
                 ) {
                     Text(
-                        text = "No",
+                        text = RemoteSetupR.strings.no.desc().localized(),
                         style = MaterialTheme.typography.body2,
                         color = LocalPalletV2.current.action.blue.text.default,
                         textAlign = TextAlign.Center,
@@ -69,7 +72,7 @@ internal fun ConfirmContent(
                             .padding(vertical = 12.dp, horizontal = 36.dp),
                     )
                     Text(
-                        text = "Yes",
+                        text = RemoteSetupR.strings.yes.desc().localized(),
                         style = MaterialTheme.typography.subtitle2,
                         color = LocalPalletV2.current.action.blue.text.onColor,
                         textAlign = TextAlign.Center,

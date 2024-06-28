@@ -2,16 +2,18 @@ package com.flipperdevices.ifrmvp.selectdevice.setup.di
 
 import com.arkivanov.decompose.ComponentContext
 import com.flipperdevices.ifrmvp.api.backend.di.ApiBackendModule
-import com.flipperdevices.ifrmvp.selectdevice.setup.presentation.DefaultSetupComponent
-import com.flipperdevices.ifrmvp.selectdevice.setup.presentation.SetupComponent
-import com.flipperdevices.ifrmvp.selectdevice.setup.presentation.features.CurrentSignalFeature
-import com.flipperdevices.ifrmvp.selectdevice.setup.presentation.features.HistoryFeature
+import com.flipperdevices.ifrmvp.selectdevice.setup.presentation.decompose.SetupComponent
+import com.flipperdevices.ifrmvp.selectdevice.setup.presentation.decompose.SetupDecomposeComponent
+import com.flipperdevices.ifrmvp.selectdevice.setup.presentation.decompose.internal.DefaultSetupComponent
+import com.flipperdevices.ifrmvp.selectdevice.setup.presentation.decompose.internal.SetupDecomposeComponentImpl
+import com.flipperdevices.ifrmvp.selectdevice.setup.presentation.feature.CurrentSignalFeature
+import com.flipperdevices.ifrmvp.selectdevice.setup.presentation.feature.HistoryFeature
 
 interface SetupModule {
-    val setupComponentFactory: SetupComponent.Factory
+    val setupDecomposeComponentFactory: SetupDecomposeComponent.Factory
 
     class Default(apiBackendModule: ApiBackendModule) : SetupModule {
-        override val setupComponentFactory = object : SetupComponent.Factory {
+        private val setupComponentFactory = object : SetupComponent.Factory {
             override fun createSetupComponent(
                 componentContext: ComponentContext,
                 param: SetupComponent.Param,
@@ -30,6 +32,20 @@ interface SetupModule {
                             apiBackend = apiBackendModule.apiBackend
                         )
                     }
+                )
+            }
+        }
+        override val setupDecomposeComponentFactory = object : SetupDecomposeComponent.Factory {
+            override fun createSetupComponent(
+                componentContext: ComponentContext,
+                param: SetupComponent.Param,
+                onBack: () -> Unit
+            ): SetupDecomposeComponent {
+                return SetupDecomposeComponentImpl(
+                    componentContext = componentContext,
+                    setupComponentFactory = setupComponentFactory,
+                    param = param,
+                    onBack = onBack
                 )
             }
         }

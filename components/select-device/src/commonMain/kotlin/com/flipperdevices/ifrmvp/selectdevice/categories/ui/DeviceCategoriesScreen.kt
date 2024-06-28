@@ -14,11 +14,14 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
 import com.flipperdevices.core.ui.theme.LocalPalletV2
 import com.flipperdevices.ifrmvp.backend.model.DeviceCategory
-import com.flipperdevices.ifrmvp.selectdevice.categories.presentation.DeviceCategoriesComponent
+import com.flipperdevices.ifrmvp.components.select.device.RemoteSetupR
+import com.flipperdevices.ifrmvp.selectdevice.categories.presentation.decompose.DeviceCategoriesComponent
 import com.flipperdevices.ifrmvp.selectdevice.categories.ui.components.DeviceCategoryComposable
 import com.flipperdevices.ifrmvp.selectdevice.categories.ui.components.ErrorComposable
 import com.flipperdevices.ifrmvp.selectdevice.categories.ui.components.LoadingComposable
 import com.flipperdevices.ifrmvp.selectdevice.categories.ui.components.SharedTopBar
+import dev.icerock.moko.resources.compose.localized
+import dev.icerock.moko.resources.desc.desc
 
 @Composable
 private fun LoadedContent(
@@ -49,8 +52,8 @@ fun DeviceCategoriesScreen(deviceCategoriesComponent: DeviceCategoriesComponent)
     Scaffold(
         topBar = {
             SharedTopBar(
-                title = "Select Device",
-                subtitle = "Add remote",
+                title = RemoteSetupR.strings.categories_title.desc().localized(),
+                subtitle = RemoteSetupR.strings.categories_subtitle.desc().localized(),
                 onBackClicked = deviceCategoriesComponent::onBackClicked
             )
         },

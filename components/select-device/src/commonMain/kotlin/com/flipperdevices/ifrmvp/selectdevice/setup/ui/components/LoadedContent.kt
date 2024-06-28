@@ -10,18 +10,22 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import com.flipperdevices.core.ui.theme.LocalPalletV2
+import com.flipperdevices.ifrmvp.components.select.device.RemoteSetupR
 import com.flipperdevices.ifrmvp.selectdevice.categories.ui.components.ErrorComposable
-import com.flipperdevices.ifrmvp.selectdevice.setup.presentation.SetupComponent
+import com.flipperdevices.ifrmvp.selectdevice.setup.presentation.decompose.SetupComponent
+import dev.icerock.moko.resources.compose.localized
+import dev.icerock.moko.resources.desc.desc
 
 @Composable
 internal fun LoadedContent(
     model: SetupComponent.Model.Loaded,
     onPositiveClicked: () -> Unit,
     onNegativeClicked: () -> Unit,
+    onDispatchSignalClicked: () -> Unit,
     modifier: Modifier = Modifier
 ) {
     val ifrFileModel = model.response.ifrFileModel
-    val signalOrderModel = model.response.signalResponse
+    val signalResponse = model.response.signalResponse
     Column(
         modifier = modifier.fillMaxSize(),
         verticalArrangement = Arrangement.SpaceBetween
@@ -33,7 +37,7 @@ internal fun LoadedContent(
                     contentAlignment = Alignment.Center,
                     content = {
                         Text(
-                            text = "Yappie! Found your remote!",
+                            text = "Yappie! Found your remote!", // todo
                             style = MaterialTheme.typography.subtitle2,
                             color = LocalPalletV2.current.text.title.blackOnColor
                         )
@@ -41,15 +45,15 @@ internal fun LoadedContent(
                 )
             }
 
-            signalOrderModel != null -> {
+            signalResponse != null -> {
                 Box(modifier = Modifier)
                 ButtonContent(
-                    onClicked = {},
+                    onClicked = onDispatchSignalClicked,
                     modifier = Modifier,
-                    signalResponse = signalOrderModel
+                    signalResponse = signalResponse
                 )
                 ConfirmContent(
-                    text = "Does TV turn on/off?",
+                    text = signalResponse.message,
                     onNegativeClicked = onNegativeClicked,
                     onPositiveClicked = onPositiveClicked,
                     modifier = Modifier
@@ -58,7 +62,7 @@ internal fun LoadedContent(
 
             else -> {
                 ErrorComposable(
-                    desc = "Not found signal for your preferences",
+                    desc = RemoteSetupR.strings.not_found_signal.desc().localized(),
                 )
             }
         }

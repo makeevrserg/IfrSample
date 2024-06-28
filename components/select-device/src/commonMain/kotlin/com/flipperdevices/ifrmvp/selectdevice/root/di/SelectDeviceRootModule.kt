@@ -4,6 +4,7 @@ import com.arkivanov.decompose.ComponentContext
 import com.flipperdevices.ifrmvp.api.backend.di.ApiBackendModule
 import com.flipperdevices.ifrmvp.selectdevice.brands.di.BrandsModule
 import com.flipperdevices.ifrmvp.selectdevice.categories.di.DeviceCategoriesModule
+import com.flipperdevices.ifrmvp.selectdevice.categories.di.DeviceCategoriesModuleImpl
 import com.flipperdevices.ifrmvp.selectdevice.root.presentation.DefaultSelectDeviceRootComponent
 import com.flipperdevices.ifrmvp.selectdevice.root.presentation.SelectDeviceRootComponent
 import com.flipperdevices.ifrmvp.selectdevice.setup.di.SetupModule
@@ -25,7 +26,7 @@ interface SelectDeviceRootModule {
     ) : SelectDeviceRootModule {
 
         override fun createDeviceCategoriesModule(): DeviceCategoriesModule {
-            return DeviceCategoriesModule.Default(
+            return DeviceCategoriesModuleImpl(
                 apiBackendModule = apiBackendModule
             )
         }

@@ -1,10 +1,10 @@
-package com.flipperdevices.ifrmvp.selectdevice.setup.presentation.features
+package com.flipperdevices.ifrmvp.selectdevice.setup.presentation.feature
 
 import com.flipperdevices.ifrmvp.api.backend.ApiBackend
 import com.flipperdevices.ifrmvp.backend.model.SignalRequestModel
 import com.flipperdevices.ifrmvp.backend.model.SignalRequestModel.SignalResultData
 import com.flipperdevices.ifrmvp.backend.model.SignalResponseModel
-import com.flipperdevices.ifrmvp.selectdevice.setup.presentation.SetupComponent.Param
+import com.flipperdevices.ifrmvp.selectdevice.setup.presentation.decompose.SetupComponent.Param
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.IO
 import kotlinx.coroutines.delay

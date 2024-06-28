@@ -14,32 +14,38 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import com.flipperdevices.core.ui.theme.LocalPalletV2
 import com.flipperdevices.ifrmvp.backend.model.SignalResponse
+import com.flipperdevices.ifrmvp.components.select.device.RemoteSetupR
 import com.flipperdevices.ifrmvp.core.ui.button.UnknownButton
 import com.flipperdevices.ifrmvp.core.ui.button.core.SquareIconButton
 import com.flipperdevices.ifrmvp.core.ui.button.core.TextButton
 import com.flipperdevices.ifrmvp.model.buttondata.IconButtonData
+import dev.icerock.moko.resources.compose.localized
+import dev.icerock.moko.resources.format
 
 @Composable
-private fun Button(model: SignalResponse) {
+private fun SignalResponseButton(
+    model: SignalResponse,
+    onClick: () -> Unit
+) {
     val text = model.data.text
     val iconType = IconButtonData.IconType.entries.firstOrNull { it.name == model.data.iconId }
     when {
         text != null -> {
             TextButton(
                 text = text,
-                onClick = {}
+                onClick = onClick
             )
         }
 
         iconType != null -> {
             SquareIconButton(
                 iconType = iconType,
-                onClick = {}
+                onClick = onClick
             )
         }
 
         else -> {
-            UnknownButton(onClick = {})
+            UnknownButton(onClick = onClick)
         }
     }
 }
@@ -55,10 +61,11 @@ internal fun ButtonContent(
         verticalArrangement = Arrangement.Center,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
-        Button(signalResponse)
+        SignalResponseButton(model = signalResponse, onClick = onClicked)
         Spacer(modifier = Modifier.height(14.dp))
         Text(
-            text = "Point Flipper Zero at the TV and tap the button",
+            text = RemoteSetupR.strings.point_flipper.format(signalResponse.categoryName)
+                .localized(),
             style = MaterialTheme.typography.body2,
             color = LocalPalletV2.current.text.body.secondary,
             textAlign = TextAlign.Center,

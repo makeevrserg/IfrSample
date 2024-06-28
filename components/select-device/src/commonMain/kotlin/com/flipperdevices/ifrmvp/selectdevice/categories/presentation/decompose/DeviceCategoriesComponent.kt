@@ -1,4 +1,4 @@
-package com.flipperdevices.ifrmvp.selectdevice.categories.presentation
+package com.flipperdevices.ifrmvp.selectdevice.categories.presentation.decompose
 
 import com.arkivanov.decompose.ComponentContext
 import com.flipperdevices.ifrmvp.backend.model.DeviceCategory
@@ -19,8 +19,8 @@ interface DeviceCategoriesComponent {
         data object Error : Model
     }
 
-    interface Factory {
-        fun createDeviceCategoriesComponent(
+    fun interface Factory {
+        fun create(
             componentContext: ComponentContext,
             onBackClicked: () -> Unit,
             onCategoryClicked: (DeviceCategory) -> Unit

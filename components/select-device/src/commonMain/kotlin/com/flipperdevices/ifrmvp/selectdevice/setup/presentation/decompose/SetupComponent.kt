@@ -1,4 +1,4 @@
-package com.flipperdevices.ifrmvp.selectdevice.setup.presentation
+package com.flipperdevices.ifrmvp.selectdevice.setup.presentation.decompose
 
 import com.arkivanov.decompose.ComponentContext
 import com.flipperdevices.ifrmvp.backend.model.SignalResponseModel
@@ -12,6 +12,7 @@ interface SetupComponent {
 
     fun onSuccessClicked()
     fun onFailedClicked()
+    fun dispatchSignal()
 
     fun tryLoad()
 

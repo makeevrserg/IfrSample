@@ -1,9 +1,10 @@
-package com.flipperdevices.ifrmvp.selectdevice.setup.presentation
+package com.flipperdevices.ifrmvp.selectdevice.setup.presentation.decompose.internal
 
 import com.arkivanov.decompose.ComponentContext
 import com.arkivanov.essenty.instancekeeper.getOrCreate
-import com.flipperdevices.ifrmvp.selectdevice.setup.presentation.features.CurrentSignalFeature
-import com.flipperdevices.ifrmvp.selectdevice.setup.presentation.features.HistoryFeature
+import com.flipperdevices.ifrmvp.selectdevice.setup.presentation.decompose.SetupComponent
+import com.flipperdevices.ifrmvp.selectdevice.setup.presentation.feature.CurrentSignalFeature
+import com.flipperdevices.ifrmvp.selectdevice.setup.presentation.feature.HistoryFeature
 import ru.astrainteractive.klibs.mikro.core.util.combineStates
 
 class DefaultSetupComponent(
@@ -54,6 +55,9 @@ class DefaultSetupComponent(
         historyFeature.rememberFailed(signalModel)
         tryLoad()
     }
+
+    // todo
+    override fun dispatchSignal() = Unit
 
     override fun onBackClicked() = onBackClicked.invoke()
 }

@@ -2,24 +2,24 @@ package com.flipperdevices.ifrmvp.selectdevice.root.presentation
 
 import com.arkivanov.decompose.router.stack.ChildStack
 import com.arkivanov.decompose.value.Value
-import com.flipperdevices.ifrmvp.selectdevice.brands.presentation.BrandsComponent
-import com.flipperdevices.ifrmvp.selectdevice.categories.presentation.DeviceCategoriesComponent
-import com.flipperdevices.ifrmvp.selectdevice.setup.presentation.SetupComponent
+import com.flipperdevices.ifrmvp.selectdevice.brands.presentation.decompose.BrandsDecomposeComponent
+import com.flipperdevices.ifrmvp.selectdevice.categories.presentation.decompose.CategoriesDecomposeComponent
+import com.flipperdevices.ifrmvp.selectdevice.setup.presentation.decompose.SetupDecomposeComponent
 
 interface SelectDeviceRootComponent {
     val childStack: Value<ChildStack<*, Child>>
 
     sealed interface Child {
         class SelectCategory(
-            val deviceCategoriesComponent: DeviceCategoriesComponent
+            val categoriesDecomposeComponent: CategoriesDecomposeComponent
         ) : Child
 
         class Brands(
-            val brandsComponent: BrandsComponent
+            val brandsDecomposeComponent: BrandsDecomposeComponent
         ) : Child
 
         class Setup(
-            val setupComponent: SetupComponent
+            val setupDecomposeComponent: SetupDecomposeComponent
         ) : Child
     }
 }

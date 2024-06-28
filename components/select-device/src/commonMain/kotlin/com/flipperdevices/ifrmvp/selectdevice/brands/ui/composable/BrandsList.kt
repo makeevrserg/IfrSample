@@ -20,7 +20,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.unit.dp
 import com.flipperdevices.ifrmvp.backend.model.BrandModel
-import com.flipperdevices.ifrmvp.selectdevice.brands.presentation.BrandsComponent.Companion.charSection
+import com.flipperdevices.ifrmvp.selectdevice.brands.presentation.decompose.BrandsComponent.Companion.charSection
 
 @Composable
 internal fun BrandsList(

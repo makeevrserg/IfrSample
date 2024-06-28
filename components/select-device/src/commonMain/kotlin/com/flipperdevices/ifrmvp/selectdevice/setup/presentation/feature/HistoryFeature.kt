@@ -1,4 +1,4 @@
-package com.flipperdevices.ifrmvp.selectdevice.setup.presentation.features
+package com.flipperdevices.ifrmvp.selectdevice.setup.presentation.feature
 
 import com.flipperdevices.ifrmvp.backend.model.SignalModel
 import com.flipperdevices.ifrmvp.backend.model.SignalRequestModel.SignalResultData

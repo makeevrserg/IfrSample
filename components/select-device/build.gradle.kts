@@ -8,6 +8,7 @@ plugins {
     alias(libs.plugins.kotlin.serialization)
     alias(libs.plugins.gradle.android.library)
     alias(libs.plugins.klibs.gradle.android.core)
+    alias(libs.plugins.moko.resources)
 }
 
 kotlin {
@@ -44,6 +45,9 @@ kotlin {
             implementation(libs.kotlinx.coroutines.core)
             implementation(libs.kotlin.serialization.json)
             implementation(libs.kotlinx.io)
+            // moko
+            implementation(libs.moko.resources.core)
+            implementation(libs.moko.resources.compose)
             // Local
             implementation(projects.components.core.theme)
             implementation(projects.components.core.io)
@@ -67,3 +71,8 @@ compose.resources {
 }
 
 android.namespace = hierarchyGroup
+
+multiplatformResources {
+    resourcesPackage = hierarchyGroup
+    resourcesClassName = "RemoteSetupR"
+}

@@ -1,8 +1,9 @@
-package com.flipperdevices.ifrmvp.selectdevice.categories.presentation
+package com.flipperdevices.ifrmvp.selectdevice.categories.presentation.decompose.internal
 
 import com.arkivanov.decompose.ComponentContext
 import com.arkivanov.essenty.instancekeeper.getOrCreate
 import com.flipperdevices.ifrmvp.backend.model.DeviceCategory
+import com.flipperdevices.ifrmvp.selectdevice.categories.presentation.decompose.DeviceCategoriesComponent
 import com.flipperdevices.ifrmvp.selectdevice.categories.presentation.feature.DeviceCategoryListFeature
 import kotlinx.coroutines.flow.asStateFlow
 
