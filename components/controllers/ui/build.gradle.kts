@@ -29,6 +29,7 @@ kotlin {
             implementation(libs.composeImageLoader)
             implementation(libs.kotlinx.coroutines.core)
             implementation(libs.kotlin.serialization.json)
+            implementation(projects.components.core.theme)
             // Local
             implementation("com.flipperdevices.ifrmvp.backend:shared-backend-model")
             implementation("com.flipperdevices.ifrmvp.backend:shared-ui-model")

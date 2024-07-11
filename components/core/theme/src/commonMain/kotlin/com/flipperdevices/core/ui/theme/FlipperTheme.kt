@@ -32,7 +32,7 @@ val LocalTypography = compositionLocalOf<FlipperTypography> { error("No local ty
 
 @Composable
 fun FlipperTheme(
-    isLight: Boolean = true,
+    isLight: Boolean = false,
     content: @Composable () -> Unit,
 ) {
     val pallet = getThemedFlipperPallet(isLight)

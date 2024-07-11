@@ -8,42 +8,42 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
-import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.unit.dp
-import androidx.compose.ui.unit.sp
+import com.flipperdevices.core.ui.theme.LocalPalletV2
 import com.flipperdevices.ifrmvp.core.ui.button.core.TextButton
+import com.flipperdevices.ifrmvp.core.ui.layout.core.sf
 
 @Composable
 fun DoubleButton(
     onFirstClicked: () -> Unit,
     onLastClicked: () -> Unit,
-    text: String? = null,
     firstText: String,
-    lastText: String
+    lastText: String,
+    modifier: Modifier = Modifier,
+    text: String? = null,
 ) {
     Column(
-        modifier = Modifier.clip(RoundedCornerShape(8.dp)).background(Color(0xFF303030)),
+        modifier = modifier
+            .clip(RoundedCornerShape(8.sf))
+            .background(LocalPalletV2.current.surface.menu.body.dufault),
         verticalArrangement = Arrangement.SpaceBetween,
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         TextButton(
             onClick = onFirstClicked,
             text = firstText,
-            background = Color(0xFF303030),
-            fontSize = 24.sp
+            background = LocalPalletV2.current.surface.menu.body.dufault,
         )
         text?.let {
             TextButton(
                 onClick = null,
                 text = text,
-                background = Color(0xFF303030)
+                background = LocalPalletV2.current.surface.menu.body.dufault
             )
         }
         TextButton(
             onClick = onLastClicked,
             text = lastText,
-            background = Color(0xFF303030),
-            fontSize = 24.sp
+            background = LocalPalletV2.current.surface.menu.body.dufault,
         )
     }
 }
@@ -51,27 +51,31 @@ fun DoubleButton(
 @Composable
 fun VolumeButton(
     onAddClicked: () -> Unit,
-    onReduceClicked: () -> Unit
+    onReduceClicked: () -> Unit,
+    modifier: Modifier = Modifier
 ) {
     DoubleButton(
         onFirstClicked = onAddClicked,
         onLastClicked = onReduceClicked,
         text = "VOL",
         firstText = "+",
-        lastText = "-"
+        lastText = "-",
+        modifier = modifier
     )
 }
 
 @Composable
 fun ChannelButton(
     onNextClicked: () -> Unit,
-    onPrevClicked: () -> Unit
+    onPrevClicked: () -> Unit,
+    modifier: Modifier = Modifier,
 ) {
     DoubleButton(
         onFirstClicked = onNextClicked,
         onLastClicked = onPrevClicked,
         text = "CH",
         firstText = "+",
-        lastText = "-"
+        lastText = "-",
+        modifier = modifier
     )
 }

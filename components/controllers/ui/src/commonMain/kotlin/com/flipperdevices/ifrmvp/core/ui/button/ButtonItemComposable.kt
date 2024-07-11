@@ -1,7 +1,8 @@
 package com.flipperdevices.ifrmvp.core.ui.button
 
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.Modifier
+import com.flipperdevices.core.ui.theme.LocalPalletV2
 import com.flipperdevices.ifrmvp.core.ui.button.core.SquareIconButton
 import com.flipperdevices.ifrmvp.core.ui.button.core.TextButton
 import com.flipperdevices.ifrmvp.model.IfrKeyIdentifier
@@ -18,16 +19,22 @@ import com.flipperdevices.ifrmvp.model.buttondata.VolumeButtonData
 fun ButtonItemComposable(
     buttonData: ButtonData,
     onKeyDataClicked: (IfrKeyIdentifier) -> Unit,
+    modifier: Modifier = Modifier
 ) {
     when (buttonData) {
         is IconButtonData -> {
-            SquareIconButton(buttonData.iconId) { onKeyDataClicked.invoke(buttonData.keyIdentifier) }
+            SquareIconButton(
+                iconType = buttonData.iconId,
+                modifier = modifier,
+                onClick = { onKeyDataClicked.invoke(buttonData.keyIdentifier) }
+            )
         }
 
         is ChannelButtonData -> {
             ChannelButton(
                 onNextClicked = { onKeyDataClicked.invoke(buttonData.addKeyIdentifier) },
-                onPrevClicked = { onKeyDataClicked.invoke(buttonData.reduceKeyIdentifier) }
+                onPrevClicked = { onKeyDataClicked.invoke(buttonData.reduceKeyIdentifier) },
+                modifier = modifier,
             )
         }
 
@@ -35,6 +42,7 @@ fun ButtonItemComposable(
             VolumeButton(
                 onAddClicked = { onKeyDataClicked.invoke(buttonData.addKeyIdentifier) },
                 onReduceClicked = { onKeyDataClicked.invoke(buttonData.reduceKeyIdentifier) },
+                modifier = modifier,
             )
         }
 
@@ -44,7 +52,8 @@ fun ButtonItemComposable(
                 onRightClicked = { onKeyDataClicked.invoke(buttonData.rightKeyIdentifier) },
                 onDownClicked = { onKeyDataClicked.invoke(buttonData.downKeyIdentifier) },
                 onUpClicked = { onKeyDataClicked.invoke(buttonData.upKeyIdentifier) },
-                onOkClicked = { onKeyDataClicked.invoke(buttonData.okKeyIdentifier) }
+                onOkClicked = { onKeyDataClicked.invoke(buttonData.okKeyIdentifier) },
+                modifier = modifier,
             )
         }
 
@@ -52,7 +61,8 @@ fun ButtonItemComposable(
             TextButton(
                 onClick = { onKeyDataClicked.invoke(buttonData.keyIdentifier) },
                 text = buttonData.text,
-                background = Color(0xFF303030)
+                background = LocalPalletV2.current.surface.menu.body.dufault,
+                modifier = modifier,
             )
         }
 
@@ -64,7 +74,10 @@ fun ButtonItemComposable(
         }
 
         UnknownButtonData -> {
-            UnknownButton { }
+            UnknownButton(
+                modifier = modifier,
+                onClick = {}
+            )
         }
     }
 }

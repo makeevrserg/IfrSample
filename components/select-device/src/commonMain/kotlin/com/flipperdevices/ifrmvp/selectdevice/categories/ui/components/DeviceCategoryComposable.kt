@@ -23,7 +23,6 @@ import com.flipperdevices.core.ui.theme.LocalPalletV2
 import com.flipperdevices.ifrmvp.backend.model.CategoryManifest
 import com.flipperdevices.ifrmvp.backend.model.CategoryMeta
 import com.flipperdevices.ifrmvp.backend.model.DeviceCategory
-import com.flipperdevices.ifrmvp.core.ui.button.rememberImageBitmap
 import org.jetbrains.compose.ui.tooling.preview.Preview
 
 @Composable
@@ -31,7 +30,6 @@ internal fun DeviceCategoryComposable(
     deviceCategory: DeviceCategory,
     onClicked: () -> Unit
 ) {
-    val image = rememberImageBitmap(deviceCategory.meta.iconPngBase64)
     Card(
         modifier = Modifier
             .clickable { onClicked.invoke() },
@@ -44,14 +42,6 @@ internal fun DeviceCategoryComposable(
                 horizontalAlignment = Alignment.CenterHorizontally
             ) {
                 when {
-                    image != null -> {
-                        Icon(
-                            bitmap = image,
-                            contentDescription = null,
-                            tint = MaterialTheme.colors.onPrimary,
-                            modifier = Modifier.fillMaxSize().padding(12.dp)
-                        )
-                    }
 
                     else -> {
                         Icon(

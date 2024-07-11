@@ -9,8 +9,10 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.graphics.ImageBitmap
 import androidx.compose.ui.graphics.painter.Painter
 import androidx.compose.ui.unit.dp
+import com.flipperdevices.core.ui.theme.LocalPalletV2
 import com.flipperdevices.ifrmvp.core.ui.ext.asPainter
 import com.flipperdevices.ifrmvp.core.ui.ext.tintFor
+import com.flipperdevices.ifrmvp.core.ui.layout.core.sf
 import com.flipperdevices.ifrmvp.model.buttondata.IconButtonData
 
 @Composable
@@ -19,19 +21,21 @@ fun SquareIconButton(
     painter: Painter,
     background: Color,
     iconTint: Color,
-    contentDescription: String? = null,
     modifier: Modifier = Modifier,
+    isEmulating: Boolean = false,
+    contentDescription: String? = null,
 ) {
     SquareButton(
         modifier = modifier,
         onClick = onClick,
-        background = background
+        background = background,
+        isEmulating = isEmulating
     ) {
         Icon(
             painter = painter,
             contentDescription = contentDescription,
             tint = iconTint,
-            modifier = Modifier.fillMaxSize().padding(12.dp)
+            modifier = Modifier.fillMaxSize().padding(12.sf)
         )
     }
 }
@@ -42,19 +46,21 @@ fun SquareImageButton(
     bitmap: ImageBitmap,
     background: Color,
     iconTint: Color,
-    contentDescription: String? = null,
     modifier: Modifier = Modifier,
+    isEmulating: Boolean = false,
+    contentDescription: String? = null,
 ) {
     SquareButton(
         modifier = modifier,
         onClick = onClick,
-        background = background
+        background = background,
+        isEmulating = isEmulating
     ) {
         Icon(
             bitmap = bitmap,
             contentDescription = contentDescription,
             tint = iconTint,
-            modifier = Modifier.fillMaxSize().padding(12.dp)
+            modifier = Modifier.fillMaxSize().padding(12.sf)
         )
     }
 }
@@ -64,18 +70,20 @@ fun SquareIconButton(
     iconType: IconButtonData.IconType,
     modifier: Modifier = Modifier,
     contentDescription: String? = null,
+    isEmulating: Boolean = false,
     onClick: () -> Unit,
 ) {
     SquareButton(
         modifier = modifier,
         onClick = onClick,
-        background = Color(0xFF303030)
+        isEmulating = isEmulating,
+        background = LocalPalletV2.current.surface.menu.body.dufault
     ) {
         Icon(
             painter = iconType.asPainter(),
             contentDescription = contentDescription,
             tint = iconType.tintFor(),
-            modifier = Modifier.fillMaxSize().padding(12.dp)
+            modifier = Modifier.fillMaxSize().padding(12.sf)
         )
     }
 }

@@ -12,20 +12,32 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
+import com.flipperdevices.ifrmvp.core.ui.layout.core.sf
+import com.flipperdevices.ifrmvp.core.ui.util.GridConstants
 
 @Composable
 fun SquareButton(
     onClick: (() -> Unit)?,
     background: Color,
     modifier: Modifier = Modifier,
+    isEmulating: Boolean = false,
     content: @Composable BoxScope.() -> Unit,
 ) {
     Box(
         modifier = modifier
-            .size(48.dp)
-            .clip(RoundedCornerShape(8.dp))
+            .size(GridConstants.DEFAULT_BUTTON_SIZE.sf)
+            .clip(RoundedCornerShape(8.sf))
             .background(background)
-            .then(if (onClick != null) Modifier.clickable(onClick = onClick) else Modifier),
+            .then(
+                if (onClick != null) {
+                    Modifier.clickable(
+                        onClick = onClick,
+                        enabled = !isEmulating
+                    )
+                } else {
+                    Modifier
+                }
+            ),
         contentAlignment = Alignment.Center,
         content = content
     )
